@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FlowCallout async="false" continueOnError="false" enabled="true" name="FC-RetrieveSectorIdUri">
+  <DisplayName>FC-RetrieveSectorIdUri</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <SharedFlowBundle>cds-get-sector-id-uri</SharedFlowBundle>
+  <Parameters></Parameters>
+</FlowCallout>

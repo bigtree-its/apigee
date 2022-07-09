@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="true" enabled="true" name="EV-CoverUnknownErrorsWithNoInterception">
+  <DisplayName>EV-CoverUnknownErrorsWithNoInterception</DisplayName>
+  <JSONPayload>
+    <Variable name="unknownFaultString">
+      <JSONPath>$.fault.faultstring</JSONPath>
+    </Variable>
+    <Variable name="unknownFaultDetail">
+      <JSONPath>$.fault.detail.errorcode</JSONPath>
+    </Variable>
+  </JSONPayload>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <Source clearPayload="false">message.content</Source>
+</ExtractVariables>

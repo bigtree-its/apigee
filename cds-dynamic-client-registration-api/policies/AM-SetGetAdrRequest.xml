@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetGetAdrRequest">
+  <DisplayName>AM-SetGetAdrRequest</DisplayName>
+  <Set>
+    <Verb>GET</Verb>
+    <Headers>
+      <Header name="x-reg-client-id">{theClientId}</Header>
+    </Headers>
+  </Set>
+  <AssignVariable>
+    <Name>path</Name>
+    <Template>/{CDS.serviceEnvPath}/dcr-service/v1/register/{theClientId}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>target.copy.pathsuffix</Name>
+    <Value>false</Value>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

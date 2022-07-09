@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="internal">
+  <DefaultFaultRule name="all">
+    <AlwaysEnforce>true</AlwaysEnforce>
+    <Step>
+      <Name>RF-IPAccessDenied</Name>
+      <Condition>cdstenx.error.type = "IPDeniedAccess"</Condition>
+    </Step>
+    <Step>
+      <Name>AM-ProxyFaultHandlerUnexpected</Name>
+      <Condition>flow.cds.error.code = null</Condition>
+    </Step>
+    <Step>
+      <Name>RF-Json</Name>
+      <Condition>response.header.x-status-code = null</Condition>
+    </Step>
+  </DefaultFaultRule>
+  <PreFlow name="PreFlow">
+    <Request>
+      <Step>
+        <Name>FC-IPAccessControl</Name>
+      </Step>
+      <Step>
+        <Name>EV-Headers</Name>
+      </Step>
+      <Step>
+        <Name>KVM-GetCDSConfigs</Name>
+      </Step>
+    </Request>
+    <Response/>
+  </PreFlow>
+  <Flows>
+    <Flow name="Revoke Tokens for an arrangement, used by arrangment service">
+      <Description>Delete the arrangement and revoke tokens</Description>
+      <Request>
+        <Step>
+          <Name>SA-RateLimitTokenRevoke</Name>
+        </Step>
+        <!-- Consider security, should be only accessible from data holder arrangement service -->
+        <Step>
+          <Name>FC-AuthenticateWithSelfSignedJWT</Name>
+          <Condition>(CDS.internalServiceJwksUri != "") and (request.header.authorization != null) and (request.header.authorization != "")</Condition>
+        </Step>
+        <Step>
+          <Condition>(CDS.internalServiceJwksUri != "" and CDS.clientAssertionJwtValid != "true")</Condition>
+          <Name>RF-InvalidClientAssertionSelfSignedJwt</Name>
+        </Step>
+        <Step>
+          <Name>EV-GetTokensFromArrangementRequest</Name>
+        </Step>
+        <Step>
+          <Name>RF-InvalidTokenRevokeJson</Name>
+          <Condition>(extractvariables.EV-GetTokensFromArrangementRequest.failed = "true")</Condition>
+        </Step>
+        <Step>
+          <Name>OA-RevokeAccessToken</Name>
+        </Step>
+        <Step>
+          <Name>OA-RevokeRefreshToken</Name>
+        </Step>
+        <Step>
+          <Name>RF-InvalidTokenRevoke</Name>
+          <Condition>(oauthV2.OA-RevokeAccessToken.failed = "true")</Condition>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-SetResponse204NoContent</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/oauth/arrangement-tokens") and (request.verb = "DELETE")</Condition>
+    </Flow>
+    <Flow name="Revoke Tokens of apigee softwareProductId and/or dataRecipientId, use by responsibility service">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>RF-InvalidTokenRevokeParams</Name>
+          <Condition>(request.queryparam.softwareProductId = null or request.queryparam.softwareProductId = "") and (request.queryparam.dataRecipientId = null or request.queryparam.dataRecipientId = "")</Condition>
+        </Step>
+        <Step>
+          <Name>SA-RateLimitTokenRevoke</Name>
+        </Step>
+        <!-- Consider security, should be only accessible from data holder responsibility service -->
+        <Step>
+          <Name>FC-AuthenticateWithSelfSignedJWT</Name>
+          <Condition>(CDS.internalServiceJwksUri != "") and (request.header.authorization != null) and (request.header.authorization != "")</Condition>
+        </Step>
+        <Step>
+          <Condition>(CDS.internalServiceJwksUri != "" and CDS.clientAssertionJwtValid != "true")</Condition>
+          <Name>RF-InvalidClientAssertionSelfSignedJwt</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-SetRevokeTokenResponse</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/oauth/tokens") and (request.verb = "DELETE")</Condition>
+    </Flow>
+    <Flow name="CDR Arrangement Revocation Notification End Point">
+      <Description>Notify the Data Recipient CDR Arrangement Revocation</Description>
+      <Condition>(proxy.pathsuffix MatchesPath "/notify-arrangement-revocation") and (request.verb = "POST")</Condition>
+      <Request>
+        <Step>
+          <Name>EV-NotificationRevocationDetails</Name>
+        </Step>
+      </Request>
+      <Response/>
+    </Flow>
+    <Flow name="Not Found">
+      <Description>Not Found</Description>
+      <Request>
+        <Step>
+          <Name>RF-NotFound</Name>
+        </Step>
+      </Request>
+      <Response/>
+    </Flow>
+  </Flows>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response>
+      <Step>
+        <Name>AM-AddCurrentTimeAsEpochSecondsResponseHeader</Name>
+      </Step>
+    </Response>
+  </PostFlow>
+  <HTTPProxyConnection>
+    <BasePath>cds-au/v1/internal</BasePath>
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="managementEndPoint">
+    <TargetEndpoint>managementEndPoint</TargetEndpoint>
+    <Condition>(proxy.pathsuffix MatchesPath "/oauth/tokens")</Condition>
+  </RouteRule>
+  <RouteRule name="dataRecipientEndpoint">
+    <TargetEndpoint>dataRecipientEndpoint</TargetEndpoint>
+    <Condition>(proxy.pathsuffix MatchesPath "/notify-arrangement-revocation") and (request.verb = "POST")</Condition>
+  </RouteRule>
+  <RouteRule name="noroute"/>
+</ProxyEndpoint>

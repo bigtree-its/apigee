@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="1" name="cds-authenticate-with-cdr-register-ss-jwt">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1646139512694</CreatedAt>
+    <CreatedBy>nava.kannusamy@10xbanking.com</CreatedBy>
+    <Description>2022-03-01_12-55-15 - Authenticates a cdr register client assertion jwt, AKA self signed jwt in CDS spec. No client id is expected, use cdr-register as client id.</Description>
+    <DisplayName>cds-authenticate-with-cdr-register-ss-jwt</DisplayName>
+    <LastModifiedAt>1646139512694</LastModifiedAt>
+    <LastModifiedBy>nava.kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:295f09b5cba32eb40b6e574189f3b84f899f5ea809a8dee7e5e11e56d737d5dabeefcac627cca3ff4bb665dfa985b71d386fb3d0c77d92119e7b9d739de4a98e:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-SetClientAssertionValid</Policy>
+        <Policy>AM-SetClientIdFromJwt</Policy>
+        <Policy>FC-CheckTokenNotReused</Policy>
+        <Policy>FC-GetClientJWKS</Policy>
+        <Policy>FC-ValidateAudience</Policy>
+        <Policy>JWT-DecodeSelfSignedJwt</Policy>
+        <Policy>JWT-VerifySelfSignedJwt</Policy>
+        <Policy>RF-InvalidJWT</Policy>
+        <Policy>RF-MissingEXPClaim</Policy>
+        <Policy>RF-UnknownClientId</Policy>
+    </Policies>
+    <Resources/>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

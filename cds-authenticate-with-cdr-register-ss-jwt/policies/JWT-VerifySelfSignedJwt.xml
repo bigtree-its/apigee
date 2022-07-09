@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VerifyJWT async="false" continueOnError="true" enabled="true" name="JWT-VerifySelfSignedJwt">
+  <DisplayName>JWT-VerifySelfSignedJwt</DisplayName>
+  <Type>Signed</Type>
+  <Algorithm>PS256</Algorithm>
+  <Source>theSelfSignedJWT</Source>
+  <PublicKey>
+    <JWKS ref="jwksVar"/>
+  </PublicKey>
+  <IgnoreCriticalHeaders>false</IgnoreCriticalHeaders>
+  <IgnoreIssuedAt>false</IgnoreIssuedAt>
+  <Subject ref="theClientId"/>
+  <Issuer ref="theClientId"/>
+</VerifyJWT>

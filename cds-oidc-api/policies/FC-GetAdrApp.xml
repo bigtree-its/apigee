@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FlowCallout async="false" continueOnError="false" enabled="true" name="FC-GetAdrApp">
+    <DisplayName>FC-GetAdrApp</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <SharedFlowBundle>cds-get-adr-app</SharedFlowBundle>
+    <Parameters>
+        <Parameter name="requestedClientId">{firstnonnull(OIDC.client_id,apigee.client_id)}</Parameter>
+    </Parameters>
+</FlowCallout>

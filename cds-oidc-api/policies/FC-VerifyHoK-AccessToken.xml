@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FlowCallout async="false" continueOnError="false" enabled="true" name="FC-VerifyHoK-AccessToken">
+  <DisplayName>FC-VerifyHoK-AccessToken</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <SharedFlowBundle>cds-verify-mtls-and-hok</SharedFlowBundle>
+  <Parameters ignoreUnresolvedVariables="true">
+    <Parameter name="certFingerprintBoundToToken">{firstnonnull(oauthv2accesstoken.OAInfo-RetrieveAccessTokenDetails.accesstoken.certFingerprint,accesstoken.certFingerprint)}</Parameter>
+    <Parameter name="verifyHok">true</Parameter>
+  </Parameters>
+</FlowCallout>

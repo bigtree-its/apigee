@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="1" name="cds-ip-access-control">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1646144124592</CreatedAt>
+    <CreatedBy>Nava.Kannusamy@10xbanking.com</CreatedBy>
+    <Description>Development</Description>
+    <DisplayName>cds-ip-access-control</DisplayName>
+    <LastModifiedAt>1646144124592</LastModifiedAt>
+    <LastModifiedBy>Nava.Kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:50d06372f14750975b98122017f7d87828ac38b972f95d824883c4a7448d168e9c91534463d3ace591b69f374fb72de6f3e7bae3740f3263d3824801758953ec:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>JS-CheckIPAllowList</Policy>
+        <Policy>KVM-Security-Properties</Policy>
+        <Policy>RF-InvalidIP</Policy>
+    </Policies>
+    <Resources>
+        <Resource>jsc://js-check-ip-allow-list.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

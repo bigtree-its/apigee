@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FlowCallout async="false" continueOnError="false" enabled="true" name="FC-GetTenxToken">
+  <DisplayName>FC-GetTenxToken</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <SharedFlowBundle>GetTenxToken</SharedFlowBundle>
+</FlowCallout>

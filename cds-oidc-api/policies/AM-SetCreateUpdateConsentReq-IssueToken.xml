@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetCreateUpdateConsentReq-IssueToken">
+  <DisplayName>AM-SetCreateUpdateConsentReq-IssueToken</DisplayName>
+  <AssignVariable>
+    <Name>consentRequest</Name>
+    <Template>{
+    "arrangementId": "{cdrArrangementId}",
+    "consentId": "{oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.consentId}",
+    "clientId": "{apigee.client_id}",
+    "accessToken": "{theAccessToken}",
+    "refreshToken": "{theRefreshToken}",
+    "legalId": "{oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.dataRecipientId}",
+    "brandId": "{oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.dataRecipientBrandId}",
+    "softwareId": "{oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.softwareProductId}",
+    "customerId": "{oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.customerId}",
+    "customerPpid": "{oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.customerPPId}",
+    "expiresAt": {refreshTokenExpiresAt},
+    "attachedAccounts": {oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.customerAccounts},
+    "scope": "{oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.scope}",
+    "sharingDuration": {oauthv2accesstoken.OA-IssueOpaqueAccessToken.refresh_token_expires_in},
+    "userinfo": {firstnonnull(oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.userinfo)},
+    "acr": "{acrUsed}",
+    "status": "ACTIVE",
+    "serviceToken": "{internalServiceTokenResponse.content}",
+    "dataHolderBrandId": "{CDS.brandId}"
+}</Template>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

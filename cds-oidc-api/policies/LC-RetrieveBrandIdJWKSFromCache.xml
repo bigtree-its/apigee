@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<LookupCache async="false" continueOnError="false" enabled="false" name="LC-RetrieveBrandIdJWKSFromCache">
+  <DisplayName>LC-RetrieveBrandIdJWKSFromCache</DisplayName>
+  <Properties/>
+  <CacheKey>
+    <Prefix>jwks_dh</Prefix>
+    <KeyFragment ref="CDS.brandId"/>
+  </CacheKey>
+  <Scope>Application</Scope>
+  <AssignTo>newIdTokenServiceJwksResponseJson</AssignTo>
+</LookupCache>

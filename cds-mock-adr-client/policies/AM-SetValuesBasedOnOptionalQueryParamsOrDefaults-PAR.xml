@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetValuesBasedOnOptionalQueryParamsOrDefaults-PAR">
+    <DisplayName>AM-SetValuesBasedOnOptionalQueryParamsOrDefaults-PAR</DisplayName>
+    <AssignVariable>
+        <Name>defaultAud</Name>
+        <Template>https://{organization.name}-{environment.name}.apigee.net</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>audVar</Name>
+        <Template>{firstnonnull(request.queryparam.aud,defaultAud)}</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>defaultRespType</Name>
+        <Value>code id_token</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>respTypeVar</Name>
+        <Template>{firstnonnull(request.queryparam.response_type,defaultRespType)}</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>defaultState</Name>
+        <Template>{xeger('([a-z]|[A-Z]|[0-9]){16}')}</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>stateVar</Name>
+        <Template>{firstnonnull(request.queryparam.state,defaultState)}</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>defaultNonce</Name>
+        <Template>{randomLong()}</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>nonceVar</Name>
+        <Template>{firstnonnull(request.queryparam.nonce,defaultNonce)}</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>additionalClaimsVar</Name>
+        <Template>
+            {
+                "client_id": "{request.queryparam.client_id}",
+                "redirect_uri": "{request.queryparam.redirect_uri}",
+                "response_mode": "{request.queryparam.response_mode}",
+                "code_challenge": "{request.queryparam.code_challenge}",
+                "code_challenge_method": "{request.queryparam.code_challenge_method}",
+                "response_type": "{respTypeVar}",
+                "scope": "{request.queryparam.scope}",
+                "state": "{stateVar}",
+                "nonce": "{nonceVar}",
+                "claims": {
+                    "sharing_duration": 15778800,
+                    "id_token": {
+                       "acr": {
+                            "values": [
+                                "urn:cds.au:cdr:2"
+                            ],
+                            "essential": true
+                        },
+                        "refresh_token_expires_at": {
+                            "essential": true
+                        },
+                        "sharing_expires_at": {
+                            "essential": true
+                        }
+                    },
+                    "userinfo": {
+                        "given_name": {
+                            "essential": true
+                        },
+                        "family_name": {
+                            "essential": true
+                        },
+                        "auth_time": {
+                            "essential": true
+                        },
+                        "name": {
+                            "essential": true
+                        },
+                        "updated_at": {
+                            "essential": true
+                        },
+                        "refresh_token_expires_at": {
+                            "essential": true
+                        },
+                        "sharing_expires_at": {
+                            "essential": true
+                        }
+                    }
+                }
+            }
+        </Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>defaultMockADRPrivateKeyKid</Name>
+        <Template>CDSTestApp</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>mockADRPrivateKeyKid</Name>
+        <Template>{firstnonnull(request.queryparam.kid,defaultMockADRPrivateKeyKid)}</Template>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

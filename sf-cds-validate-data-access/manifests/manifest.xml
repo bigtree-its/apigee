@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-SetCustomerId" version="SHA-512:79fd6c7a7c2e4ae9c54b1eb4f7db7cdfeb390fab22a3960b2cdad3f784f5e04bdbb7f99d782137958ec4fb3c088824cd07001cc99e20aa06abd5fc77fe4e926b"/>
+        <VersionInfo resourceName="EV-GetConsentedAccountsForCustomerAndServiceToken" version="SHA-512:990cfbe9a542124f03fc9251610de5c441a854aba1ade6daa4aab11c9fb380caa32c252601b801a75749ec433e0880f7cdfe4cdd9288f3dddf753f80984b892b"/>
+        <VersionInfo resourceName="EV-GetStatusFromArrangementResponse" version="SHA-512:78b0754bd173045910e05cc2ed88a9577838e2b535561773c35bdd816586696fd84bcd373dad2081d26f3f9118540df208ee4accf982843ee7186aef5f1b7bd3"/>
+        <VersionInfo resourceName="FC-TrafficThresholds" version="SHA-512:c9bf2483adaea9496792141eec420238da0126c027f46b9752d60da200c1673d891f5af47be7a98c7fdfbbf857cb5396b9a14716c715cdf9a8b53506e824bfca"/>
+        <VersionInfo resourceName="FC-ValidateAdrStatus" version="SHA-512:fd6b8d6a5a0d04d53c96ab811025d2addaaabce284584cfa9f2d88fee6e554f20a72465103e051c725633ca992c80f0bb68260997bf4c5aaaa09ed9085e3c896"/>
+        <VersionInfo resourceName="FC-VerifyHoK" version="SHA-512:7753c581ba8e10d558040a84e61b4c6c80dcf65e4f5d00b08986cffdfbb8074c15c7753c3172fff891a04e68f1ca37ae51c28285aef3f1846b7f24e8578f21be"/>
+        <VersionInfo resourceName="KVM-GetCDSConfigs" version="SHA-512:318befa79c60106ac07a265405c232b49465d1ed240126ada538b05a15903d74413f4f0b966b4fc0ecf04b3f9ebb51d18c64434992477d3b2603d20815be340c"/>
+        <VersionInfo resourceName="LC-RetrieveVerifyExistingCDRArrangementId" version="SHA-512:3aa1c91248d7cfc79f8a7f07418695f523febd24ae6140309b2ddabf1576614570d6f7ea22bbd3ad0bd6092d449fc2e1ba69eaa80eca42e4d0cd2778d1fbecec"/>
+        <VersionInfo resourceName="OA-VerifyTokenForGetAccountDetails" version="SHA-512:27131bffd20b6f19475c55a8575b4ae6e0d87ee905bb1c6980ffe62e9f2dc34b9344af3ce0379a40fb44b316894f40a0ef56526465e58f76ee5c91beed538e1f"/>
+        <VersionInfo resourceName="OA-VerifyTokenForGetAccountsBasic" version="SHA-512:3a253cfae3980b52d50ba540e75b65ca374f3d8bd415aadbe54e316cbaf678f25462c2216130562a315f93b74c7d2c9621ec46db0446c702a4501774cfa8081d"/>
+        <VersionInfo resourceName="OA-VerifyTokenForGetCustomer" version="SHA-512:7ba77ad00fe40da32a770e7b5d7686424645a94a014ce17ec8cba1761a18b5c6f1be459827eb1d3211681fe446371f21eca469ea87065dc9f7428ceb8d6ea8b6"/>
+        <VersionInfo resourceName="OA-VerifyTokenForGetCustomerDetail" version="SHA-512:30971995d0d437fc1f14eb4a634b610d13e9ccb09fb8987a04e04353838d8ac4c9edd4e4e6bebdba9556b74a9cf2e7de8872bd5ef7f202ab9e7366d46a2f603c"/>
+        <VersionInfo resourceName="OA-VerifyTokenForGetDirectDebits" version="SHA-512:46e4e0d3b5e7a7646d929931b15d4da8a84128623d5959bb7578b9d2b6b59cf04f0d4ed2364637d2e492366e3cf04e981970c5156160142412e1bc96bf83de96"/>
+        <VersionInfo resourceName="OA-VerifyTokenForGetPayeeAndPayeeDetail" version="SHA-512:300235ed901d8c4e6a75e8021e44866de067679c13b1f03ef5afcaae38b36ed1f787ced0627ca8aeb1898cb37a8adadbe273e595d10c56cd19d513ac13428bd0"/>
+        <VersionInfo resourceName="OA-VerifyTokenForGetTransactions" version="SHA-512:ced5245d267ee6954999df088b1089c625c66c87bf0d6d6b098e783bbe0419600a633ecd38b9264e46a60060ab9303b9c6155f500cb192c5e381c081b5100d91"/>
+        <VersionInfo resourceName="PC-StoreVerifyExistingCDRArrangementId" version="SHA-512:847048c8d4309d12db5b30b172abd7fee3d80a0f98aefdd2fe1ca4ec072deda554769aac618fabb292a1da90a7923bab7da084726b0a7810c0d5c015b6d857ea"/>
+        <VersionInfo resourceName="RF-InvalidArrangement" version="SHA-512:34b8831bcf9e1efbf72e69572f37801540b5d8603648143eab60a8a1b4c064eaed4e1a094939236b8c2897d67e8c85c37d992e0537a690d7fd87545baf1affc1"/>
+        <VersionInfo resourceName="SC-VerifyExistingCDRArrangmentId" version="SHA-512:e851c77b4e65ab27055d8de8537780d79e04e938ffb31f4d443fdaf6bc2d982ce1484613f3861492fd1132cab7a01909425cf418648a58a6fe2b52534cca943b"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources/>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:51b688a4c4dae2ecfd80496faa22f05503ef8fd0dbae516969ad73bed7829401f4c7d7c2f4baca0febca9d50506d7a2b79caf67295416fe687fbb41cc7d59ff6"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

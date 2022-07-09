@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="cds-banking-app-access-api">
+    <Basepaths>/cds-au/v1</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1630823069081</CreatedAt>
+    <CreatedBy>nava.kannusamy@10xbanking.com</CreatedBy>
+    <Description>true - Provides banking app endpoints to for auth flow get/update consent and dashboard get/delete arrangemnts.</Description>
+    <DisplayName>cds-banking-app-access-api</DisplayName>
+    <LastModifiedAt>1630823069081</LastModifiedAt>
+    <LastModifiedBy>nava.kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:dfaa78a09e7df227f8b8e893ec0fdb6c25759b9ec44f52c24f34b3835adb27f116fbb39b89fcbf76398060470e9384a024251f075484bf368af9811634299b76:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-DeleteArrangementResponse</Policy>
+        <Policy>AM-ErrorResponse</Policy>
+        <Policy>AM-GetArrangementResponse</Policy>
+        <Policy>AM-GetArrangementsResponse</Policy>
+        <Policy>AM-GetClientResponse</Policy>
+        <Policy>AM-GetConsentResponse</Policy>
+        <Policy>AM-PutConsentResponse</Policy>
+        <Policy>EV-ArrangementIdFromURL</Policy>
+        <Policy>EV-ClientIdFromURL</Policy>
+        <Policy>EV-ConsentIdFromURL</Policy>
+        <Policy>EV-GetHeaders</Policy>
+        <Policy>FC-GetHealthCheckValues</Policy>
+        <Policy>RF-InvalidArrangementId</Policy>
+        <Policy>RF-InvalidClientId</Policy>
+        <Policy>RF-InvalidConsentId</Policy>
+        <Policy>RF-InvalidHeaderPartyKey</Policy>
+        <Policy>RF-NotFound</Policy>
+        <Policy>RF-ProxyFaultHandlerUnexpected</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources/>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>cds-internal-arrangements</TargetEndpoint>
+        <TargetEndpoint>cds-internal-clients</TargetEndpoint>
+        <TargetEndpoint>cds-internal-consents</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

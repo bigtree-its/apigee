@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-SetIsCustomerPresentToFalse" version="SHA-512:2eac97d5e753a7f722f8dc38f65f47f9398c2ae7f04d0cbb3a20ba2a5e3cc3b5d66de723f5edc162efb6333117b12c23262b26f869ef0fad33b8b9eaf4f6bf85"/>
+        <VersionInfo resourceName="JS-ValidateX-Fapi-Customer-IP-AdddressAndSetIsCustomerPresent" version="SHA-512:e345c0c7d5004740838c42fa33ce44f07905bcf0f0610eda30443c7b181e7d50e9a2b8a7f0d8e6430303effd9c1933531f26a56ec2baae7c01d2596decd4938a"/>
+        <VersionInfo resourceName="RF-Invalid-X-Fapi-Customer-IP-Address" version="SHA-512:4a41cfda5ea8d3e4d0bbf5cd2948f3c4113e659ad82fdfb29fdd9d3d53b3a03a6c0e6c7cd279dbc4f121f84c5870c544e66967d501b2e32d266dbfc219d39969"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources>
+        <VersionInfo resourceName="jsc://validateX-Fapi-Customer-IP-AdddressAndSetIsCustomerPresent.js" version="SHA-512:741f1046525e84f5e6ca776821cc46756454948ffc468a938f9fb94864dc851e60b91905497115d7da18db31256961bae14535d166d5b71516b4b52a8e1efe4d"/>
+    </Resources>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:f610fd1d33bf368c84e916b991cef22cdbe6609704ba5247aa81d88216b328d2c8b3db4255f70c786d355f20fdbdb16a848ade783da097077df64412696d862b"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

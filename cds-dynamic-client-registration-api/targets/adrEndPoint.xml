@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<TargetEndpoint name="adrEndPoint">
+  <FaultRules>
+    <FaultRule name="adr service access failed">
+      <Description>adr service access failed</Description>
+      <Condition>(response.status.code != 2**)</Condition>
+      <Step>
+        <Name>AM-InternalServerError</Name>
+      </Step>
+    </FaultRule>
+  </FaultRules>
+  <PreFlow name="PreFlow Checks">
+    <Request />
+    <Response />
+  </PreFlow>
+  <Flows>
+    <Flow name="Create adr">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>SC-CreateApp</Name>
+        </Step>
+        <Step>
+          <Name>EV-ExtractClientSecretFromUpdateAppResponse</Name>
+        </Step>
+        <Step>
+          <Name>AM-SetPostAdrRequest</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>SC-DeleteAppForRollback</Name>
+          <Condition>(response.status.code != 201)</Condition>
+        </Step>
+        <Step>
+          <Name>RF-InvalidServerError</Name>
+          <Condition>(response.status.code != 201)</Condition>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="Get adr">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>AM-SetGetAdrRequest</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>RF-InvalidServerError</Name>
+          <Condition>(response.status.code != 200)</Condition>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/{clientId}") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="Update adr">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>SC-UpdateApp</Name>
+          <Condition>(dataHolderBrandId = null or dataHolderBrandId = "")</Condition>
+        </Step>
+        <Step>
+          <Name>SC-UpdateAppWithDhBrandId</Name>
+          <Condition>(dataHolderBrandId != null and dataHolderBrandId != "")</Condition>
+        </Step>
+        <Step>
+          <Name>EV-ExtractClientSecretFromUpdateAppResponse</Name>
+        </Step>
+        <Step>
+          <Name>JS-CheckIfProductsHaveChanged</Name>
+        </Step>
+        <Step>
+          <Name>SC-DeleteAppKeyJustCreated</Name>
+        </Step>
+        <Step>
+          <Name>SC-DeleteClientKeySoItCanBeRecreated</Name>
+          <Condition>changedProducts = "true"</Condition>
+        </Step>
+        <Step>
+          <Name>AM-SetKeysToAddToApp</Name>
+          <Condition>changedProducts = "true"</Condition>
+        </Step>
+        <Step>
+          <Name>SC-AddKeysToApigeeApp</Name>
+          <Condition>changedProducts = "true"</Condition>
+        </Step>
+        <Step>
+          <Name>SC-AssociateProductsWithKey</Name>
+          <Condition>changedProducts = "true"</Condition>
+        </Step>
+        <Step>
+          <Name>AM-SetPutAdrRequest</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>RF-InvalidServerError</Name>
+          <Condition>(response.status.code != 200)</Condition>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/{clientId}") and (request.verb = "PUT")</Condition>
+    </Flow>
+    <Flow name="Delete adr">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>SC-DeleteApp</Name>
+        </Step>
+        <Step>
+          <Name>AM-SetDeleteAdrRequest</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>RF-InvalidServerError</Name>
+          <Condition>(response.status.code != 204)</Condition>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/{clientId}") and (request.verb = "DELETE")</Condition>
+    </Flow>
+  </Flows>
+  <HTTPTargetConnection>
+    <Properties>
+      <Property name="success.codes">2xx</Property>
+      <Property name="io.timeout.millis">5000</Property>
+    </Properties>
+    <LoadBalancer>
+      <Server name="cds-adr-microservice"/>
+    </LoadBalancer>
+    <Path>{path}</Path>
+  </HTTPTargetConnection>
+</TargetEndpoint>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-SetClientAssertionValid" version="SHA-512:2ef0dd7f96e2cc1d6f6d4503086290b9235b216be258ec2d6777408713f40d2ca5f3374e2fab9de00393e18d3ca5093bd4a42d487bf114487cf37161d74a76ab"/>
+        <VersionInfo resourceName="AM-SetClientIdFromJwt" version="SHA-512:159835bc53e1f6f90f23d1f475f4397dd35ed51f09f66a032110d55e7ee16f082eb8761d92c957ae1b9e3b756ff28aede85d656346f2f5baef1261dd5d1a9852"/>
+        <VersionInfo resourceName="FC-CheckTokenNotReused" version="SHA-512:48d421ddad7e8a1530f09d9b21b668a60976b35243600d16ca2ef595d6b3997d129adfc47b5e277014627d42887e92f80712ed05b4e8ac665ab405a48a11d388"/>
+        <VersionInfo resourceName="FC-GetClientJWKS" version="SHA-512:9699eee3505db120c3ceb92ea0d7e181387a863c8fb06ce7f34d1b10ea20a588b716ddc9f8f0763690edb8aa91e80d5db2fd30e16ff28879527f23d437612717"/>
+        <VersionInfo resourceName="FC-ValidateAudience" version="SHA-512:f4de52bd65e325c470e03956987ea13133227402164f241b40ebb1b764d8e731fba6b722e70a1e765cba2affdd48f3e75de7e538d42aca1df39a07324690ff49"/>
+        <VersionInfo resourceName="JWT-DecodeSelfSignedJwt" version="SHA-512:feee525623e50cc551fa38ed8bcc51303ad177175a594b7b85feaa71403341e73e5231e54718436902f17c8afd9cb18f9ed2d623ae6d42d2edb1353c99d47002"/>
+        <VersionInfo resourceName="JWT-VerifySelfSignedJwt" version="SHA-512:141123d33587bb9a4c2b2f81f8a2dd2bb1a8b911d00179b4ba2b9f78e9d315cee19d23533e1fd322a39b74af915ac17bbd5ef1661ecf03c3ee5d992b7f270ed2"/>
+        <VersionInfo resourceName="RF-InvalidJWT" version="SHA-512:4bc74ee65df0b06059ad2b85a47cf6ff0b069a1fd741f3e5fd857f24786774554d7c62912f3f20da7057280616cbcb669b867f372ed4034c0f29d3c46e98d018"/>
+        <VersionInfo resourceName="RF-MissingEXPClaim" version="SHA-512:74871bd5a14ca713faaf1b34f355fd64441114fc367272fe780e085b1a98b62cc2f2950017518cf3df15a97c007afaba4629757a649974ad2535a7d9e77a7e4a"/>
+        <VersionInfo resourceName="RF-UnknownClientId" version="SHA-512:00e9ce978b69be491cf7a5cd8f3a38de92057064e2b02ae9e6e0ef9c8591543fe25263d491ea35c167d2560063040d99eadeaaf141a05f0e69f7ad8bb36b4519"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources/>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:779e79d313e08e102514c956d4d961c7e371179240af26ee599279f724d6c2be89de90fea3702d9372c5a7186ecedbe3953bd4231d39e10ace02c031c7ae9182"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

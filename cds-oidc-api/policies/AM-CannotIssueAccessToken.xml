@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-CannotIssueAccessToken">
+  <DisplayName>AM-CannotIssueAccessToken</DisplayName>
+  <Properties/>
+  <Set>
+    <!-- oidc conformance requires "error": "invalid_grant" -->
+    <Headers/>
+    <Payload contentType="application/json">{
+ "error": "invalid_grant",
+ "errors": [
+    {
+      "code": "400",
+      "title": "Bad Request",
+      "detail": "{firstnonnull(oauthV2.OA-IssueOpaqueAccessToken.fault.cause,oauthV2.OA-RefreshOpaqueAccessToken.fault.cause,oauthV2.OA-RevokeRefreshToken.fault.cause,oauthV2.OA-RevokeAccessToken.fault.cause,oauthV2.OAInfo-RetrieveOIDCAuthCode.fault.name,oauthV2.OAInfo-RetrieveRefreshTokenDetails.fault.name)}"
+    }
+  ]
+}</Payload>
+    <StatusCode>400</StatusCode>
+    <ReasonPhrase>Bad Request</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

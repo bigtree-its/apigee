@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-InternalServerDcrErrorForUnknown" version="SHA-512:b1a59a534098144970ca9a12c03f6402480a1896ee209284e35f6319c91666161580d774ce83fd30951d5866fd264eb5de7d2751744527e5157d5fe4fce9037c"/>
+        <VersionInfo resourceName="AM-InternalServerErrorForUnknown" version="SHA-512:73f81313acc2152fc804d3767926f2926f744fcde5b470874b470b4cbceab468bcdfa910ce18e51c3a94e920ed7d1302d1396ede078368227691c266f8efa38c"/>
+        <VersionInfo resourceName="AM-ResetCustomerPPIDIfNA" version="SHA-512:62ed961b84b07a70e2b8e7acf237d0cb4385bbdc79cd4d0a78ffa3d7fea2a9cf6fb097d16d82e17c04f48c35757d3091489a6fec35209a951ca2c36814999d7f"/>
+        <VersionInfo resourceName="AM-ResetTokenOpIfNA" version="SHA-512:bf2c3f21e05e44813a1a67aefaea2f6d4c0ed5982cef916ff94ae1c6be4dcaf42ece81ff44098af8da35467a3cc045eeea53ef8883083e70e5be7bd4f5e44f31"/>
+        <VersionInfo resourceName="AM-SetMessageSLO" version="SHA-512:1819fba5a7f5e85c0614caae0fc0fa78f96c4d9193f3ec382b06096f1fe42432a47b1a76b9eb3dd490d99d3dbd94e7fbfcdad47c7db92bcdefd1da9ac6cefd51"/>
+        <VersionInfo resourceName="EV-CoverUnknownErrorsWithNoInterception" version="SHA-512:4ea992b9eab8b21348dfe1fe91558472b96c7a28f4540c7205b18641de9d3a2003cf8e7320867c4bc75faf8b8d37749d25fa1d9899c62ea55078a2af554fb5bd"/>
+        <VersionInfo resourceName="JS-CheckIfRequestMeetsPerformanceSLO" version="SHA-512:cb879836540b6671e23f1cb7d0e0b8f6b9a894ef2080e15d78b326608cba3326e454c987e065fb928084caea465939abdc4ab5c18a21389a6ce4d07167f7a88f"/>
+        <VersionInfo resourceName="JS-SetPerformanceTier" version="SHA-512:42baae723d43cb2416e50c48f7253e263c4a88cd12d38b62860ac5b39535a45d564c6b1c8c04c54821f4e2b8ed3e5b0e12f246b881597dcf4944b3a20ed8afc3"/>
+        <VersionInfo resourceName="SC-AddPerformanceTierDimension" version="SHA-512:5ffc92d9b012964b354f34644a3f70652cd56c3ebf2a3c1bb2b881e25195bbded1204200dd5bfa72f95e1a8da65d98b88085fe25f016d9564b31e06626aa287a"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources>
+        <VersionInfo resourceName="jsc://checkIfRequestMeetsPerformanceSLO.js" version="SHA-512:e787b42da3744081d01cd53ad03220838f18efddbcd680fbbfb2e3619a0663b49bd7ab4a2fe3c8c9c0de54e49156f7da9c13404f0500336b9d6a1b2518ef3026"/>
+        <VersionInfo resourceName="jsc://setPerformanceTier.js" version="SHA-512:a4cd9d947cbbc9d2cc17a0ab97b262d9ee4036401c1a5fcb8bb9f176acfda241ae8910babf278e14f0d7b0d52d628cc16e52032108e1d65a744b90cc977b008d"/>
+    </Resources>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:d50daf3668872aadf02a938798f853ed36694e65f858359e2b759851df12e805a119a9bcc456a44787078324aaf2583170177dba83c56f4274c693173312d10f"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

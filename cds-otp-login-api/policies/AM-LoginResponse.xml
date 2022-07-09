@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="true" enabled="true" name="AM-LoginResponse">
+    <DisplayName>AM-LoginResponse</DisplayName>
+    <Set>
+        <Payload contentType="application/json">
+            {
+                "accessToken": "{cds_otp_login.forgerockAccessToken}",
+                "expiresIn": "{cds_otp_login.forgerockAccessTokenExpiryTimeInSec}",
+                "scope": "{cds_otp_login.scope}"
+            }
+        </Payload>
+    </Set>
+    <AssignTo createNew="false" transport="http" type="response"/>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+</AssignMessage>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetSectorIdUriResponse">
+  <DisplayName>AM-SetSectorIdUriResponse</DisplayName>
+  <Set>
+    <Payload>[ "https://{organization.name}-{environment.name}.apigee.net/mock-adr-webclient/banking-callback",
+    "https://zerofintech/products/mortgage/cb",
+    "https://hotfintech/products/payadvance/redirect",
+    "https://added-redirect.com/callback" ]
+</Payload>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

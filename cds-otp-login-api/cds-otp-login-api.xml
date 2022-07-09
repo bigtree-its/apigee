@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="7" name="cds-otp-login-api">
+    <Basepaths>/*/cds-au/v1/otp</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1646144287161</CreatedAt>
+    <CreatedBy>Nava.kannusamy@10xbanking.com</CreatedBy>
+    <Description>#BuildIdentifierHere#</Description>
+    <DisplayName>cds-otp-login-api</DisplayName>
+    <LastModifiedAt>1646144287161</LastModifiedAt>
+    <LastModifiedBy>Nava.kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:1117d79b855d35cc3fbd9dea27a270137c96a8cdd8bd34e0314117639683601dfb98294a07e1af777782bc3ea6cd3459a8c0a72c6a49947e7a9f2e387bf63816:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-LoginResponse</Policy>
+        <Policy>AM-SetInitiateOtpTargetRequest</Policy>
+        <Policy>AM-SetOtpLoginTargetRequest</Policy>
+        <Policy>EV-ConsentId</Policy>
+        <Policy>FC-GetHealthCheckValues</Policy>
+        <Policy>FC-ProxyErrorHandler</Policy>
+        <Policy>FC-ProxySecurity</Policy>
+        <Policy>FC-TargetSecurity</Policy>
+        <Policy>FC-ValidateBrandId</Policy>
+        <Policy>JS-PopulateOauth</Policy>
+        <Policy>KVM-GetOauthScope</Policy>
+        <Policy>OAuth-StoreExternalToken</Policy>
+        <Policy>PC-TenxToken</Policy>
+        <Policy>RF-ResourceNotFound</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://js-populate-oauth.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

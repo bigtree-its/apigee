@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-InvalidClientAssertionSelfSignedJwt">
+  <DisplayName>RF-InvalidClientAssertionSelfSignedJwt</DisplayName>
+  <Properties/>
+  <FaultResponse>
+    <Set>
+      <StatusCode>401</StatusCode>
+    </Set>
+    <AssignVariable>
+      <Name>flow.cds.error.message</Name>
+      <Value>Invalid Self-Signed JWT</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.cds.error.code</Name>
+      <Value>401.001.011</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.cds.error.status</Name>
+      <Value>401</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.cds.error.reason</Name>
+      <Value>Unauthorized</Value>
+    </AssignVariable>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <ShortFaultReason>false</ShortFaultReason>
+</RaiseFault>

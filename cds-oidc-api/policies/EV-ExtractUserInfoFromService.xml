@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="true" enabled="true" name="EV-ExtractUserInfoFromService">
+  <DisplayName>EV-ExtractUserInfoFromService</DisplayName>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <JSONPayload>
+    <Variable name="name">
+      <JSONPath>$.name</JSONPath>
+    </Variable>
+    <Variable name="given_name">
+      <JSONPath>$.given_name</JSONPath>
+    </Variable>
+    <Variable name="family_name">
+      <JSONPath>$.family_name</JSONPath>
+    </Variable>
+    <Variable name="updated_at">
+      <JSONPath>$.updated_at</JSONPath>
+    </Variable>
+    <Variable name="state">
+      <JSONPath>$.state</JSONPath>
+    </Variable>
+  </JSONPayload>
+  <VariablePrefix>userinfoservice</VariablePrefix>
+  <Source clearPayload="false">userInfoResponse.content</Source>
+</ExtractVariables>

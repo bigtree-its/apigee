@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetCurrentURI">
+  <DisplayName>AM-SetCurrentURI</DisplayName>
+  <AssignVariable>
+    <Name>currentURI</Name>
+    <Template>https://{CDS.apiHostname}{proxy.pathsuffix}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>issuerMtls</Name>
+    <Template>https://{CDS.apiHostname}</Template>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-SetErrorTypeForCdrRegSelfSignedToken" version="SHA-512:184b50d723761680f11ff67f095bcfab6bffa5307d6e46024efe8ea04690562e0a796566e2572760ce37ee98d2a1f2ced8eddc1e635af51824304efcc6a18899"/>
+        <VersionInfo resourceName="AM-SetErrorTypeForDynClientRegToken" version="SHA-512:479289da8951d6c805ae9f9cdab1bad8f25ded00ddcc8a195809d1a56cfc3f6e8d02844302f19770f941557b2b057bded43c5be9e4425eba7abb33e3d5250af3"/>
+        <VersionInfo resourceName="AM-SetErrorTypeForPARToken" version="SHA-512:942e7645fa710cd50cd055c60dccf189d13a58e26ebcfdbb678895965e01580d37840f6d35294178bc3714faa5cbd48d6f8ca81b6062454df91f064ecd62b312"/>
+        <VersionInfo resourceName="AM-SetErrorTypeForSSAToken" version="SHA-512:c8dfdb278c3f829c016438e80d53203f7d0786cd0be61f0e7aac232ef00a61bd0aad94c0bc60f34d23d7fb689c2a12f2fe9dae1c76e44297ac2cb91b44a52031"/>
+        <VersionInfo resourceName="EV-GetJTIAndExp" version="SHA-512:75a2119977bfbb605d28196a8658c71658fed0266c8d042921494620e463b33150ebba3e09cd4c2b05b35bcea628decc3e97d36c4ad98d7eef05167b1b1c5645"/>
+        <VersionInfo resourceName="LC-JTIHasBeenSeen" version="SHA-512:0209b5fe973e0c3499654e059e9e4fdad7c3fb62f6c8170528ef6815d08a836b631202044562f87a43a815598c0ba95c2e9ce52f226a65b9e42163a2e895c07f"/>
+        <VersionInfo resourceName="PC-RememberJTI" version="SHA-512:8759fb652adc36246edfa226c3525263cd2e6d24e166bc0691d585db74c6490fa2fc2714e741ce2cfeabed32ba08d907e9565e49542ecbbcce337b2c9ee5fda3"/>
+        <VersionInfo resourceName="RF-MissingJTIClaim" version="SHA-512:cde6c6b6c08ffb08bf4dbe685901d51b5feeb438628e29f05a8c8de3b362f08e2182a13ba67e1cdf84e30718759e13d0ed4f6083d2077d354a0ea32546160c17"/>
+        <VersionInfo resourceName="RF-MissingJTIClaimBearer" version="SHA-512:c60e2799c04fcb459f089e4fad0df7031ecf2688c7cf51df5b3a05269908ca781214de8d9b3da948ed0e5e15abea3331a300e408179a76440f6d3cc087fa29d4"/>
+        <VersionInfo resourceName="RF-TokenReusedBearer" version="SHA-512:91affcb07cc5d43018dbda72d97b3b8c7a30bd66bb75e8c66bf2fe37a02623d72cefd8b1539a44f63f45e25fdd78859d8e917257405fe363ceabef20ec7d80d0"/>
+        <VersionInfo resourceName="RF-TokenReusedDCR" version="SHA-512:abc5e03e29d34f7e68359ce7b80d9e6d9c2c0cb586c198ded2316682f8dd158672d4d510503200c2eab68cac984f61026d25d15b24dc3fe33ade20ec1074427d"/>
+        <VersionInfo resourceName="RF-TokenReusedOther" version="SHA-512:7cbbb29642f4f89007a6106dfd672877df302c032c4b227529df0f587900887d8bfa630b82eaeaf99b9fc8ee92e7d7e3c15117f18b9815a905eb12a2611ccdbb"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources/>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:02d3b3ac695f438447124c7a5f0105f32d009e5a1d5d71ddf8acdf9b9f27d1646aa703250dce830fa308399930dd66376fd9bb1e00c2c4073c5e91e6e1f56482"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

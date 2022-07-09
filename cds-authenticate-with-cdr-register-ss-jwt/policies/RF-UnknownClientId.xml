@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-UnknownClientId">
+  <DisplayName>RF-UnknownClientId</DisplayName>
+  <Properties/>
+  <FaultResponse>
+    <Set>
+      <!-- oidc conformance requires "error": "invalid_client" -->
+      <Payload contentType="application/json">{ 
+    "error": "invalid_client",
+    "errors": [
+    {
+      "code": "401",
+      "title": "Unauthorized",
+      "detail": "Invalid client Id"
+    }
+  ]
+}</Payload>
+      <StatusCode>401</StatusCode>
+      <ReasonPhrase>Unauthorized</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

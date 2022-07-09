@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout name="SC-FetchPublicKeysForIdTokenService" continueOnError="false">
+  <DisplayName>SC-FetchPublicKeysForIdTokenService</DisplayName>
+  <Request clearPayload="true" variable="idTokenServiceJwksRequest">
+    <Set>
+      <Payload></Payload>
+      <Verb>GET</Verb>
+      <Path>/external/{CDS.brandId}/jwks</Path>
+    </Set>
+  </Request>
+  <Response>idTokenServiceJwksResponse</Response>
+  <Timeout>10000</Timeout>
+  <HTTPTargetConnection>
+    <Properties>
+      <Property name="success.codes">2xx</Property>
+      <Property name="io.timeout.millis">5000</Property>
+    </Properties>
+    <LoadBalancer>
+      <Server name="cds-token-microservice"/>
+    </LoadBalancer>
+    <Path>{CDS.serviceEnvPath}/token-service/v1</Path>
+  </HTTPTargetConnection>
+</ServiceCallout>

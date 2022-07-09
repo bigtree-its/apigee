@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetConsentCacheValueFromStateCached">
+    <DisplayName>AM-SetConsentCacheValueFromStateCached</DisplayName>
+    <AssignVariable>
+        <Name>OIDC.consentCacheVal</Name>
+        <Template>
+            {
+                "client_id"                   : "{OIDC.client_id}",
+                "state"                       : "{OIDC.state}",
+                "redirect_uri"                : "{OIDC.redirect_uri}",
+                "scope"                       : "{OIDC.scope}",
+                "nonce"                       : "{OIDC.nonce}",
+                "response_type"               : "{OIDC.response_type}",
+                "sharing_duration"            : "{OIDC.sharing_duration}",
+                "cdr_arrangement_id"          : "{OIDC.cdr_arrangement_id}",
+                "acr"                         :  {OIDC.acr},
+                "user_info"                   :  {OIDC.user_info},
+                "kid"                         : "{OIDC.kid}",
+                "sector_identifier"           : "{OIDC.sector_identifier}",
+                "api_hostname_open"           : "{OIDC.api_hostname_open}",
+                "idp_authorised_approval"     :  {cds.authorisedApproval},
+                "idp_attached_accounts"       :  {firstnonnull(cds.attachedAccounts,"[]")},
+                "idp_10x_customer_id"         :  "{cds.10xPartyKey}",
+                "idp_authorised_approval_timestamp" : {client.received.start.timestamp},
+                "response_mode"               :  "{OIDC.response_mode}",
+                "code_challenge"              :  "{OIDC.code_challenge}",
+                "code_challenge_method"       :  "{OIDC.code_challenge_method}"
+            }
+        </Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>OIDC.consentCacheKey</Name>
+        <Template>{cds.consentId}</Template>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

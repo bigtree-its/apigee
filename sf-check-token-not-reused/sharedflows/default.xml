@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+  <Step>
+    <Name>AM-SetErrorTypeForDynClientRegToken</Name>
+    <Condition>jwtType = "Dynamic Client Registration"</Condition>
+  </Step>
+  <Step>
+    <Name>AM-SetErrorTypeForSSAToken</Name>
+    <Condition>jwtType = "SSA"</Condition>
+  </Step>
+  <Step>
+    <Name>AM-SetErrorTypeForPARToken</Name>
+    <Condition>jwtType = "PAR"</Condition>
+  </Step>
+  <Step>
+    <Name>AM-SetErrorTypeForCdrRegSelfSignedToken</Name>
+    <Condition>jwtType = "CdrRegSelfSigned"</Condition>
+  </Step>
+  <Step>
+    <Name>EV-GetJTIAndExp</Name>
+  </Step>
+  <Step>
+    <Condition>((jti = null) or (jti = "")) and ((jwtType = "Bearer") or (jwtType = "CdrRegSelfSigned"))</Condition>
+    <FaultRules/>
+    <Name>RF-MissingJTIClaimBearer</Name>
+  </Step>
+  <Step>
+    <Condition>((jti = null) or (jti = "")) and ((jwtType = "Dynamic Client Registration") or (jwtType = "SSA"))</Condition>
+    <FaultRules/>
+    <Name>RF-MissingJTIClaim</Name>
+  </Step>
+  <Step>
+    <FaultRules/>
+    <Name>LC-JTIHasBeenSeen</Name>
+  </Step>
+  <Step>
+    <Condition>(jwtType = "Bearer") and (lookupcache.LC-JTIHasBeenSeen.cachehit = "true")</Condition>
+    <FaultRules/>
+    <Name>RF-TokenReusedBearer</Name>
+  </Step>
+  <Step>
+    <Condition>(jwtType = "Dynamic Client Registration" or jwtType = "SSA") and (lookupcache.LC-JTIHasBeenSeen.cachehit = "true")</Condition>
+    <FaultRules/>
+    <Name>RF-TokenReusedDCR</Name>
+  </Step>
+  <Step>
+    <Condition>(jwtType = "PAR" or jwtType = "CdrRegSelfSigned") and (lookupcache.LC-JTIHasBeenSeen.cachehit = "true")</Condition>
+    <FaultRules/>
+    <Name>RF-TokenReusedOther</Name>
+  </Step>
+  <Step>
+    <FaultRules/>
+    <Name>PC-RememberJTI</Name>
+  </Step>
+</SharedFlow>

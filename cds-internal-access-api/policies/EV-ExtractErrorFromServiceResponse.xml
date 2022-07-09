@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="true" enabled="true" name="EV-ExtractErrorFromServiceResponse">
+  <DisplayName>EV-ExtractErrorFromServiceResponse</DisplayName>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <JSONPayload>
+    <Variable name="flow.cds.error.message">
+      <JSONPath>$.message</JSONPath>
+    </Variable>
+    <Variable name="flow.cds.error.code">
+      <JSONPath>$.code</JSONPath>
+    </Variable>
+    <Variable name="flow.cds.error.status">
+      <JSONPath>$.status</JSONPath>
+    </Variable>
+    <Variable name="flow.cds.error.reason">
+      <JSONPath>$.reason</JSONPath>
+    </Variable>
+  </JSONPayload>
+  <VariablePrefix></VariablePrefix>
+  <Source clearPayload="false">response.content</Source>
+</ExtractVariables>

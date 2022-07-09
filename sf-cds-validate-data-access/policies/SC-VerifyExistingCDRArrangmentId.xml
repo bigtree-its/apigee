@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout name="SC-VerifyExistingCDRArrangmentId" continueOnError="false">
+  <DisplayName>SC-VerifyExistingCDRArrangmentId</DisplayName>
+  <Request clearPayload="true" variable="adrConsentsRequest">
+    <Set>
+      <Verb>GET</Verb>
+      <Path>/internal/arrangements/{cdrArrangementId}</Path>
+      <QueryParams>
+        <QueryParam name="expectedClientId">{apigee.client_id}</QueryParam>
+      </QueryParams>
+    </Set>
+  </Request>
+  <Response>arrangementResponse</Response>
+  <Timeout>10000</Timeout>
+  <HTTPTargetConnection>
+    <Properties>
+      <Property name="success.codes">1xx,2xx,3xx</Property>
+      <Property name="io.timeout.millis">5000</Property>
+    </Properties>
+    <LoadBalancer>
+      <Server name="cds-arrangement-microservice"/>
+    </LoadBalancer>
+    <Path>{CDS.serviceEnvPath}/arrangement-service/v1</Path>
+  </HTTPTargetConnection>
+</ServiceCallout>

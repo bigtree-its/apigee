@@ -1,0 +1,4 @@
+<DecodeJWT name="DJ-DecodeTenxToken" continueOnError="true" enabled="true" async="false">
+    <DisplayName>DJ-DecodeTenxToken</DisplayName>
+    <Source>tenx_platform.tenxToken</Source>
+</DecodeJWT>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetMockJWKSInfoFapiClient2">
+  <DisplayName>AM-SetMockJWKSInfoFapiClient2</DisplayName>
+  <Set>
+    <Payload>{
+    "keys": [
+        {
+            "e": "AQAB",
+            "kty": "RSA",
+            "n": "259QR5XiJc14hiPnJyi0O5uAMVxk9LH81o8XlnYttQPf_KZOjiSVCBN12EhA1bv1ARVmDHaMDXxlSz0lhRPHtUcY86b-MZkxZPRgzSTYAWFzEUIxWOxWV7Se7LQS0mKQNFteLs0iOXi7nobRaaNvpKBxccaGwXFEtyL8o2GLSVFurEtZfumr92d8XfP-l6Y04YvbFfRE3Lbf40owZOjieHElKrBFt92KPAih2miqQLgoB_dX_cSreuTRj1WLw9nqryEJporDJpIUHvR0f0TdfNmBtNuCe__LkPyxERZ_IRIFpn0kHfvabX1rfO6Jbxj5fX5OAIFs7hrOh-KFyNw5aQ",
+            "kid": "UgCE2A0NWvFjLflE846Ogwe7NCc",
+            "use": "sig"
+        }
+    ]
+}</Payload>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-InvalidConsent">
+  <DisplayName>RF-InvalidConsent</DisplayName>
+  <FaultResponse>
+    <AssignVariable>
+      <Name>faultType</Name>
+      <Value>invalid_consent</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>faultTypeMessage</Name>
+      <Value>access_denied</Value>
+    </AssignVariable>
+    <Set>
+      <Headers/>
+      <Payload contentType="application/json">{
+ "errors": [
+    {
+      "code": "400",
+      "title": "Bad Request",
+      "detail": "Invalid consent"
+    }
+  ]
+}</Payload>
+      <StatusCode>400</StatusCode>
+      <ReasonPhrase>Bad Request</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <ShortFaultReason>false</ShortFaultReason>
+</RaiseFault>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" name="JS-SetXOriginalUri">
+    <DisplayName>JS-SetXOriginalUri</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://js-set-x-original-uri.js</ResourceURL>
+</Javascript>

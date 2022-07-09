@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-InitialiseJourney" version="SHA-512:2b95f1b05ebdc07d3ee6fef9ec6ab2d03f0441f51743444e23c6d27fc9af03802c799f9ec3841a859f846502cef8a84a16455ae32c27356e02d120e7963d40ff"/>
+        <VersionInfo resourceName="AM-SetJourney" version="SHA-512:56b2a3d333a824152929abd0c576ff1ecf2590a64d3851ca838fd6af3fc6ef4d1522c20bb24ad39bc5681f520867b524a6efeabe5723871dcee9c8165c26eef3"/>
+        <VersionInfo resourceName="JS-ResolveCdsErrors" version="SHA-512:7e3aa1ca6ce8c3c05f082676c9bd2e4ffa0c70b039fa0acbbe98fcbeebcbc9031dfd2e359207e881caba739ebd9de1e401a96586058cd8b7518dc4887835a0fd"/>
+        <VersionInfo resourceName="JS-ResolveStandardErros" version="SHA-512:91e7f5fde7573300f13bd8fa2624896fd0d5bbdcb17e221f057e90171cb1222b5a8c6879d62d209a99141c76ee2cb7e1d195c502f26cf19606115cc5235772da"/>
+        <VersionInfo resourceName="RF-CDSErrorResponse" version="SHA-512:88222d4d8be2a3afdcd6c03efe77c66497a64d81bd500d09aaae03a42af879f4cd365e4bda487a628dcd9f1733e2d0cf381e9a401fefc99778daaf46e39a076a"/>
+        <VersionInfo resourceName="RF-MtlsErrorResponse" version="SHA-512:76eec4a284f02fa6cd56339de6a350d6a0fe4799549165892a97b5fe706f1499f3272cb4fcc9865c5cc85bf4051658d4cfceb1bd148acb5b23fdcbfa2d5cdc2b"/>
+        <VersionInfo resourceName="RF-StandardErrorResponse" version="SHA-512:507b7a79a23f36b90341dc879e6db12422464265a7883b775e6c819e4e4c8b834244f54db1b5fa348ba61af48cb7ac0357685cd9377ce9e48bdb18ffda3103f9"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources>
+        <VersionInfo resourceName="jsc://resolve-cds-errors.js" version="SHA-512:7aa00688483563a07501747c11be5ef4dc1a9c2dc8cd56d4ca6cb1a033fddfc998a6a1740c49d2bb6510885611dba1c99701c95d2ef9ea1494b974b3bf0adafb"/>
+        <VersionInfo resourceName="jsc://resolve-standard-errors.js" version="SHA-512:d9d7dd094276bface658227ab28efc0b8c94c0cc2a4ba704866894f4916edbc2e55c0f4cb4058d258d50b1f228b2428a8f4adc1c13e57e4be7a2899550fc4f46"/>
+    </Resources>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:7c5404d2ba02044335b163501c15374ff47444e818c3cbb71054daf9e2a18c2b79dc03a25ad9cfb7ea0f35e242d7d96b9c278345ad1c539525b026e6e2845bc5"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-NotFoundClientId">
+  <DisplayName>RF-NotFoundClientId</DisplayName>
+  <Properties/>
+  <FaultResponse>
+    <Set>
+      <StatusCode>404</StatusCode>
+    </Set>
+    <AssignVariable>
+      <Name>flow.cds.error.message</Name>
+      <Value>Client not found.</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.cds.error.code</Name>
+      <Value>404.001.001</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.cds.error.status</Name>
+      <Value>404</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.cds.error.reason</Name>
+      <Value>Not Found</Value>
+    </AssignVariable>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

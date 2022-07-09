@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-InvalidArrangement">
+  <DisplayName>RF-InvalidArrangement</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <FaultResponse>
+    <AssignVariable>
+      <Name>cdstenx.error.type</Name>
+      <Value>unprocessable_entity</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>cdstenx.error.field</Name>
+      <Value>Invalid CDR Arrangement Id or not active or not associated with client_id or customer</Value>
+    </AssignVariable>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <ShortFaultReason>false</ShortFaultReason>
+</RaiseFault>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" name="JS-FindApp">
+  <DisplayName>JS-FindApp</DisplayName>
+  <Properties/>
+  <ResourceURL>jsc://findApp.js</ResourceURL>
+</Javascript>

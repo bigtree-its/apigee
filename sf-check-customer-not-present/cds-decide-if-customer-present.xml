@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="2" name="cds-decide-if-customer-present">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1646139545750</CreatedAt>
+    <CreatedBy>nava.kannusamy@10xbanking.com</CreatedBy>
+    <Description>2022-03-01_12-55-15 - Sets isCustomerPresent variable, based on inspection of x-fapi-customer-ip-address header</Description>
+    <DisplayName>cds-decide-if-customer-present</DisplayName>
+    <LastModifiedAt>1646139545750</LastModifiedAt>
+    <LastModifiedBy>nava.kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:fbf73fe31315aa906300b1f532cb6496735db5cbcf243e863531669d261ec466a5c11315951661c9ab89ffc2a5d9aebf304b83b7fbfe8448f0d4bd5752d9ae8b:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-SetIsCustomerPresentToFalse</Policy>
+        <Policy>JS-ValidateX-Fapi-Customer-IP-AdddressAndSetIsCustomerPresent</Policy>
+        <Policy>RF-Invalid-X-Fapi-Customer-IP-Address</Policy>
+    </Policies>
+    <Resources>
+        <Resource>jsc://validateX-Fapi-Customer-IP-AdddressAndSetIsCustomerPresent.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

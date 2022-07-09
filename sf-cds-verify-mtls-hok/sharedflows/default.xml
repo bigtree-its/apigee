@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+  <Step>
+    <Name>JC-X509CertificateParse</Name>
+  </Step>
+  <Step>
+    <Name>JS-SetFingerprintForToken</Name>
+  </Step>
+  <Step>
+    <Name>RF-BadCert</Name>
+    <Condition>(cds.error.type = "bad_cert")</Condition>
+  </Step>
+  <Step>
+    <Name>RF-CertificateFingerprintDoesNotMatch</Name>
+    <Condition>(verifyHok = "true") and (certFingerprint != certFingerprintBoundToToken)</Condition>
+  </Step>
+</SharedFlow>

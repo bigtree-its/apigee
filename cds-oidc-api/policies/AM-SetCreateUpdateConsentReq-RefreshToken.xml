@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetCreateUpdateConsentReq-RefreshToken">
+  <DisplayName>AM-SetCreateUpdateConsentReq-RefreshToken</DisplayName>
+  <AssignVariable>
+    <Name>consentRequest</Name>
+    <Template>{
+    "arrangementId": "{cdrArrangementId}",
+    "consentId": "{oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.consentId}",
+    "clientId": "{apigee.client_id}",
+    "accessToken": "{theAccessToken}",
+    "refreshToken": "{theRefreshToken}",
+    "legalId": "{oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.dataRecipientId}",
+    "brandId": "{oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.dataRecipientBrandId}",
+    "softwareId": "{oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.softwareProductId}",
+    "customerId": "{oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.customerId}",
+    "customerPpid": "{oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.customerPPId}",
+    "expiresAt": {refreshTokenExpiresAt},
+    "attachedAccounts": {oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.customerAccounts},
+    "scope": "{oauthv2accesstoken.OA-RefreshOpaqueAccessToken.scope}",
+    "sharingDuration": {oauthv2accesstoken.OA-RefreshOpaqueAccessToken.refresh_token_expires_in},
+    "userinfo": {firstnonnull(oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.userinfo)},
+    "acr": "{acrUsed}",
+    "status": "ACTIVE",
+    "serviceToken": "{internalServiceTokenResponse.content}",
+    "dataHolderBrandId": "{CDS.brandId}"
+}
+    </Template>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>
+

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-CertificateFingerprintDoesNotMatch">
+  <DisplayName>RF-CertificateFingerprintDoesNotMatch</DisplayName>
+  <Properties/>
+  <FaultResponse>
+    <AssignVariable>
+      <Name>cdstenx.error.type</Name>
+      <Value>mtls_certificate_fingerprint</Value>
+    </AssignVariable>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

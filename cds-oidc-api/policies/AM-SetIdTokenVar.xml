@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetIdTokenVar">
+  <DisplayName>AM-SetIdTokenVar</DisplayName>
+  <AssignVariable>
+    <Name>theNewIdToken</Name>
+    <Template>{firstnonnull(idTokenResponse.content,theNewIdToken)}</Template>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables name="EV-GetBrandIdFromPath" continueOnError="true">
+  <DisplayName>EV-GetBrandIdFromPath</DisplayName>
+  <Source>request</Source>
+  <VariablePrefix>CDS</VariablePrefix>
+  <Variable name="proxy.url">
+    <!-- need this to populate request.path on authorise request-->
+  </Variable>
+  <Variable name="request.path">
+    <Pattern ignoreCase="true">/{brandId}/.well-known/openid-configuration</Pattern>
+    <Pattern ignoreCase="true">/{brandId}/par</Pattern>
+    <Pattern ignoreCase="true">/{brandId}/authorise</Pattern>
+    <Pattern ignoreCase="true">/{brandId}/authorise-cb/{consentId}</Pattern>
+    <Pattern ignoreCase="true">/{brandId}/token</Pattern>
+    <Pattern ignoreCase="true">/{brandId}/token/revoke</Pattern>
+    <Pattern ignoreCase="true">/{brandId}/token/introspect</Pattern>
+    <Pattern ignoreCase="true">/{brandId}/userinfo</Pattern>
+    <Pattern ignoreCase="true">/{brandId}/jwks</Pattern>
+    <Pattern ignoreCase="true">/{brandId}/arrangements/revoke</Pattern>
+  </Variable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

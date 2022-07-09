@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetIssuer">
+    <DisplayName>AM-SetIssuer</DisplayName>
+    <AssignVariable>
+        <Name>issuer</Name>
+        <Template>https://{CDS.apiHostnameOpen}</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>tokenToHash</Name>
+        <Template>{firstnonnull(oauthv2authcode.OA-IssueOpaqueAuthCode.code,oauthv2accesstoken.OA-IssueOpaqueAccessToken.access_token,oauthv2accesstoken.OA-RefreshOpaqueAccessToken.access_token)}</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>adrKidUsed</Name>
+        <Template>{firstnonnull(OIDC.kid,oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.adrKidUsed,oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.adrKidUsed)}</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>acrUsedDefault</Name>
+        <Template>{firstnonnull(OIDC.acr,oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.acr,oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.acr,"urn:cds.au:cdr:2")}</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>acrUsed</Name>
+        <Template>{escapeJSON(acrUsedDefault)}</Template>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

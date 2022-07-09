@@ -1,0 +1,4 @@
+<DecodeJWT name="JWT-DecodePrivateKeyJwt">
+  <DisplayName>JWT Decode Private Key Jwt</DisplayName>
+  <Source>thePrivateKeyJWT</Source>
+</DecodeJWT>

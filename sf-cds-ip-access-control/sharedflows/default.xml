@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+    <Step>
+        <Name>KVM-Security-Properties</Name>
+    </Step>
+    <!-- Allow  IP 127.0.0.1 for calls originating locally from Apigee, required for proxy chaining  -->
+    <Step>
+        <Name>JS-CheckIPAllowList</Name>
+        <Condition>(ip_access_control_enabled is true) and (proxy.client.ip != "127.0.0.1")</Condition>
+    </Step>
+    <Step>
+        <Name>RF-InvalidIP</Name>
+        <Condition>(ip_access_control_enabled is true) and (ipIsValid is false)</Condition>
+    </Step>
+</SharedFlow>

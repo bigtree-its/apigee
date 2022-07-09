@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FlowCallout async="false" continueOnError="false" enabled="true" name="FC-VerifyAccessToken">
+    <DisplayName>FC-VerifyAccessToken</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Parameters ignoreUnresolvedVariables="true">
+        <Parameter name="isConsentJourney">true</Parameter>
+    </Parameters>
+    <SharedFlowBundle>cds-verify-access-token</SharedFlowBundle>
+</FlowCallout>

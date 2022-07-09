@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetPARCacheValueAndKey">
+    <DisplayName>AM-SetPARCacheValueAndKey</DisplayName>
+    <AssignVariable>
+        <Name>theAcr</Name>
+        <!-- check acr requested is allowed -->
+        <Template>{PARInfo.requestedACRFound}</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>defaultUserInfo</Name>
+        <Value>{"name":null}</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>theUserInfo</Name>
+        <Template>{firstnonnull(PARInfo.requestedUserInfo,defaultUserInfo)}</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>PARCacheVal</Name>
+        <Template>
+            {
+                "client_id"                   : "{jwt.JWT-DecodePAR.decoded.claim.client_id}",
+                "state"                       : "{jwt.JWT-DecodePAR.decoded.claim.state}",
+                "redirect_uri"                : "{jwt.JWT-DecodePAR.decoded.claim.redirect_uri}",
+                "scope"                       : "{jwt.JWT-DecodePAR.decoded.claim.scope}",
+                "nonce"                       : "{jwt.JWT-DecodePAR.decoded.claim.nonce}",
+                "response_type"               : "{jwt.JWT-DecodePAR.decoded.claim.response_type}",
+                "sharing_duration"            : "{PARInfo.requestedSharingDuration}",
+                "cdr_arrangement_id"          : "{PARInfo.requestedCDRArrangementId}",
+                "acr"                         :  {theAcr},
+                "user_info"                   :  {theUserInfo},
+                "kid"                         : "{jwt.JWT-DecodePAR.header.kid}",
+                "sector_identifier"           : "{clientInfo.sectorIdentifier}",
+                "api_hostname_open"           : "{CDS.apiHostnameOpen}",
+                "response_mode"               : "{jwt.JWT-DecodePAR.decoded.claim.response_mode}",
+                "code_challenge"              : "{jwt.JWT-DecodePAR.decoded.claim.code_challenge}",
+                "code_challenge_method"       : "{jwt.JWT-DecodePAR.decoded.claim.code_challenge_method}"
+            }
+        </Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>PARCacheKey</Name>
+        <Template>urn:ietf:params:oauth:request_uri:{createUuid()}</Template>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

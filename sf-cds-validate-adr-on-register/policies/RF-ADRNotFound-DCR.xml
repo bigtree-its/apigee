@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-ADRNotFound-DCR">
+  <DisplayName>RF-ADRNotFound-DCR</DisplayName>
+  <Properties/>
+  <FaultResponse>
+    <AssignVariable>
+      <Name>cdstenx.error.type</Name>
+      <Value>invalid_client_metadata</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>cdstenx.error.field</Name>
+      <Value>ADR not found on CDR register</Value>
+    </AssignVariable>
+    <Set>
+      <Headers/>
+      <Payload contentType="application/json">{
+ "error": "invalid_client_metadata",
+ "error_description": "ADR not found on CDR register"
+}</Payload>
+      <StatusCode>400</StatusCode>
+      <ReasonPhrase>Bad Request</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <ShortFaultReason>false</ShortFaultReason>
+</RaiseFault>

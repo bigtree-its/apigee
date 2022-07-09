@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GenerateJWT async="false" continueOnError="false" enabled="true" name="JWT-GeneratePrivateKeyJWTForAuth">
+  <DisplayName>JWT-GeneratePrivateKeyJWTForAuth</DisplayName>
+  <Algorithm>PS256</Algorithm>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <PrivateKey>
+    <Value ref="private.mockCDRRegisterPrivateKey"/>
+    <Id>MockCDRRegister</Id>
+  </PrivateKey>
+  <Issuer ref="clientIdVar"/>
+  <Subject ref="clientIdVar"/>
+  <ExpiresIn>30m</ExpiresIn>
+  <Id/>
+  <Audience ref="audVar"/>
+  <OutputVariable>theJWT</OutputVariable>
+</GenerateJWT>

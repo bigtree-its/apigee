@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GenerateJWT async="false" continueOnError="false" enabled="true" name="JWT-GenerateRequestJWT">
+  <DisplayName>JWT-GenerateRequestJWT</DisplayName>
+  <Algorithm>PS256</Algorithm>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <PrivateKey>
+    <Value ref="private.mockADRPrivateKey"/>
+    <Id ref="mockADRPrivateKeyKid">CDSTestApp</Id>
+  </PrivateKey>
+  <Issuer ref="request.queryparam.client_id"/>
+  <Subject ref="request.queryparam.client_id"/>
+  <ExpiresIn>30m</ExpiresIn>
+  <Id/>
+  <Audience ref="audVar"/>
+  <OutputVariable>theJWT</OutputVariable>
+  <AdditionalClaims ref="additionalClaimsVar"></AdditionalClaims>
+</GenerateJWT>

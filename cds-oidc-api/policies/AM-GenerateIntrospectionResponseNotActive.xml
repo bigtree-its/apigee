@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-GenerateIntrospectionResponseNotActive">
+  <DisplayName>AM-GenerateIntrospectionResponseNotActive</DisplayName>
+  <Properties/>
+  <Set>
+    <Payload contentType="application/json">{
+ "active": {CDS.refreshTokenStatus}
+        }
+      </Payload>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

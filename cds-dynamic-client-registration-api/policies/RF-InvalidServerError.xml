@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-InvalidServerError">
+  <DisplayName>RF-InvalidServerError</DisplayName>
+  <FaultResponse>
+    <Set>
+      <Payload contentType="application/json">{  
+    "error": "Internal error",
+    "error_description": "Cannot process request"
+   }</Payload>
+      <StatusCode>500</StatusCode>
+      <ReasonPhrase>Internal server error</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <ShortFaultReason>false</ShortFaultReason>
+</RaiseFault>

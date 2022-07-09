@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-UnexpectedError">
+  <DisplayName>AM-UnexpectedError</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <Set>
+    <Headers/>
+    <Payload contentType="application/json">{
+ "errors": [
+    {
+      "code": "500",
+      "title": "Internal Server Error",
+      "detail": "Unexpected error please contact support"
+    }
+  ]
+}</Payload>
+    <StatusCode>500</StatusCode>
+    <ReasonPhrase>Internal Server Error</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo type="request" transport="http" createNew="false"></AssignTo>
+</AssignMessage>

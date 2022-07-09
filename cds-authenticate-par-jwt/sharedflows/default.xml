@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+  <!-- TODO: cache AE-GetAppDetails -->
+  <Step>
+    <Name>AE-GetAppDetails</Name>
+  </Step>
+  <Step>
+    <Name>RF-UnknownClientId</Name>
+    <Condition>(AccessEntity.AE-GetAppDetails = null) or (AccessEntity.AE-GetAppDetails = "")</Condition>
+  </Step>
+  <Step>
+    <Name>EV-ExtractAppRegInfo</Name>
+  </Step>
+  <Step>
+    <Name>JS-ValidateRedirectURI</Name>
+  </Step>
+  <Step>
+    <Name>RF-InvalidRedirectURI</Name>
+    <Condition>faultType = "invalid_redirect_uri"</Condition>
+  </Step>
+  <Step>
+    <Name>EV-ExtractClientJWKSURIFromRegoInfo</Name>
+  </Step>
+  <Step>
+    <Name>FC-GetClientJWKS</Name>
+  </Step>
+  <Step>
+    <Name>JWT-VerifyParJWT</Name>
+  </Step>
+  <Step>
+    <Name>RF-InvalidJWT</Name>
+    <Condition>JWT.failed = true</Condition>
+  </Step>
+  <Step>
+    <Name>RF-MissingScopeClaim</Name>
+    <Condition>(jwt.JWT-VerifyParJWT.decoded.claim.scope = "") or (jwt.JWT-VerifyParJWT.decoded.claim.scope = null)</Condition>
+  </Step>
+  <Step>
+    <Name>RF-MissingNonceClaim</Name>
+    <Condition>(jwt.JWT-VerifyParJWT.decoded.claim.nonce = "") or (jwt.JWT-VerifyParJWT.decoded.claim.nonce = null)</Condition>
+  </Step>
+  <Step>
+    <Name>RF-MissingRedirectUriClaim</Name>
+    <Condition>(jwt.JWT-VerifyParJWT.decoded.claim.redirect_uri = "") or (jwt.JWT-VerifyParJWT.decoded.claim.redirect_uri = null)</Condition>
+  </Step>
+  <Step>
+    <Name>RF-NotRequiredRequestUriClaim</Name>
+    <Condition>(jwt.JWT-VerifyParJWT.decoded.claim.request_uri != "" and jwt.JWT-VerifyParJWT.decoded.claim.request_uri != null)</Condition>
+  </Step>
+  <Step>
+    <Name>RF-MissingEXPClaim</Name>
+    <Condition>(jwt.JWT-VerifyParJWT.decoded.claim.exp = "") or (jwt.JWT-VerifyParJWT.decoded.claim.exp = null)</Condition>
+  </Step>
+  <Step>
+    <Name>AM-SetCurrentTimeAsEpochSeconds</Name>
+  </Step>
+  <Step>
+    <Name>FC-ValidateAudience</Name>
+  </Step>
+  <Step>
+    <Name>FC-CheckTokenNotReused</Name>
+  </Step>
+  <Step>
+    <Name>EV-GetAdditionalClaimsInJwt</Name>
+    <Condition>getAdditionalClaims = "true"</Condition>
+  </Step>
+  <Step>
+    <Name>AM-GetDefaultAcr</Name>
+    <Condition>getAdditionalClaims = "true"</Condition>
+  </Step>
+  <Step>
+    <Name>RF-InvalidSharingDuration</Name>
+    <Condition>(getAdditionalClaims = "true") and (PARInfo.requestedSharingDuration != null) and (PARInfo.requestedSharingDuration != "") and ( (PARInfo.requestedSharingDuration LesserThan 0))</Condition>
+  </Step>
+  <Step>
+    <Name>AM-SetDefaultCDRArrangementId</Name>
+    <Condition>(getAdditionalClaims = "true") and ((PARInfo.requestedCDRArrangementId = "") or (PARInfo.requestedCDRArrangementId = null))</Condition>
+  </Step>
+  <Step>
+    <Name>AM-SetDefaultSharingDuration</Name>
+    <Condition>(getAdditionalClaims = "true") and ((PARInfo.requestedSharingDuration = "") or (PARInfo.requestedSharingDuration = null))</Condition>
+  </Step>
+  <Step>
+    <Name>AM-SetMaxSharingDurationTo1Year</Name>
+    <Condition>(getAdditionalClaims = "true") and (PARInfo.requestedSharingDuration GreaterThan 31536000)</Condition>
+  </Step>
+</SharedFlow>

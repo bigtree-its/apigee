@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations name="KVM-Security-Properties" mapIdentifier="cds.security-properties">
+    <Get assignTo="ip_access_control_enabled">
+        <Key>
+            <Parameter>ip_access_control_enabled</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="allowed_ip_list">
+        <Key>
+            <Parameter>allowed_ip_list</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<TargetEndpoint name="userinfo">
+  <FaultRules></FaultRules>
+  <PreFlow name="PreFlow Checks">
+    <Request></Request>
+    <Response />
+  </PreFlow>
+  <Flows>
+    <Flow name="userinfo target to 10x service">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>AM-Set10xAuthorizationHeader</Name>
+        </Step>
+        <Step>
+          <Name>AM-RemoveTargetCopyPathAndQuery</Name>
+        </Step>
+      </Request>
+      <Response></Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/userinfo")</Condition>
+    </Flow>
+  </Flows>
+  <HTTPTargetConnection>
+    <Properties>
+      <Property name="success.codes">2xx</Property>
+      <Property name="io.timeout.millis">5000</Property>
+    </Properties>
+    <LoadBalancer>
+      <Server name="cds-userinfo-microservice"/>
+    </LoadBalancer>
+    <Path>/v1/userinfo/{accesstoken.customerId}</Path>
+    <!-- Related issue https://www.googlecloudcommunity.com/gc/Apigee/Request-sent-to-target-server-display-undefined-because-of/td-p/13409 -->
+  </HTTPTargetConnection>
+</TargetEndpoint>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-InvalidClientAssertionType">
+  <DisplayName>RF-InvalidClientAssertionType</DisplayName>
+  <Properties/>
+  <FaultResponse>
+    <Set>
+      <!-- oidc conformance requires "error": "invalid_request" -->
+      <Headers/>
+      <Payload contentType="application/json">{
+ "error": "invalid_request",
+ "errors": [
+    {
+      "code": "400",
+      "title": "Bad Request",
+      "detail": "Missing or bad client assertion type"
+    }
+  ]
+}</Payload>
+      <StatusCode>400</StatusCode>
+      <ReasonPhrase>Bad Request</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <ShortFaultReason>false</ShortFaultReason>
+</RaiseFault>

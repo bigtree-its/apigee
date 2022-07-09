@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations name="KVM-Security-Properties" mapIdentifier="cds.security-properties">
+    <Get assignTo="env">
+        <Key>
+            <Parameter>environment.env</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="whitelist-headers">
+        <Key>
+            <Parameter>whitelist-headers</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="spike_arrest_rate">
+        <Key>
+            <Parameter ref="spike_arrest_rate_by_proxy"/>
+        </Key>
+    </Get>
+    <Get assignTo="spike_arrest_enabled">
+        <Key>
+            <Parameter>spike_arrest_enabled</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

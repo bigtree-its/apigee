@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<InvalidateCache async="false" continueOnError="false" enabled="true" name="IC-ArrangementResponse">
+  <DisplayName>IC-ArrangementResponse</DisplayName>
+  <Properties/>
+  <CacheKey>
+    <KeyFragment>VerifyExistingCDRArrangementId</KeyFragment>
+    <KeyFragment ref="cdrArrangementId"/>
+  </CacheKey>
+  <Scope>Global</Scope>
+  <PurgeChildEntries>false</PurgeChildEntries>
+</InvalidateCache>

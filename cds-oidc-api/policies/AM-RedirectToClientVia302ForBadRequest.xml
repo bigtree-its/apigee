@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-RedirectToClientVia302ForBadRequest">
+  <DisplayName>AM-RedirectToClientVia302ForBadRequest</DisplayName>
+  <Properties/>
+  <Set>
+    <Payload contentType="application/json">{
+        "errors": [
+            {
+            "code": "400",
+            "title": "Bad Request",
+            "detail": "{faultTypeMessage}"
+            }
+        ]
+        }</Payload>
+    <Headers>
+      <Header name="Location">{request.queryparam.redirect_uri}#state={request.queryparam.state}&amp;error={firstnonnull(faultTypeMessage,invalid_request)}</Header>
+    </Headers>
+    <StatusCode>302</StatusCode>
+    <ReasonPhrase>Redirect</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

@@ -1,0 +1,28 @@
+<ServiceCallout name="SC-GetResponsibilityServiceAdrStatus" continueOnError="true">
+  <DisplayName>SC-GetResponsibilityServiceAdrStatus</DisplayName>
+  <Request clearPayload="true" variable="adrStatusCheckRequest">
+    <Set>
+      <Verb>GET</Verb>
+      <Path>/status</Path>
+      <QueryParams>
+        <QueryParam name="softwareProductId">{firstnonnull(clientSoftwareId,requestedClientId)}</QueryParam>
+        <QueryParam name="legalEntityId">{firstnonnull(clientLegalEntityId,'')}</QueryParam>
+      </QueryParams>
+      <Headers>
+        <Header name="x-test-adr-status-boolean">{firstnonnull(request.header.x-test-adr-status-boolean,'true')}</Header>
+      </Headers>
+    </Set>
+  </Request>
+  <Response>adrStatusCheckResponse</Response>
+  <Timeout>10000</Timeout>
+  <HTTPTargetConnection>
+    <Properties>
+      <Property name="success.codes">2xx</Property>
+      <Property name="io.timeout.millis">5000</Property>
+    </Properties>
+    <LoadBalancer>
+      <Server name="cds-responsibility-microservice"/>
+    </LoadBalancer>
+    <Path>{CDS.serviceEnvPath}/responsibility-service/v1/internal</Path>
+  </HTTPTargetConnection>
+</ServiceCallout>

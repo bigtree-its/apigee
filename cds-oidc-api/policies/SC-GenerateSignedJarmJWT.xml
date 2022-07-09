@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout name="SC-GenerateSignedJarmJWT" continueOnError="false">
+    <Request clearPayload="true" variable="jarmJWTSignRequest">
+        <Set>
+            <Payload contentType="application/json">{
+                "iss": "{issuer}",
+                "sub": "{issuer}",
+                "aud": "{OIDC.client_id}",
+                "exp": {jarmJWT.exp],
+                "iat": {jarmJWT.iat},
+                "state": "{OIDC.state}",
+                "code": "{oauthv2authcode.OA-IssueOpaqueAuthCode.code}",
+                "jti": "{createUuid()}"
+            }</Payload>
+            <Verb>POST</Verb>
+            <Path>/external/{CDS.brandId}/token/sign</Path>
+        </Set>
+    </Request>
+    <Response>jarmJWTSignedResponse</Response>
+    <Timeout>10000</Timeout>
+    <HTTPTargetConnection>
+        <Properties>
+            <Property name="success.codes">2xx</Property>
+            <Property name="io.timeout.millis">5000</Property>
+        </Properties>
+        <LoadBalancer>
+            <Server name="cds-token-microservice"/>
+        </LoadBalancer>
+        <Path>{CDS.serviceEnvPath}/token-service/v1</Path>
+    </HTTPTargetConnection>
+</ServiceCallout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-ADRBlocked">
+  <DisplayName>RF-ADRBlocked</DisplayName>
+  <Properties/>
+  <FaultResponse>
+    <AssignVariable>
+      <Name>cdstenx.error.type</Name>
+      <Value>invalid_client_metadata</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>cdstenx.error.field</Name>
+      <Value>ADR not valid on the CDR register</Value>
+    </AssignVariable>
+    <Set>
+      <Headers/>
+      <Payload contentType="application/json">{
+ "errors": [
+    {
+      "code": "400",
+      "title": "Bad Request",
+      "detail": "ADR not valid on the CDR register"
+    }
+  ]
+}</Payload>
+      <StatusCode>400</StatusCode>
+      <ReasonPhrase>Bad Request</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <ShortFaultReason>false</ShortFaultReason>
+</RaiseFault>

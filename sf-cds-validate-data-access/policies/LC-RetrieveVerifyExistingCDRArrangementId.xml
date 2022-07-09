@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<LookupCache async="false" continueOnError="false" enabled="true" name="LC-RetrieveVerifyExistingCDRArrangementId">
+  <DisplayName>LC-RetrieveVerifyExistingCDRArrangementId</DisplayName>
+  <CacheKey>
+    <KeyFragment>VerifyExistingCDRArrangementId</KeyFragment>
+    <KeyFragment ref="cdrArrangementId"/>
+  </CacheKey>
+  <Scope>Global</Scope>
+  <AssignTo>arrangementResponse</AssignTo>
+</LookupCache>

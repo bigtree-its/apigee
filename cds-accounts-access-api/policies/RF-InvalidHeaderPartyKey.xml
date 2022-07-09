@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-InvalidHeaderPartyKey">
+  <DisplayName>RF-InvalidHeaderPartyKey</DisplayName>
+  <Properties/>
+  <FaultResponse>
+    <AssignVariable>
+      <Name>flow.myapi.error.message</Name>
+      <Value>ConsentID passed in the request URL is not in correct format</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.myapi.error.code</Name>
+      <Value>400.001.002</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.myapi.error.status</Name>
+      <Value>400</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.myapi.error.reason</Name>
+      <Value>Bad Request</Value>
+    </AssignVariable>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

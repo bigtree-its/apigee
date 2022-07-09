@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SpikeArrest async="false" continueOnError="false" enabled="true" name="SA-SpikeArrest">
+    <DisplayName>SA-SpikeArrest</DisplayName>
+    <Properties/>
+    <!-- <Identifier ref="verifyapikey.Verify-APIKey.app.name"/> -->
+    <Rate ref="spike_arrest_rate">10ps</Rate>
+    <UseEffectiveCount>true</UseEffectiveCount>
+</SpikeArrest>

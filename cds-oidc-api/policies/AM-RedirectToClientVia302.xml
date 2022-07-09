@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-RedirectToClientVia302">
+    <DisplayName>AM-RedirectToClientVia302</DisplayName>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Location">{requested_par_redirect_uri}#code={oauthv2authcode.OA-IssueOpaqueAuthCode.code}&amp;id_token={jwe_output}&amp;state={requested_par_state}</Header>
+        </Headers>
+        <StatusCode>302</StatusCode>
+        <ReasonPhrase>Redirect</ReasonPhrase>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

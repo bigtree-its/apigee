@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-AddSectorIdToSSARequest" version="SHA-512:68cb925ce094cbfe738c47d71b4a38cacbcd6f3f9cb4ab6268e4c09b170ba7065de5698fe7aacee5eebbaa12d1bc8320439b518795a3f78a11b40341546dd4ff"/>
+        <VersionInfo resourceName="AM-GenerateUUID" version="SHA-512:23e9551575b26134cdc6328ca21abbe59941b71408305be2b353e030a4f366c8671a755d80ca82574d8b7360d7afa6213dd35839f7da2bbc98ed4b652fe9ce41"/>
+        <VersionInfo resourceName="AM-SetMockJWKSInfo" version="SHA-512:6dabaebdea8166f35fd34bdadc7bd19677d25a99cfb3b966cedbcb517ae6199272df0314014a71664233d6a7f6e42173678ac52e33efa5ead57c19f5e47a936f"/>
+        <VersionInfo resourceName="AM-SetMockJWKSInfoFapiClient1" version="SHA-512:cfd59b95a4a9bcc16a3d66532da95bdd1ecaafcad942ad9572fc80baaa280e442ab3556b439dc5b970fa432572d1fc9660b1ad3a6443f0170bf0134b7749c943"/>
+        <VersionInfo resourceName="AM-SetMockJWKSInfoFapiClient2" version="SHA-512:66ffc17b981bc3166719199e71da4475aebe2c77e5944519501c7a1d5dc93ff3fa6a554a43f32472f33febc72ab8336dc93636b79875f51ea1512e6dc539ec6b"/>
+        <VersionInfo resourceName="AM-SetResponse" version="SHA-512:fe80daaeff1b16fb41d125099604a626efaba353bd035e61e2616c90b682d02bf71d0a1c19146a1d63b5ebd34c4db230b6007ec8f991902e0c2c03fa914f14b5"/>
+        <VersionInfo resourceName="AM-SetSSARequest" version="SHA-512:d0095dfd13a5235591eeda02d781161062ed622846955b1f60223de31eac34705e17b6fe95a3dee9c320c6be27529a65c821c841534de8054e07a0e6f327c33d"/>
+        <VersionInfo resourceName="AM-SetSectorIdUriResponse" version="SHA-512:675d76c83d3cef5a8b7a1fd73618abeba2482d8735323c22dad40624144d96c2e94bfd9a57fca68e2ba9f01b1569d9388fe27d7a89831980741cb1eb70a29a0f"/>
+        <VersionInfo resourceName="AM-SetValidateResponse" version="SHA-512:c02b5607f3c12616f6b17b3dd667b602349d292d5cebf11953a89494eb4efea467e65e868dce82b54bfcdf42fec02d3d26702dadb5bd57dde30139209e57e66c"/>
+        <VersionInfo resourceName="AM-SetValuesBasedOnOptionalQueryParamsOrDefaults-DCRRequest" version="SHA-512:1f4939e081e1f02f8adf0525192fea0759b6b3065b6ff144214efac4f05be518a7e2579412d03be419a1b98a96bde362b4609f59a4afe6aa9bc7cd4e1e6f5731"/>
+        <VersionInfo resourceName="AM-SetValuesBasedOnOptionalQueryParamsOrDefaults-PAR" version="SHA-512:28e3f34e9bf4d7bafcca4ee237abb439bf69db9a19dba17303dec6419e436dd00ff0c6b1fdd69cfc5a04988a713a0132fb4f99221152c1e731cf98c05c9cd6c4"/>
+        <VersionInfo resourceName="AM-SetValuesBasedOnOptionalQueryParamsOrDefaults-PrivKeyJWT" version="SHA-512:ac8f5dd493d13f1bf31942d18aab1710e9da075e595268a6329b3620d94b0757aec8e9ab6be17fa29692d6fb96b0e639abae7df1f73bf9da356ce911a0228dab"/>
+        <VersionInfo resourceName="JS-AddOptionalClaimsIfPresent" version="SHA-512:edc4661d9b9afc65396597260eaf78ff954a5ac4ca279776849119dd509bb0dc82dfb3378bf3b3e32b6f253ce49688484f8d157b6a15069bc54ef3b62498b0de"/>
+        <VersionInfo resourceName="JS-RequestJWTPayload" version="SHA-512:df9d9ad6ac7c6bf60df62135b7d5159a5cdae13eaa4961641a225b37a4daadebb551c3e275608e8abcdf100f6e8ee077eb5373c233f06ffa9edb91fb9c0e9470"/>
+        <VersionInfo resourceName="JS-SetArrangementRevokeResponse" version="SHA-512:ec0bb7781ba09829bf598541ee2f1991a3c366928f419a5fd3484cc56590b4f108278723462c70c4165e4737026c3a46093a1504c7be1d306a952087e33fdc37"/>
+        <VersionInfo resourceName="JS-SetRedirectURIs" version="SHA-512:ab09b2840a2a4cb83625be1d4841ab109ac9824153d5e0d4ddc4244748851fa1884b5d81a9020077902d329b9d85ef2b8ad909f83f0c6a5406d732d6fc4df4fe"/>
+        <VersionInfo resourceName="JWS-GenerateRequestJWT" version="SHA-512:492b9467b59d68236fbcf96b7c7b5aba150416f82ae508a80b1af6d4a24887eeed06446e34ddbc570431d171d77ac1115a754c43d895b13f12b5fb858b97ab03"/>
+        <VersionInfo resourceName="JWT-GenerateDynamicClientRegistrationRequest" version="SHA-512:b77086b3529bc03d2096b5eec0e95a7acfd4dc763c6ba3b9cf2eab77498ced2b73427c389498433de88ef0ab1a41770783298f59bae725f9303522b4dab43aa0"/>
+        <VersionInfo resourceName="JWT-GenerateDynamicClientRegistrationRequestWithSectorIdUri" version="SHA-512:225a967986e0eecec7ddcb6d7fa72a0cb160890532b18a2dfbc7db07fbda31f9b22c3a9b73a3adc6233c70e15a866ddc8358b644091900fb49c3eab625d36b04"/>
+        <VersionInfo resourceName="JWT-GeneratePrivateKeyJWT" version="SHA-512:55fcf52d4fb11e706ec39112d76729a7f339a608bb0363773faec1febea134bdd729a98136fc703851c3fb9627f3aaab173214f2e4e0807290b915e60fef347f"/>
+        <VersionInfo resourceName="JWT-GenerateRequestJWT" version="SHA-512:f102875f8427b5edc4a062786aff37836b3635d9ec80cbf89445caaeb3d4f36468023611dffaed358662e6cf7bfdd351cd25f25bf5fe5511afd112d89ff82195"/>
+        <VersionInfo resourceName="JWT-VerifyJWT" version="SHA-512:c3575888d20f1b0550f61b5e03736a5776f8c067b10ae24f5d3d301b57169084646e7f8abeec563580018a4d04ee0f0cf16cfa63e05e0cb7f67d5fa78fee5235"/>
+        <VersionInfo resourceName="KVM-GetMockADRKeys" version="SHA-512:16d78ee4780020e3f48f8ddde7844255a0e80088ea09918552cae3a4f9683b8eb076ca19e968b88e6405825c3362f5468a4b38209e1230a8e47d242f346afa86"/>
+        <VersionInfo resourceName="RF-NotFound" version="SHA-512:6be34d5719607b554fe0c5146e5a63b70163a936152824aad49ff579dfb9f7f30579c8647b5d3b0e842dd8fa86b824bf28620f7affacbb3af34047dca307e655"/>
+        <VersionInfo resourceName="RF-UnsupportedMethod" version="SHA-512:095b91959be10f2923c7b77669dd015565d3fd7994c6e3e84e745859efd2d50e4b05ec2d08877c1be33350f4662682ccd5ae7721cccda87f97be8bcc24c123ef"/>
+        <VersionInfo resourceName="SC-GetSSAFromCDRRegister" version="SHA-512:acae825903d281b0d50a26d6a88744d015ae7e0e7b03661b5b91ddc7a8624fae43613f73e5cd1f9c5c3e89df2cb9679228d4cba33251a46d73b5c9d20f1de139"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:0e44e395b59e8b005a23c7efce43716beaaf38d24c1b8cc8a6a072a808ee9dce63df2d43b6af5fbb2d5af8d2e96e99487f74be45850424e7e56dff5c11501ac1"/>
+    </ProxyEndpoints>
+    <Resources>
+        <VersionInfo resourceName="jsc://addOptionalClaimsIfPresent.js" version="SHA-512:2b0fbdea1f47827b0ea888bfd5dc1a6da2350193def4a3d9828bdc5c51b1885a31d1d81f7aff8a1f38e77e6fdf6456437e445aaec15bcae70fa21177f10f8e51"/>
+        <VersionInfo resourceName="jsc://requestJWTPayload.js" version="SHA-512:897c7046380e523a878fa7a4ca474dfc67f2bd0d83e9857a78ad8f404f0ffed60606da6170bfa7a2c36cb5a5305294fa09759b6ab569688c4dba7e03b106c775"/>
+        <VersionInfo resourceName="jsc://setArrangementRevokeResponse.js" version="SHA-512:6d100e74af9836e8585d95acc66576edb0b124bc29cc494e7a2e3331db82b8e4418d1b2082206f3aa91151a455597480279a21c6f2f6f8e8ff55dcc8f9c1fc9d"/>
+        <VersionInfo resourceName="jsc://setRedirectURIs.js" version="SHA-512:3dfd17f7fb0ff404f93f0e24dd580ef383d7997b4ec8d6681c4b25353b54f290eaeb638a39f468a6ddc2189245e475128a5de86307793323d7721e40d6f3d2c9"/>
+    </Resources>
+    <SharedFlows/>
+    <TargetEndpoints/>
+</Manifest>

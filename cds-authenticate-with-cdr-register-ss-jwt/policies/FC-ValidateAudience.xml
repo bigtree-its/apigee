@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FlowCallout async="false" continueOnError="false" enabled="true" name="FC-ValidateAudience">
+  <DisplayName>FC-ValidateAudience</DisplayName>
+  <SharedFlowBundle>cds-validate-audience-in-jwt</SharedFlowBundle>
+  <Parameters ignoreUnresolvedVariables="true">
+    <Parameter name="audClaim" ref="jwt.JWT-VerifySelfSignedJwt.claim.audience"/>
+    <Parameter name="parAudClaimForClientAssertionAccepted" ref="setParAudClaimForClientAssertionAccepted"/>
+    <Parameter name="errorToReturn">401</Parameter>
+    <Parameter name="theBrandId" ref="CDS.brandId"/>
+  </Parameters>
+</FlowCallout>

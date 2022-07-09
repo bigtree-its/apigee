@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="2" name="cds-validate-ssa">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1646139593934</CreatedAt>
+    <CreatedBy>nava.kannusamy@10xbanking.com</CreatedBy>
+    <Description>2022-03-01_12-55-15 - Validates the CDR register SSA token according to CDS requirements</Description>
+    <DisplayName>cds-validate-ssa</DisplayName>
+    <LastModifiedAt>1646139593934</LastModifiedAt>
+    <LastModifiedBy>nava.kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:0c6027b305af9e3e81d8e27cdfd6beb9ddfecac81b7f3af8fb68affb746950043de3df475ac13e56f2bfec263b76cfd3ce23b8dfa38062696943f6a41f16f1b5:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>EV-GetADRDetailsFromSSA</Policy>
+        <Policy>FC-CheckTokenNotReused</Policy>
+        <Policy>JS-SetSoftwareJwksServiceCallout</Policy>
+        <Policy>JWT-VerifyCDRSSAToken</Policy>
+        <Policy>RF-MissingEXPClaim</Policy>
+        <Policy>RF-MissingJWTTokenSSA</Policy>
+        <Policy>RF-TokenNotVerifiedSSA</Policy>
+        <Policy>SC-SoftwareJwks</Policy>
+    </Policies>
+    <Resources>
+        <Resource>jsc://set-software-jwks-sc.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

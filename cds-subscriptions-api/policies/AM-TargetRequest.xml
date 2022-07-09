@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-TargetRequest">
+    <DisplayName>AM-TargetRequest</DisplayName>
+    <Set>
+        <Verb>POST</Verb>
+        <Payload contentType="application/json">
+             {"query":{"PARTY_KEY":"{subscriptions-api.partyKey}","TENANT_KEY":"{verifyapikey.VerifyApiKeyInHeader.tenantKey}"},"type":"PARTY"}
+        </Payload>
+    </Set>
+    <AssignVariable>
+        <Name>target.copy.pathsuffix</Name>
+        <Value>false</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>path</Name>
+        <Template>/subscription-manager/v1/subscriptions/search</Template>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

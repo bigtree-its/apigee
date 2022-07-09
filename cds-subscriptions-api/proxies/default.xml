@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <FaultRules/>
+    <!-- default fault rule. this will always run on errors-->
+    <DefaultFaultRule name="all">
+        <Step>
+            <Name>FC-ProxyErrorHandler</Name>
+        </Step>
+    </DefaultFaultRule>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>FC-VerifyAccessToken</Name>
+                <!-- Only run if (Admin with Authorization Header) or (non Admin) -->
+                <!--<Condition>((verifyapikey.VerifyApiKeyInHeader.IsAdmin == "true") or (verifyapikey.VerifyApiKeyInQuery.IsAdmin == "true") and request.header.Authorization != null) or ((verifyapikey.VerifyApiKeyInHeader.IsAdmin != "true") and (verifyapikey.VerifyApiKeyInQuery.IsAdmin != "true"))</Condition>-->
+                <Condition>!(proxy.pathsuffix MatchesPath "/health")</Condition>
+            </Step>
+            <Step>
+                <Name>FC-GetTenxToken</Name>
+                <Condition>!(proxy.pathsuffix MatchesPath "/health")</Condition>
+            </Step>
+            <Step>
+                <Name>JS-ExtractPartyKey</Name>
+            </Step>
+            <Step>
+                <Name>FC-ValidateForgeRockPolicies</Name>
+                <Condition>(forgerockVerificationEnabled == "true")</Condition>
+            </Step>
+            <Step>
+                <Name>AM-RemoveAccessToken</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <PostFlow>
+        <Response/>
+    </PostFlow>
+    <Flows>
+        <Flow name="RetrieveSubscriptions">
+            <Description>Retrieve subscriptions</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="health">
+            <Response>
+                <Step>
+                    <Name>FC-GetHealthCheckValues</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/health") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="UnknownResource">
+            <Request>
+                <Step>
+                    <Name>RF-ResourceNotFound</Name>
+                    <!-- This is an error catch which executes if no other flows are executed -->
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+    </Flows>
+    <HTTPProxyConnection>
+        <BasePath>/cds-au/v1/subscriptions</BasePath>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noroute">
+        <Condition>(proxy.pathsuffix MatchesPath "/health")</Condition>
+    </RouteRule>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+
+</ProxyEndpoint>

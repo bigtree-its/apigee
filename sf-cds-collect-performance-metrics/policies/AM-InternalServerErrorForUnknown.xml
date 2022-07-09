@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-InternalServerErrorForUnknown">
+  <DisplayName>AM-InternalServerErrorForUnknown</DisplayName>
+  <Set>
+    <Payload>{
+            "errors": [
+                {
+                    "code": "500",
+                    "title": "Internal Error",
+                    "detail": "{unknownFaultString}
+                }
+            ]}
+        </Payload>
+    <StatusCode>500</StatusCode>
+    <ReasonPhrase>Internal Server Error</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="message"/>
+</AssignMessage>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables name="EV-ConsentIdFromURL" continueOnError="true">
+  <DisplayName>EV-ConsentIdFromURL</DisplayName>
+  <Source>request</Source>
+  <VariablePrefix>cds</VariablePrefix>
+  <URIPath>
+    <Pattern ignoreCase="true">/consents/{consentId}</Pattern>
+  </URIPath>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

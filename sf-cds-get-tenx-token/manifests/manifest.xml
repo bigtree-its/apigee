@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-ColleagueIndicator" version="SHA-512:af999a93cc7d6311442b6d8c9197fbfff73135f0ea467a6abcb6e0a88281828df25383a495c92d3b3ffe73d9811777aa6c3252b64df9521cfa479a2fb14cf99a"/>
+        <VersionInfo resourceName="DJ-DecodeTenxToken" version="SHA-512:fd6acf85128c48c07429dbb37823c73e878cb7aabe296d7f2b8e87c1ce28960a5e5fd4d0f5013baa50e8d3a2be43bfacff686fddb580e554b71a8764d63e626b"/>
+        <VersionInfo resourceName="LC-LookupCache" version="SHA-512:5294630a2e240f974a3f9cb7ea878576f12e9fcc1c38bfc6101792846d005d30092ea0e25b274e513cd5d60423ddcc8584ae1e9fb8af27d8caeae409275022f2"/>
+        <VersionInfo resourceName="RF-FailedToDecodeJWT" version="SHA-512:88829ba30884da68af695a8bdef4035e7d9ac0b8b8250411b2bce99f1f79c793cb6ebb28fc927a521ffee8f0aed25f7f9cd6592d9b745d8d8b952f395d4dfc38"/>
+        <VersionInfo resourceName="RF-Forbidden" version="SHA-512:d31f1efe166b8ff135afec5d09b3aa842a572264ca21f46cbb5585c7d6daa4111834febb7b623ea20a952814991f0610df6b0f386e9ff56da5fa56f9ab6e96df"/>
+        <VersionInfo resourceName="RF-InvalidAccessToken" version="SHA-512:a25082981b8c528c2dbafd21eae6701264e3db05704374bc40ababf2c9b73fc8d06acea7672a74a8566e84c5778952bff437447acc4f1d66fb4e2b4f6eff212e"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources/>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:6801191c54b19c6041857316405a09ec2d4cac154fec293133552c0de73085750d86e35515e2ff770ba9a6ef54a58a6148e12fd735213195614e56aacdc57bd1"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

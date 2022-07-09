@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetRevokeTokenResponse">
+  <DisplayName>AM-SetRevokeTokenResponse</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <Set>
+    <Headers>
+      <Header name="x-status-code">{response.status.code}</Header>
+      <Header name="x-status-content">{response.content}</Header>
+    </Headers>
+    <Payload contentType="application/json"></Payload>
+    <StatusCode>202</StatusCode>
+    <ReasonPhrase>Accepted</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo type="request" transport="http" createNew="false"></AssignTo>
+</AssignMessage>

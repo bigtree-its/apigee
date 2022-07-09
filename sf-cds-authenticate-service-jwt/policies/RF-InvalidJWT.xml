@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-InvalidJWT">
+  <DisplayName>RF-InvalidJWT</DisplayName>
+  <FaultResponse>
+    <AssignVariable>
+      <Name>flow.cds.error.message</Name>
+      <Value>Invalid JWT</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.cds.error.code</Name>
+      <Value>401.001.013</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.cds.error.status</Name>
+      <Value>401</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.cds.error.reason</Name>
+      <Value>Unauthorized</Value>
+    </AssignVariable>
+    <Set>
+      <!-- oidc conformance requires "error": "invalid_client" -->
+      <StatusCode>401</StatusCode>
+      <ReasonPhrase>Unauthorized</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-InitialiseJourney" version="SHA-512:2b95f1b05ebdc07d3ee6fef9ec6ab2d03f0441f51743444e23c6d27fc9af03802c799f9ec3841a859f846502cef8a84a16455ae32c27356e02d120e7963d40ff"/>
+        <VersionInfo resourceName="AM-SetJourney" version="SHA-512:56b2a3d333a824152929abd0c576ff1ecf2590a64d3851ca838fd6af3fc6ef4d1522c20bb24ad39bc5681f520867b524a6efeabe5723871dcee9c8165c26eef3"/>
+        <VersionInfo resourceName="AM-SpikeArrestRate" version="SHA-512:e2b6702472effd185320dcbc432535b569f646f40a345b096da17a77e2b50a5a3ae64d37ce0ed01064f550ba6cbeec3fe64fa2e9ae6d6131e68da218e4606b1a"/>
+        <VersionInfo resourceName="AM-UUID" version="SHA-512:022fef28a347054931c5dde9d92972691b585095a31ebcc6fe8bea26ec236c0607bc6e2eff0ab7ac0a2c8cdd4ff53e587805551a6601809a9b6b5c45b6b2cc6e"/>
+        <VersionInfo resourceName="FC-IPAccessControl" version="SHA-512:6c3d11305ecaec2202c19cfc0a20909f92947cb0cff2117781a96918de4275678b06ceddf78f5151eb9c0170fe242f73ae4bad574e43580bfef7b0b141d9f2df"/>
+        <VersionInfo resourceName="JS-GenerateTraceId" version="SHA-512:9a2b76e3d1038c6a377940e4a463dd7c6e20e0707afdbbee00c26d1877b706dc99634b8b7157257414bed86f5a3326663813ab9882302ddd82f9c20ce76254f0"/>
+        <VersionInfo resourceName="JS-WhitelistHeaders" version="SHA-512:e132b0864db87f7c7ad4892f6546a9f878a7de9ce071aa8645af9d9595d29c18b311b19794dfa7977a726e645fc47dca5ed981955a52767441f95a6c82f76a2a"/>
+        <VersionInfo resourceName="KVM-Security-Properties" version="SHA-512:ff7e63e8b39a4cfefc42867e20cfbb9f5f882ca9c0dd7e5e850c8e29298cdbb0f601ab845f34f396e5f560e5548d1e9b13cf2ab4e9569238cb7a30672bf24086"/>
+        <VersionInfo resourceName="KVM-forgerock-public" version="SHA-512:12f10c225c6ffc92bf18035d3fb690a967a4693acddc475b03bd81e5a910575da34fca2aa808dc046e4bb7a5540b10a02cf9da9d8ccd22019d4c01f4ad7d8e51"/>
+        <VersionInfo resourceName="RF-RegularExpressionExpectionFault" version="SHA-512:b7d775e74d1cab8646244b0c27c80b2020911ac2932850e55a18e0529b4c54a58aefbee9c4422a895ceafed5f12339d61586640ab177320e12541d4eff2d5ee0"/>
+        <VersionInfo resourceName="SA-SpikeArrest" version="SHA-512:7baceef03446a1b944887b0ec1db9c5dcd274b182a01a5a668ef7be82b611e3008e8f1171c49e8e5c7f8c5b96cb018aba7884c76cac6dd899d246dd94bfcdb4a"/>
+        <VersionInfo resourceName="TP-RegularExpressionProtection" version="SHA-512:b102a7e692fd32a0252ed41e90b0c12942f1e416ad903ee965a97886f3817b42792ca78c71c55169e898d75831ac91a623afca20010dd4bceb9ae18346af7e0b"/>
+        <VersionInfo resourceName="Verify-APIKey" version="SHA-512:863d4c7550ff3cdecea91b103d878dabaaa4155d1e93d17f7376478434ad99e8be8d16c024eee589a9eea8f921adf33915f5421a2da359b9bf3c6f2446e8cb47"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources>
+        <VersionInfo resourceName="jsc://js-generate-trace-id.js" version="SHA-512:58b553d6cf2695eef801d895712f28a140f12f833901072e28c503489c256c56e0b8763a1f51de36eacb77b49a3d64159763230efebbf9d9f8ee154a709a4869"/>
+        <VersionInfo resourceName="jsc://js-whitelist-headers.js" version="SHA-512:353eb2a3b7889626b888b8abbddb25839d4708cd2390cc44fd2218cc49439c5a7622ebc7b7d49c47bc3bb1360e4b626b5133bb2520b1c6d52040c456a2f26a1b"/>
+    </Resources>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:0f3c77072f28c1609875234f060cf727c7b519d363cf034981d4f4d68fb7ac5dbbb340ce023acaa12a8a07ce223ebcf190ef57508b7d2110a9e18ace5ea985d1"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

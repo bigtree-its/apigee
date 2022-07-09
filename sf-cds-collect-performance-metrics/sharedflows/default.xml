@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+  <Step>
+    <FaultRules/>
+    <Name>JS-SetPerformanceTier</Name>
+  </Step>
+  <Step>
+    <FaultRules/>
+    <Name>AM-SetMessageSLO</Name>
+  </Step>
+  <Step>
+    <FaultRules/>
+    <Name>JS-CheckIfRequestMeetsPerformanceSLO</Name>
+  </Step>
+  <Step>
+    <Condition>(customerPPId = "n/a")</Condition>
+    <FaultRules/>
+    <Name>AM-ResetCustomerPPIDIfNA</Name>
+  </Step>
+  <Step>
+    <Condition>(tokenOp = "n/a")</Condition>
+    <FaultRules/>
+    <Name>AM-ResetTokenOpIfNA</Name>
+  </Step>
+  <Step>
+    <FaultRules/>
+    <Name>SC-AddPerformanceTierDimension</Name>
+  </Step>
+  <Step>
+    <Name>EV-CoverUnknownErrorsWithNoInterception</Name>
+    <Condition>(message.content != "" and message.content != null</Condition>
+  </Step>
+  <Step>
+    <Name>AM-InternalServerDcrErrorForUnknown</Name>
+    <Condition>(unknownFaultString != "" and unknownFaultString != null and isRegProxy = "true")</Condition>
+  </Step>
+  <Step>
+    <Name>AM-InternalServerErrorForUnknown</Name>
+    <Condition>(unknownFaultString != "" and unknownFaultString != null and isRegProxy != "true")</Condition>
+  </Step>
+</SharedFlow>

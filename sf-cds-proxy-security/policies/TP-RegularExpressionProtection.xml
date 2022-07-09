@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<RegularExpressionProtection async="false" continueOnError="true" enabled="true" name="TP-RegularExpressionProtection">
+    <DisplayName>TP-RegularExpressionProtection</DisplayName>
+    <Properties/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <Variable name="request.uri">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <!-- SQL Injection -->
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <!-- JavaScript Injection -->
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+        <!-- Server-Side Include Injection -->
+    </Variable>
+    <Variable name="request.content">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Variable>
+    <Header name="x-apikey">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="authorization">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="accept">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="x-b3-traceid">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="x-b3-spanid">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="x-b3-parentspanid">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="x-b3-sampled">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="content-type">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="party-key">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="X-B">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="host">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="x-origin-hostname">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="X-Forwarded-For">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="X-DeviceKey">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="x-fapi-interaction-id">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="x-fapi-customer-ip-address">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="x-fapi-auth-date">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="Idempotency-Key">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Header name="User-Agent">
+        <Pattern>[\s]*(?i)((delete)|(exec)|(drop\s*table)|(insert)|(shutdown)|(update)|(\bor\b))</Pattern>
+        <Pattern>&lt;\s*script\b[^&gt;]*&gt;[^&lt;]+&lt;\s*/\s*script\s*&gt;</Pattern>
+        <Pattern>&lt;!--#(include|exec|echo|config|printenv)\s+.*</Pattern>
+    </Header>
+    <Source>request</Source>
+</RegularExpressionProtection>

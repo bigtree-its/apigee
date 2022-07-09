@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="true" enabled="true" name="AM-ColleagueIndicator">
+    <DisplayName>AM-ColleagueIndicator</DisplayName>
+    <AssignVariable>
+        <Name>tenx_token.colleague_indicator</Name>
+        <Ref>jwt.DJ-DecodeTenxToken.decoded.claim.azp</Ref>
+    </AssignVariable>
+</AssignMessage>

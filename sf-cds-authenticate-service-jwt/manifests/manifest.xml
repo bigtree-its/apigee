@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-SetClientAssertionValid" version="SHA-512:2ef0dd7f96e2cc1d6f6d4503086290b9235b216be258ec2d6777408713f40d2ca5f3374e2fab9de00393e18d3ca5093bd4a42d487bf114487cf37161d74a76ab"/>
+        <VersionInfo resourceName="AM-SetClientIdFromJwt" version="SHA-512:159835bc53e1f6f90f23d1f475f4397dd35ed51f09f66a032110d55e7ee16f082eb8761d92c957ae1b9e3b756ff28aede85d656346f2f5baef1261dd5d1a9852"/>
+        <VersionInfo resourceName="FC-CheckTokenNotReused" version="SHA-512:c087546e7a32bdf26f4f5772ba564f45ffb3706a850795987519b832858750b2ca145281cd926e722bc15c8c58952d38178b6fded5b34e97f718bd11ab37840c"/>
+        <VersionInfo resourceName="FC-GetClientJWKS" version="SHA-512:cf816d7a50631daf56c53215c6da45dfc7e1a83474cafe9e1cc964d3f97ecf17c34f0b56496e02ca8f68f283e1b10f566473c863d1a9c3c1a520cfdff1edc1c9"/>
+        <VersionInfo resourceName="JWT-DecodeSelfSignedJwt" version="SHA-512:feee525623e50cc551fa38ed8bcc51303ad177175a594b7b85feaa71403341e73e5231e54718436902f17c8afd9cb18f9ed2d623ae6d42d2edb1353c99d47002"/>
+        <VersionInfo resourceName="JWT-VerifySelfSignedJwt" version="SHA-512:4723ea5562d978681b506a477dbc5101afe3f833f66699e9b3ec15086dcaef744b6f847f4ceca02e638919edbc8dfb4f543d72d7e330e4fc5d0db8336eb097c0"/>
+        <VersionInfo resourceName="RF-InvalidJWT" version="SHA-512:d3e341bf0a95d40ec8fb29bee20e12c8bb3cb580f24d865a4a3453e97d9e1ec0520b95c51465fd1878dcde7ae38720c71b82006bfd886bb87eac59f2571e7fae"/>
+        <VersionInfo resourceName="RF-MissingEXPClaim" version="SHA-512:86062e24afd04a711fd13cf3b21e3e7af184f97d2a7d084f8971596ca70e24cf093d16f9863abd414fa0732c4702e48e92f3ebc82fe458aa38a36ef87813ceaa"/>
+        <VersionInfo resourceName="RF-UnknownClientId" version="SHA-512:48cb7e7c331225b76f19db88b8b09e8f4fd20319a202a390ff6662e43e7969c6e4fbbb553ec9f5c4cf2293d21530f86a7d93b4289d68f1b79e48f96d3c21f891"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources/>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:03fd5a069cc9a6ccba246f634b02f1420e243fe445002bfd62f929bcca3cfc4559df84212ce53f6e7a8caceb60c93c23f250e595adcbedd77fbdd36b6b08e1a5"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

@@ -1,0 +1,14 @@
+<ServiceCallout name="SC-SoftwareJwks" continueOnError="false">
+  <DisplayName>SC-SoftwareJwks</DisplayName>
+  <Request clearPayload="true" variable="softwareJwksRequest">
+    <Set>
+      <Verb>GET</Verb>
+      <Path>{softwareJwksUriPath}</Path>
+    </Set>
+  </Request>
+  <Response>softwareJwksResponse</Response>
+  <Timeout>10000</Timeout>
+  <HTTPTargetConnection>
+    <URL>https://dummy.this.will.get.set.dynamically</URL>
+  </HTTPTargetConnection>
+</ServiceCallout>

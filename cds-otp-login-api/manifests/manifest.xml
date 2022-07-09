@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-LoginResponse" version="SHA-512:6b41468491aee5bafb56f8e10b9a93f9cca2a70df0708d124b5081f90a5b2b70c60b92c281c6f14ca37ef46acbedd58e369cbf34e0a7d83ea6b84eb9d22d3792"/>
+        <VersionInfo resourceName="AM-SetInitiateOtpTargetRequest" version="SHA-512:43a90dfd19b008138e2639aa788d341704c1d4fce8065824e4faf98aefa0f4372b1865a459647ab02113db2a8de609a894e5244fe22f001cf0f8ebd81b6ca418"/>
+        <VersionInfo resourceName="AM-SetOtpLoginTargetRequest" version="SHA-512:e1c5c77206e76df8051bc0159bc5b503d6aeb43e77921a2893e65bdcf37cce1865b3d679771123d05bdf05f22f26f0f6025a77f8fc3cf612e4bd1bf71a742e6e"/>
+        <VersionInfo resourceName="EV-ConsentId" version="SHA-512:e3d8ff139ef982610d1cee3cbcc48cbcc8ff953606ee08625082e77237947136ba7589c68e5ee5ebd808cb1419859bc9fb62435395c876290fcfd481a8a3c557"/>
+        <VersionInfo resourceName="FC-GetHealthCheckValues" version="SHA-512:eeda849b1cb08f883bd018380f2fdf886c1aeeddd988f9df99491d8128ffdef1c3e70ff6e01ceb499c183620902cd5b18126f6170aadeafcedc7970ce69b0857"/>
+        <VersionInfo resourceName="FC-ProxyErrorHandler" version="SHA-512:d25a286e36ee4df5244d717169d51ad301983a117958b41612f04d6e4a2f21f68b65bbde3d571eda62be772b3193179b7f41b49e00b78f31b653daa93c10c510"/>
+        <VersionInfo resourceName="FC-ProxySecurity" version="SHA-512:8f12a11ede95f8f9600aafbe5695557cf84510fbf3539bc24c4b457ac7a003163e1d307aad1700c876014fb78e105918c2d918b1f66e8ac9654cae3921ab9ca4"/>
+        <VersionInfo resourceName="FC-TargetSecurity" version="SHA-512:b6ce05aa9294e9a06e0bebad93b76cc45e21ca1a21a43ed194e2ba6cec091006d5f0fb83e4bf14bcd7da549a76e3d5a958736513b496a001d439016c1916b4f7"/>
+        <VersionInfo resourceName="FC-ValidateBrandId" version="SHA-512:c76426f566c07cf8734666f01903513e33fde46936116b30320483b3d52899fa6029e4f40b17b4820f41afa3e9990c79958b369bbe8156cb0d77850186b767a2"/>
+        <VersionInfo resourceName="JS-PopulateOauth" version="SHA-512:00327890223e6312c5fe452c170abdc5577fa6e3019ce0372c21a9cd3d77ac9fe95df5c1f5f39cb539ed928e8826b44099f7ebdad5d3d5fe4a80514e40b53771"/>
+        <VersionInfo resourceName="KVM-GetOauthScope" version="SHA-512:ae788131dcc42e0830df0a5eb59cfa23db70c3e4b727c83e1c2cbbfe649c0616251c2d66b8fbb1d20f4beaf69ac9020df26058c87c1f29a65bb24a3f6f2bf5b9"/>
+        <VersionInfo resourceName="OAuth-StoreExternalToken" version="SHA-512:f681e4ae0b9e0b192f48131c74b4fd454b54226dc2b9196b753622fc618aada9e04fc7c8aadcaf80bfd0689bfb7fc1fdbcc4dffb0bba484be1f6cf804e524a42"/>
+        <VersionInfo resourceName="PC-TenxToken" version="SHA-512:10951e72d0f715d6d734a4fbae42be7fdf76d214a7dbbcb64efa14982ca3af8c36139cd083f7e17ded9cfb3d9f44f53829e4495a9a43048f6fafefbc9b5a3782"/>
+        <VersionInfo resourceName="RF-ResourceNotFound" version="SHA-512:62f79bcd12ed12b6d34e432957c475b7e7535867191b534862c938ae2e142c110f813037283505c387d0025d6a684e528f266a2dd68200fe1ff4c9fc2c7a7452"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:ce7900a48398a97d07818d8b777a41d494eadb5aaa8e207486608303ada90e0af3ade835ae178773b05108d054641e8e2951b4615a354b8b3c0a9707b751ced4"/>
+    </ProxyEndpoints>
+    <Resources>
+        <VersionInfo resourceName="jsc://js-populate-oauth.js" version="SHA-512:ddf016e352f3b6e573f70861e98779a17f7a805880397e0cb0939a1fe3df474c64007a73cd1f825b3674861e51cd04b2bc7e150a1159f412d45bb3a43165256d"/>
+    </Resources>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:04b94f68089a258f9d26d24b51b12b4b94323dc137b653e73c677e8057fcc04117cecc2dcf9ac67582dc935b2a869368b1918a3e28414a088e1166f6ebd6d902"/>
+    </TargetEndpoints>
+</Manifest>

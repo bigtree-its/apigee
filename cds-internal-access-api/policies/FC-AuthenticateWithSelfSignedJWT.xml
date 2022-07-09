@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FlowCallout async="false" continueOnError="false" enabled="true" name="FC-AuthenticateWithSelfSignedJWT">
+  <DisplayName>FC-AuthenticateWithSelfSignedJWT</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <SharedFlowBundle>cds-authenticate-with-service-ss-jwt</SharedFlowBundle>
+  <Parameters>
+    <Parameter name="theSelfSignedJWT" ref="request.header.authorization"/>
+    <Parameter name="theInternalServiceJwksUri" ref="CDS.internalServiceJwksUri"/>
+  </Parameters>
+</FlowCallout>

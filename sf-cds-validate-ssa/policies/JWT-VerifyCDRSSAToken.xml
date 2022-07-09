@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VerifyJWT async="false" continueOnError="true" enabled="true" name="JWT-VerifyCDRSSAToken">
+  <DisplayName>JWT-VerifyCDRSSAToken</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <Type>Signed</Type>
+  <Algorithm>PS256</Algorithm>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <PublicKey>
+    <JWKS ref="softwareJwksResponse.content"/>
+  </PublicKey>
+  <AdditionalClaims>
+    <Claim name="software_roles">data-recipient-software-product</Claim>
+  </AdditionalClaims>
+  <IgnoreCriticalHeaders>false</IgnoreCriticalHeaders>
+  <Source>cdrToken</Source>
+  <Issuer>cdr-register</Issuer>
+  <IgnoreIssuedAt>false</IgnoreIssuedAt>
+</VerifyJWT>

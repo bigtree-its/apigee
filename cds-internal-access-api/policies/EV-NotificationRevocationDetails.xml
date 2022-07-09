@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="true" enabled="true" name="EV-NotificationRevocationDetails">
+  <DisplayName>EV-NotificationRevocationDetails</DisplayName>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <JSONPayload>
+    <Variable name="adrNotificationUrl">
+      <JSONPath>$.adrNotificationUrl</JSONPath>
+    </Variable>
+    <Variable name="adrNotificationToken">
+      <JSONPath>$.adrNotificationToken</JSONPath>
+    </Variable>
+    <Variable name="revokedArrangementId">
+      <JSONPath>$.revokedArrangementId</JSONPath>
+    </Variable>
+  </JSONPayload>
+  <Source clearPayload="false">request</Source>
+</ExtractVariables>

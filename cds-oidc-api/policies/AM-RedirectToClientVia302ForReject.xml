@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-RedirectToClientVia302ForReject">
+  <DisplayName>AM-RedirectToClientVia302ForReject</DisplayName>
+  <Properties/>
+  <Set>
+    <Payload contentType="application/json">{
+        "errors": [
+            {
+            "code": "400",
+            "title": "Bad Request",
+            "detail": "{faultTypeMessage}"
+            }
+        ]
+        }</Payload>
+    <Headers>
+      <Header name="Location">{requested_par_redirect_uri}#state={requested_par_state}&amp;error={faultTypeMessage}</Header>
+    </Headers>
+    <StatusCode>302</StatusCode>
+    <ReasonPhrase>Redirect</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

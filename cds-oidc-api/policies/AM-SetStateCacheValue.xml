@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetStateCacheValue">
+    <DisplayName>AM-SetStateCacheValue</DisplayName>
+    <AssignVariable>
+        <Name>theCDRArrangementId</Name>
+        <Value>none</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>theAcr</Name>
+        <Template>{PARInfo.requestedACRFound}</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>theUserInfoDefault</Name>
+        <Value>{"name": null}</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>theUserInfo</Name>
+        <Template>{firstnonnull(PARInfo.requestedUserInfo,theUserInfoDefault)}</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>OIDC.stateCacheVal</Name>
+        <Template>
+            {
+                "client_id"                   : "{jwt.JWT-DecodeRequestJwt.decoded.claim.client_id}",
+                "state"                       : "{jwt.JWT-DecodeRequestJwt.decoded.claim.state}",
+                "redirect_uri"                : "{jwt.JWT-DecodeRequestJwt.decoded.claim.redirect_uri}",
+                "scope"                       : "{jwt.JWT-DecodeRequestJwt.decoded.claim.scope}",
+                "nonce"                       : "{jwt.JWT-DecodeRequestJwt.decoded.claim.nonce}",
+                "response_type"               : "{jwt.JWT-DecodeRequestJwt.decoded.claim.response_type}",
+                "sharing_duration"            : "{PARInfo.requestedSharingDuration}",
+                "cdr_arrangement_id"          : "{theCDRArrangementId}",
+                "acr"                         :  {theAcr},
+                "user_info"                   :  {theUserInfo},
+                "kid"                         : "{jwt.JWT-DecodeRequestJwt.header.kid}",
+                "sector_identifier"           : "{clientInfo.sectorIdentifier}",
+                "api_hostname_open"           : "{CDS.apiHostnameOpen}"
+            }
+        </Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>OIDC.stateCacheKey</Name>
+        <Template>{createUuid()}</Template>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables name="EV-ArrangementIdFromURL" continueOnError="true">
+  <DisplayName>EV-ArrangementIdFromURL</DisplayName>
+  <Source>request</Source>
+  <VariablePrefix>cds</VariablePrefix>
+  <URIPath>
+    <Pattern ignoreCase="true">/arrangements/{ArrangementId}</Pattern>
+  </URIPath>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

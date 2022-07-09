@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+    <Step>
+        <Name>AM-InitialiseJourney</Name>
+    </Step>
+    <Step>
+        <Name>AM-SetJourney</Name>
+        <Condition>(apiproxy.name = "cds-otp-login-api") || (apiproxy.name = "cds-subscriptions-api") ||  ((proxy.pathsuffix MatchesPath "/consents/*") and (request.verb = "GET" or request.verb = "PUT"))</Condition>
+    </Step>
+    <Step>
+        <Name>JS-ResolveStandardErros</Name>
+        <Condition>isConsentJourney = true</Condition>
+    </Step>
+    <Step>
+        <Name>RF-StandardErrorResponse</Name>
+        <Condition>isConsentJourney = true</Condition>
+    </Step>
+    <Step>
+        <Name>JS-ResolveCdsErrors</Name>
+        <Condition>isConsentJourney = false</Condition>
+    </Step>
+    <Step>
+        <Name>RF-CDSErrorResponse</Name>
+        <Condition>isConsentJourney = false and cdstenx.error.type != "mtls_certificate_fingerprint"</Condition>
+    </Step>
+    <Step>
+        <Name>RF-MtlsErrorResponse</Name>
+        <Condition>isConsentJourney = false and cdstenx.error.type = "mtls_certificate_fingerprint"</Condition>
+    </Step>
+</SharedFlow>

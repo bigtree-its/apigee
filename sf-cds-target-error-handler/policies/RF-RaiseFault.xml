@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault name="RF-RaiseFault">
+    <DisplayName>RF-RaiseFault</DisplayName>
+    <FaultResponse>
+        <Set>
+            <Headers>
+                <Header name="Content-Type">application/json</Header>
+            </Headers>
+            <Payload contentType="application/json; charset=utf-8" variablePrefix="@" variableSuffix="#">
+                {
+                "Code":"@cdstenx.error.code#",
+                "Id":"@cdstenx.error.id#","Message":"@cdstenx.error.reason#",
+                "Errors":[
+                {
+                "ErrorCode":"@cdstenx.error.obcode#",
+                "Message":"@cdstenx.error.message# @cdstenx.error.messagesuffix#"@cdstenx.error.Url# @cdstenx.error.pathString#
+                }
+                ]
+                }
+            </Payload>
+            <StatusCode>{cdstenx.error.status}</StatusCode>
+            <ReasonPhrase>{cdstenx.error.reasonphrase}</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

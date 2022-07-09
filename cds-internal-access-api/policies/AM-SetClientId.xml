@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetClientId">
+    <DisplayName>AM-SetClientId</DisplayName>
+    <AssignVariable>
+        <Name>theClientId</Name>
+        <Template>{firstnonnull(OIDC.client_id,cds.clientId)}</Template>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

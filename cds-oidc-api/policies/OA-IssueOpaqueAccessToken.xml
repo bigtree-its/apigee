@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="OA-IssueOpaqueAccessToken">
+  <DisplayName>OA-IssueOpaqueAccessToken</DisplayName>
+  <Properties/>
+  <Operation>GenerateAccessToken</Operation>
+  <Code>TokenRequestParams.code</Code>
+  <!-- <Scope>oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.Scope</Scope> -->
+  <AppEndUser>oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.dataRecipientId</AppEndUser>
+  <Attributes>
+    <Attribute name="userinfo" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.userinfo"/>
+    <Attribute name="updated_at" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.updated_at" type="number"/>
+    <Attribute name="auth_time" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.auth_time" type="number"/>
+    <Attribute name="acr" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.acr"/>
+    <Attribute name="nonce" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.nonce"/>
+    <Attribute name="consentId" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.consentId"/>
+    <Attribute name="customerId" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.customerId"/>
+    <Attribute name="customerPPId" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.customerPPId"/>
+    <Attribute name="cdrArrangementId" ref="cdrArrangementId"/>
+    <Attribute name="dataRecipientId" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.dataRecipientId"/>
+    <Attribute name="dataRecipientBrandId" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.dataRecipientBrandId"/>
+    <Attribute name="softwareProductId" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.softwareProductId"/>
+    <Attribute name="certFingerprint" ref="certFingerprint"/>
+    <Attribute name="adrKidUsed" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.adrKidUsed"/>
+  </Attributes>
+  <ExpiresIn ref="CDS.authTokenExpiresMilliSecs">600000</ExpiresIn>
+  <ExternalAuthorization>false</ExternalAuthorization>
+  <GrantType>TokenRequestParams.grant_type</GrantType>
+  <RedirectUri>TokenRequestParams.redirect_uri</RedirectUri>
+  <RefreshTokenExpiresIn ref="CDS.refreshTokenExpiryTimeInMillis">3600000</RefreshTokenExpiresIn>
+  <GenerateResponse enabled="false"/>
+  <ReuseRefreshToken>false</ReuseRefreshToken>
+  <SupportedGrantTypes>
+    <GrantType>authorization_code</GrantType>
+  </SupportedGrantTypes>
+</OAuthV2>

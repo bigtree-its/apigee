@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PopulateCache async="false" continueOnError="false" enabled="true" name="PC-StoreResponsibilityServiceAdrStatus">
+  <DisplayName>PC-StoreResponsibilityServiceAdrStatus</DisplayName>
+  <CacheKey>
+    <KeyFragment>GetResponsibilityServiceAdrStatus</KeyFragment>
+    <KeyFragment ref="clientSoftwareId"/>
+  </CacheKey>
+  <Scope>Global</Scope>
+  <ExpirySettings>
+    <TimeoutInSeconds>60</TimeoutInSeconds>
+  </ExpirySettings>
+  <Source>adrStatusCheckResponseContent</Source>
+</PopulateCache>

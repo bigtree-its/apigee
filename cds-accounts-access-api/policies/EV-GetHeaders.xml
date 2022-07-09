@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-GetHeaders">
+  <DisplayName>EV-GetHeaders</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <VariablePrefix>cds</VariablePrefix>
+  <Header name="Authorization">
+    <Pattern ignoreCase="true">Bearer {10xLoginToken}</Pattern>
+  </Header>
+  <Header name="Party-Key">
+    <Pattern ignoreCase="true">{10xPartyKey}</Pattern>
+  </Header>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <Source clearPayload="false">request</Source>
+</ExtractVariables>

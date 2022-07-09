@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="3" name="cds-get-tenx-token">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1646144135303</CreatedAt>
+    <CreatedBy>Nava.Kannusamy@10xbanking.com</CreatedBy>
+    <Description>Development</Description>
+    <DisplayName>cds-get-tenx-token</DisplayName>
+    <LastModifiedAt>1646144135303</LastModifiedAt>
+    <LastModifiedBy>Nava.Kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:3d4dc67b0fce52aa72f46c31284fbba46b2a5c9177285d892218b96789ed4d179673db884da53af9729370b3b9129a164746c2d8b513d536005885b14f3d975b:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-ColleagueIndicator</Policy>
+        <Policy>DJ-DecodeTenxToken</Policy>
+        <Policy>LC-LookupCache</Policy>
+        <Policy>RF-FailedToDecodeJWT</Policy>
+        <Policy>RF-Forbidden</Policy>
+        <Policy>RF-InvalidAccessToken</Policy>
+    </Policies>
+    <Resources/>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

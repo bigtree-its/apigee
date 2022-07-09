@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<LookupCache async="false" continueOnError="false" enabled="true" name="LC-RetrieveApp">
+  <DisplayName>LC-RetrieveApp</DisplayName>
+  <Properties/>
+  <CacheKey>
+    <KeyFragment ref="theClientId"/>
+  </CacheKey>
+  <CacheResource>CDSCacheApp</CacheResource>
+  <Scope>Global</Scope>
+  <AssignTo>cds.appDetails</AssignTo>
+</LookupCache>

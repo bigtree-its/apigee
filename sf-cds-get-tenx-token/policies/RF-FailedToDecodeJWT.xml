@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-FailedToDecodeJWT">
+    <DisplayName>RF-FailedToDecodeJWT</DisplayName>
+    <FaultResponse>
+        <AssignVariable>
+            <Name>cdstenx.error.type</Name>
+            <Value>failed_to_decode_tenx_token</Value>
+        </AssignVariable>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+</RaiseFault>

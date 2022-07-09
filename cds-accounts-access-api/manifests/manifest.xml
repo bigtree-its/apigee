@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-DeleteArrangementResponse" version="SHA-512:dc40110c4e8a9f65f0ec0cf71dda4405debf697042f11b1fd0d1ca5a39fd7ba81e9ee99cde2e8f842b7c98e8cbe1bc8fef68a673f03d73cc4733ca6b26db1fbc"/>
+        <VersionInfo resourceName="AM-ErrorResponse" version="SHA-512:8585bf21ab405af91782fcae135d3b92fa38cf6bedc02dc3efa3441e6d57ccdfcfe63124bafefd6f52170a1e554353597947f2e5e641d4c65ea32fd8eacc6b64"/>
+        <VersionInfo resourceName="AM-GetArrangementResponse" version="SHA-512:5e4935e6d2c24b1848f836322467a3aa02994b15e0093b117db47607ef90335710b4ddec9fd6517ffe0f7eaf666d5d886d8bf6dd251c72fdf3f5a359c29eed54"/>
+        <VersionInfo resourceName="AM-GetArrangementsResponse" version="SHA-512:6f512f8ef632538b8970449fb639d7eea0c2e698d04b49f25789ba50503e1695cfde2ddb9dfc00595e39e5a71a11821a1a0ab0922cb253557419c1adbc6c511c"/>
+        <VersionInfo resourceName="AM-GetClientResponse" version="SHA-512:3f5fc510369887a8da12fe22f783dbdf2600b4ba3e431dd4181beb8d44a087a701d14b70381cb581111e2b57848e98bd751bd367d5442ed506eedf2322f10b57"/>
+        <VersionInfo resourceName="AM-GetConsentResponse" version="SHA-512:22cd794bcbf1d7ef279ee4a5ba07b9ad19e6f7b07d55dc5cdecd2a8ca2dca518ed5b9ec7082af2da178d0c04a68e5c1359e96050a4076fb48fd1a86b13d956ef"/>
+        <VersionInfo resourceName="AM-PutConsentResponse" version="SHA-512:1cc6df5825c2cc773cbf05e95115a66b4ea077a0439a312e07b90f387e19a0e8501b3e200d0c792cf2fa70fa4491eff8fdd0a3d516024f744b5cfa5f163c3a7e"/>
+        <VersionInfo resourceName="EV-ArrangementIdFromURL" version="SHA-512:803789709cc033a61e4ed97f4818d61d5c6e3838d86747d08312f20a0cc8a9ef6d6eeffc9ad5ff4fc3ad86ae8e112f553680e88ed5156a176f88370b7c9a2c43"/>
+        <VersionInfo resourceName="EV-ClientIdFromURL" version="SHA-512:ec26836cbbe4245e8d4dac49f31dbe51eb050e6cfc2d1fc9dc64fb6f5fba856a67f0903368ac55f3cb2cc2d5e47952b37c60a0f1d0ed83d01ef7285366c0ffb4"/>
+        <VersionInfo resourceName="EV-ConsentIdFromURL" version="SHA-512:4d6b7147883c366ae7a19f96a2152336eada86615b554519badd912decf5f9bc32d8673f8a637b47e266bd9f4e18c85e15c2e8e6ba8c468ab745e88aee83695c"/>
+        <VersionInfo resourceName="EV-GetHeaders" version="SHA-512:25b3c18e695a69f37ff8493628b6a6a256fe1bc47c016d908340a6ba00ec49d7c8353c27e060ad167df9dd528f853e13e2940de8992162fecd3c8c18fda2b082"/>
+        <VersionInfo resourceName="FC-GetHealthCheckValues" version="SHA-512:ba5ad353c510b64369f22046ef7d9dbe3ace32406acc1ab22c850a97e1f98f8bab993ccf750f5ce5fd766205350714a80785e28e89e6a1053a7345ba32ebd509"/>
+        <VersionInfo resourceName="RF-InvalidArrangementId" version="SHA-512:a918ec28a3b55c676980bdc8efde1f695a2b1e5bdfa67e15a06b5cf8a5e42fdab513aca3e6b507f65d811a831843001228216fc17475a3e939187e434358b000"/>
+        <VersionInfo resourceName="RF-InvalidClientId" version="SHA-512:a04a19a0d8af8c9336bc00dad003a3d6827eacb80b2ce2b3465a4e0680ccaeb3c6e3010c594c87f2d1a6fd9a4c8c80e2b6d7681bf649dbe051e22c1658f0ca51"/>
+        <VersionInfo resourceName="RF-InvalidConsentId" version="SHA-512:a12094d7c19fd4d1ece498e3ee2b1e1f02f2c4693c713ee8ef8dc16b50746fbbacc79f0159b58c01a1f51bf995b28b771ae8cd9f9930ca7ef19358e2ca3fc9c1"/>
+        <VersionInfo resourceName="RF-InvalidHeaderPartyKey" version="SHA-512:8c189f3279bfed74b57f8634cec68b24703dd9c50d5372297f16f996077d67f1d4e979e34cbcdbc5aaf91f14faa61cb0fc465d63e1caab646ae9c3112861961f"/>
+        <VersionInfo resourceName="RF-NotFound" version="SHA-512:8f6ca357e63d32faaa0d358329d026dc065709aa1d2b33d1e7aee4b0e36d2a8f18105958673679e2f5fe6f3b86eba59853059d58449f86e095353fd08a8282dc"/>
+        <VersionInfo resourceName="RF-ProxyFaultHandlerUnexpected" version="SHA-512:e38fca79feeb33a0082eaf97bcec8df541b1c1ea272e4313c7ed0ebded1d3236cec8768bdfe5bb75fe954953a795f5237f28d4cd1c079fc81d14a8c9cadf98cf"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:980905eaa2d8135dffd6902f66a3a98aea3b05d326591356f32cc9f1becc91cd8544886a61e00f388668645e3b754c40e33a023a1d9cc9ebfcce4c92b230eb9f"/>
+    </ProxyEndpoints>
+    <Resources/>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="cds-internal-arrangements" version="SHA-512:f657b27ec4ecb4fb7ff21225df09754eb0e9a9b6cbafd19cb3bfbdd20a9b6a17f83cc6710bfefdb9d9081d034504df3f54eba4cdb902c82cd606115367d65632"/>
+        <VersionInfo resourceName="cds-internal-clients" version="SHA-512:23033541ff824d41f184cd8c0534a5b36aec5a594d24486f403405c9d0b1837bf84e3827242f0ca055f9030a40ec3ad4569c0d4e4553292ea8cbf1d8490e691f"/>
+        <VersionInfo resourceName="cds-internal-consents" version="SHA-512:699b259f83e8bf407fe7a7d03b989e42eff4c359244305ee8e5c4ec7baf33e39bef0aec0d0864f91eb8887f0c5210dec220f15ad48e6075f60e120e6d91ca45e"/>
+    </TargetEndpoints>
+</Manifest>

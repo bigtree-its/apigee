@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+  <Step>
+    <Name>KVM-GetCDSConfigs</Name>
+  </Step>
+  <Step>
+    <Condition>((proxy.pathsuffix MatchesPath "/customer") and (request.verb = "GET")) and (proxy.basepath = "/*/cds-au/v1/common")</Condition>
+    <Name>OA-VerifyTokenForGetCustomer</Name>
+  </Step>
+  <Step>
+    <Condition>((proxy.pathsuffix MatchesPath "/customer/detail") and (request.verb = "GET")) and (proxy.basepath = "/*/cds-au/v1/common")</Condition>
+    <Name>OA-VerifyTokenForGetCustomerDetail</Name>
+  </Step>
+  <Step>
+    <Condition> (proxy.basepath = "/*/cds-au/v1/banking/accounts") and ((proxy.pathsuffix MatchesPath "/balances") or (proxy.pathsuffix MatchesPath "/*/balance") or (proxy.pathsuffix MatchesPath "/"))</Condition>
+    <Name>OA-VerifyTokenForGetAccountsBasic</Name>
+  </Step>
+  <Step>
+    <Condition> (proxy.basepath = "/*/cds-au/v1/banking/accounts") and (proxy.pathsuffix MatchesPath "/*/direct-debits" or proxy.pathsuffix MatchesPath "/direct-debits" or proxy.pathsuffix MatchesPath "/*/payments/scheduled")</Condition>
+    <Name>OA-VerifyTokenForGetDirectDebits</Name>
+  </Step>
+  <Step>
+    <Condition>proxy.basepath = "/*/cds-au/v1/banking/payments/scheduled"</Condition>
+    <Name>OA-VerifyTokenForGetDirectDebits</Name>
+  </Step>
+  <Step>
+    <Condition> (proxy.basepath = "/*/cds-au/v1/banking/accounts") and (proxy.pathsuffix MatchesPath "/{theAccountId}") and not (proxy.pathsuffix MatchesPath "/*/direct-debits" or proxy.pathsuffix MatchesPath "/direct-debits" or proxy.pathsuffix MatchesPath "/*/balance" or proxy.pathsuffix MatchesPath "/balances")</Condition>
+    <Name>OA-VerifyTokenForGetAccountDetails</Name>
+  </Step>
+  <Step>
+    <Condition>proxy.basepath = "/*/cds-au/v1/banking/accounts/*/transactions" and request.verb = "GET"</Condition>
+    <Name>OA-VerifyTokenForGetTransactions</Name>
+  </Step>
+  <Step>
+    <Condition>proxy.basepath = "/*/cds-au/v1/banking/payees" and request.verb = "GET"</Condition>
+    <Name>OA-VerifyTokenForGetPayeeAndPayeeDetail</Name>
+  </Step>
+  <Step>
+    <Name>AM-SetCustomerId</Name>
+  </Step>
+  <Step>
+    <Name>FC-TrafficThresholds</Name>
+  </Step>
+  <Step>
+    <Name>LC-RetrieveVerifyExistingCDRArrangementId</Name>
+  </Step>
+  <Step>
+    <Name>FC-ValidateAdrStatus</Name>
+    <Condition>(CDS.cdrRegCheckDisabled != "true")</Condition>
+  </Step>
+  <Step>
+    <Name>FC-VerifyHoK</Name>
+    <Condition>(CDS.holderOfKeyDisabled != "true")</Condition>
+  </Step>
+  <Step>
+    <Name>LC-RetrieveVerifyExistingCDRArrangementId</Name>
+  </Step>
+  <Step>
+    <!-- It is not safe enough to assume token will be revoked during arrangement revocation -->
+    <Name>SC-VerifyExistingCDRArrangmentId</Name>
+    <Condition>(lookupcache.LC-RetrieveVerifyExistingCDRArrangementId.cachehit = "false")</Condition>
+  </Step>
+  <Step>
+    <Name>PC-StoreVerifyExistingCDRArrangementId</Name>
+    <Condition>(lookupcache.LC-RetrieveVerifyExistingCDRArrangementId.cachehit = "false")</Condition>
+  </Step>
+  <Step>
+    <Name>EV-GetStatusFromArrangementResponse</Name>
+  </Step>
+  <Step>
+    <Name>RF-InvalidArrangement</Name>
+    <Condition>(theStatusOfTheArrangement != "ACTIVE" and theStatusOfTheArrangement != "AMENDED")</Condition>
+  </Step>
+  <!-- 10x banking API calls can pick the adrServiceToken variable to pass onto service in authorisation header -->
+  <Step>
+    <Name>EV-GetConsentedAccountsForCustomerAndServiceToken</Name>
+  </Step>
+</SharedFlow>

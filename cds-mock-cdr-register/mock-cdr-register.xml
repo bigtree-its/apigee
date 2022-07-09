@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="mock-cdr-register">
+    <Basepaths>/mock-cdr-register</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1646139396939</CreatedAt>
+    <CreatedBy>nava.kannusamy@10xbanking.com</CreatedBy>
+    <Description>2022-03-01_12-55-15 - Mock proxy that emulates endpoints the CDR Register will support and that are required for dynamic client registration</Description>
+    <DisplayName>mock-cdr-register</DisplayName>
+    <LastModifiedAt>1646139396939</LastModifiedAt>
+    <LastModifiedBy>nava.kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:bf9d2e30a3378608840976f18b7d9a614acebe8ad9fc7f43eb30a960b0e530bef833c44ea50573a0e64c51040db3b2e984eaac12533a4108301cae8a426173ed:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-SetMockJWKSInfo</Policy>
+        <Policy>AM-SetResponse</Policy>
+        <Policy>AM-SetValuesBasedOnOptionalQueryParamsOrDefaults-PrivKeyJWT</Policy>
+        <Policy>AM-SetValuesBasedOnOptionalQueryParamsOrDefaults</Policy>
+        <Policy>EV-SWIdFromURIParam</Policy>
+        <Policy>JS-SetRedirectURIs</Policy>
+        <Policy>JWT-GenerateMockSSAForSWId</Policy>
+        <Policy>JWT-GeneratePrivateKeyJWTForAuth</Policy>
+        <Policy>KVM-GetMockCDRRegisterKeys</Policy>
+        <Policy>RF-NotFound</Policy>
+        <Policy>RF-UnsupportedMethod</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://setRedirectURIs.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints/>
+</APIProxy>

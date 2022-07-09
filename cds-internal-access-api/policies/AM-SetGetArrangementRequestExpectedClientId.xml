@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetGetArrangementRequestExpectedClientId">
+    <DisplayName>AM-SetGetArrangementRequestExpectedClientId</DisplayName>
+    <Set>
+        <Verb>GET</Verb>
+        <Headers>
+            <Header name="Party-Key">{cds.10xPartyKey}</Header>
+        </Headers>
+    </Set>
+    <AssignVariable>
+        <Name>path</Name>
+        <Template>/{CDS.serviceEnvPath}/arrangement-service/v1/bankapp/arrangements/{OIDC.cdr_arrangement_id}?expectedClientId={OIDC.client_id}&amp;partyKey={cds.10xPartyKey}&amp;history=true</Template>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>target.copy.pathsuffix</Name>
+        <Value>false</Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<InvalidateCache async="false" continueOnError="false" enabled="true" name="IC-RemoveCachedPAR">
+  <DisplayName>IC-RemoveCachedPAR</DisplayName>
+  <CacheKey>
+    <KeyFragment ref="request.queryparam.request_uri"/>
+  </CacheKey>
+  <CacheResource>PushedAuthReqs</CacheResource>
+  <Scope>Global</Scope>
+  <!-- <CacheContext><APIProxyName>application_that_added_the_entry</APIProxyName><ProxyName>proxy_for_which_data_was_cached</ProxyName><TargetName>endpoint_for_which_data_was_cached</TargetName></CacheContext> -->
+  <PurgeChildEntries>false</PurgeChildEntries>
+</InvalidateCache>

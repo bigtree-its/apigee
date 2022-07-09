@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="JS-ResolveStandardErros">
+  <DisplayName>JS-ResolveStandardErros</DisplayName>
+  <Properties/>
+  <ResourceURL>jsc://resolve-standard-errors.js</ResourceURL>
+</Javascript>

@@ -1,0 +1,6 @@
+<XMLToJSON async="false" continueOnError="true" enabled="true" name="XTJ-GetAppDetails">
+  <DisplayName>XTJ-GetAppDetails</DisplayName>
+  <Source>AccessEntity.AE-GetAppDetails</Source>
+  <OutputVariable>cds.appDetails</OutputVariable>
+  <Format>yahoo</Format>
+</XMLToJSON>

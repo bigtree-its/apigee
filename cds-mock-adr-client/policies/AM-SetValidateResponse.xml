@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetValidateResponse">
+  <DisplayName>AM-SetValidateResponse</DisplayName>
+  <Properties/>
+  <Set>
+    <Headers>
+      <Header name="test">true</Header>
+    </Headers>
+    <Payload contentType="application/jwt">{request.formparam.jwt}</Payload>
+  </Set>
+</AssignMessage>

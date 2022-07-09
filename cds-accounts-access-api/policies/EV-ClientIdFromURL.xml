@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables name="EV-ClientIdFromURL" continueOnError="true">
+  <DisplayName>EV-ClientIdFromURL</DisplayName>
+  <Source>request</Source>
+  <VariablePrefix>cds</VariablePrefix>
+  <URIPath>
+    <Pattern ignoreCase="true">/clients/{clientId}</Pattern>
+  </URIPath>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

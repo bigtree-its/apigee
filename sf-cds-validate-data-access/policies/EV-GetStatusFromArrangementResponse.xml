@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="true" enabled="true" name="EV-GetStatusFromArrangementResponse">
+  <DisplayName>EV-GetStatusFromArrangementResponse</DisplayName>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <JSONPayload>
+    <Variable name="theStatusOfTheArrangement">
+      <JSONPath>$.status</JSONPath>
+    </Variable>
+  </JSONPayload>
+  <VariablePrefix></VariablePrefix>
+  <Source clearPayload="false">arrangementResponse.content</Source>
+</ExtractVariables>

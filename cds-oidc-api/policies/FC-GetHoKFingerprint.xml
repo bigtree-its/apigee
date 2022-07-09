@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FlowCallout async="false" continueOnError="false" enabled="true" name="FC-GetHoKFingerprint">
+  <DisplayName>FC-GetHoKFingerprint</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <SharedFlowBundle>cds-verify-mtls-and-hok</SharedFlowBundle>
+  <Parameters ignoreUnresolvedVariables="true">
+    <Parameter name="certFingerprintBoundToToken"></Parameter>
+    <Parameter name="verifyHok">false</Parameter>
+  </Parameters>
+</FlowCallout>

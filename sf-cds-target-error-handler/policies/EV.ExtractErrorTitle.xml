@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV.ExtractErrorTitle">
+    <DisplayName>EV.ExtractErrorTitle</DisplayName>
+    <Properties/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="target.error.title">
+            <JSONPath>$.errors[0].title</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <VariablePrefix>cds</VariablePrefix>
+    <Source clearPayload="false">response</Source>
+</ExtractVariables>

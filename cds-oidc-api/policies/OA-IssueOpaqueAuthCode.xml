@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="OA-IssueOpaqueAuthCode">
+    <DisplayName>OA-IssueOpaqueAuthCode</DisplayName>
+    <ClientId>OIDC.client_id</ClientId>
+    <ExpiresIn>60000</ExpiresIn>
+    <ExternalAuthorization>false</ExternalAuthorization>
+    <Operation>GenerateAuthorizationCode</Operation>
+    <RedirectUri>OIDC.redirect_uri</RedirectUri>
+    <ResponseType>AuthorisationCodeResponseType</ResponseType>
+    <Scope>OIDC.scope</Scope>
+    <GenerateResponse enabled="false"/>
+    <Attributes>
+        <Attribute name="userinfo" ref="OIDC.user_info"/>
+        <Attribute name="updated_at" ref="OIDC.idp_authorised_approval_timestamp" type="number"/>
+        <Attribute name="auth_time" ref="client.received.start.timestamp" type="number"/>
+        <!-- ideally get from user login -->
+        <Attribute name="acr" ref="OIDC.acr"/>
+        <!-- ideally get from IdP -->
+        <Attribute name="nonce" ref="OIDC.nonce"/>
+        <Attribute name="consentId" ref="CDS.ConsentId"/>
+        <Attribute name="customerId" ref="OIDC.idp_10x_customer_id" display="false"/>
+        <Attribute name="customerPPId" ref="customerPPId" display="false"/>
+        <Attribute name="customerAccounts" ref="OIDC.idp_attached_accounts" display="false"/>
+        <Attribute name="dataRecipientId" ref="clientLegalEntityId"/>
+        <!-- July 2021 SSA support -->
+        <Attribute name="dataRecipientBrandId" ref="clientOrgId"/>
+        <Attribute name="softwareProductId" ref="clientSoftwareId"/>
+        <Attribute name="requestedCDRArrangementId" ref="OIDC.cdr_arrangement_id" display="false"/>
+        <Attribute name="requestedSharingDuration" ref="OIDC.sharing_duration" display="false"/>
+        <Attribute name="adrKidUsed" ref="OIDC.kid" display="false"/>
+        <Attribute name="codeChallenge" ref="OIDC.code_challenge" display="false"/>
+        <Attribute name="codeChallengeMethod" ref="OIDC.code_challenge_method" display="false"/>
+    </Attributes>
+    <Tokens/>
+</OAuthV2>

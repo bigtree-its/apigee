@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PopulateCache async="false" continueOnError="false" enabled="false" name="PC-StoreBrandIdJWKS">
+  <DisplayName>PC-StoreBrandIdJWKS</DisplayName>
+  <Properties/>
+  <CacheKey>
+    <Prefix>jwks_dh</Prefix>
+    <KeyFragment ref="CDS.brandId"/>
+  </CacheKey>
+  <Scope>Application</Scope>
+  <ExpirySettings>
+    <TimeoutInSec>300</TimeoutInSec>
+  </ExpirySettings>
+  <Source>idTokenServiceJwksResponse.content</Source>
+</PopulateCache>

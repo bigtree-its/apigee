@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-SetHttpStatus500" version="SHA-512:b7786d9c0f2585b9b3ba41660c4d989fbc3df20d09c842331068a3998441cc5582189ec59d5bb25c3fb9f7e2bba78fcf819714284fcb0bce68ef0484e1a627ba"/>
+        <VersionInfo resourceName="EV.ExtractErrorTitle" version="SHA-512:c70fe0e77b2c35ca8322359c2d006de00585ff98fa59b68f6db87887891c6c39cdb10fd35ca41057beaaa7a003758f9f6903b93defabb778075f39a085a46300"/>
+        <VersionInfo resourceName="JS-TargetErrorHandler" version="SHA-512:cc82eff5055b6fd01c5030d85a98932606fb08ec261bc4c23fddbfde1002c86a408779f6b57ad83a47f13b3fa7531d270f6873a4ca290207ca3d9ec8828fa164"/>
+        <VersionInfo resourceName="RF-RaiseFault" version="SHA-512:d86f165d6796a494c10d14218f6bd35da17778adb6db0dc3a9c0d783e533c817c37004293c6993f5c8e40e74e52c464d898343970713d85923f1d463440b13b6"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources>
+        <VersionInfo resourceName="jsc://target-error-handler.js" version="SHA-512:5ea7abf93c34cb3333146aca93053c7b9fffc9f7d62c6d41a511a574f50336c9717497962e395d17d7de304976f1e1824ff933711eb8ac94db7a5e78a7400f2f"/>
+    </Resources>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:af8ca4c0962cb8f34c2000715631417ec02a3057e697dd935a438cb4a03b944ac1019fd2d3b0bb009fbf594aa74ca265544c7ff590cf765208f20bf621bee412"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

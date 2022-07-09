@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FlowCallout async="false" continueOnError="false" enabled="true" name="FC-ValidateAdrStatus">
+  <DisplayName>FC-ValidateAdrStatus</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <SharedFlowBundle>cds-validate-adr-on-register</SharedFlowBundle>
+  <Parameters>
+    <Parameter name="requestedClientId">{firstnonnull(jwt.JWT-DecodeJWTInRequestBody.decoded.claim.iss)}</Parameter>
+    <Parameter name="requestedContext">DCR</Parameter>
+  </Parameters>
+</FlowCallout>

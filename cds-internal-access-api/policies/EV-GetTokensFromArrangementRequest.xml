@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="true" enabled="true" name="EV-GetTokensFromArrangementRequest">
+  <DisplayName>EV-GetTokensFromArrangementRequest</DisplayName>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <JSONPayload>
+    <Variable name="theAccessTokenToRevoke">
+      <JSONPath>$.accessToken</JSONPath>
+    </Variable>
+    <Variable name="theRefreshTokenToRevoke">
+      <JSONPath>$.refreshToken</JSONPath>
+    </Variable>
+  </JSONPayload>
+  <VariablePrefix></VariablePrefix>
+  <Source clearPayload="false">request.content</Source>
+</ExtractVariables>

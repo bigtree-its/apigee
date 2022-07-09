@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-ParseCachedState">
+    <DisplayName>EV-ParseCachedState</DisplayName>
+    <JSONPayload>
+        <Variable name="client_id">
+            <JSONPath>$.client_id</JSONPath>
+        </Variable>
+        <Variable name="state">
+            <JSONPath>$.state</JSONPath>
+        </Variable>
+        <Variable name="redirect_uri">
+            <JSONPath>$.redirect_uri</JSONPath>
+        </Variable>
+        <Variable name="scope">
+            <JSONPath>$.scope</JSONPath>
+        </Variable>
+        <Variable name="nonce">
+            <JSONPath>$.nonce</JSONPath>
+        </Variable>
+        <Variable name="response_type">
+            <JSONPath>$.response_type</JSONPath>
+        </Variable>
+        <Variable name="sharing_duration">
+            <JSONPath>$.sharing_duration</JSONPath>
+        </Variable>
+        <Variable name="cdr_arrangement_id">
+            <JSONPath>$.cdr_arrangement_id</JSONPath>
+        </Variable>
+        <Variable name="acr">
+            <JSONPath>$.acr</JSONPath>
+        </Variable>
+        <Variable name="user_info">
+            <JSONPath>$.user_info</JSONPath>
+        </Variable>
+        <Variable name="kid">
+            <JSONPath>$.kid</JSONPath>
+        </Variable>
+        <Variable name="sector_identifier">
+            <JSONPath>$.sector_identifier</JSONPath>
+        </Variable>
+        <Variable name="api_hostname_open">
+            <JSONPath>$.api_hostname_open</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <VariablePrefix>OIDC</VariablePrefix>
+    <Source clearPayload="false">cachedStateVal</Source>
+</ExtractVariables>

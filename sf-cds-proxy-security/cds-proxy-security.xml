@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="4" name="cds-proxy-security">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1646144158610</CreatedAt>
+    <CreatedBy>Nava.Kannusamy@10xbanking.com</CreatedBy>
+    <Description>Development</Description>
+    <DisplayName>cds-proxy-security</DisplayName>
+    <LastModifiedAt>1646144158610</LastModifiedAt>
+    <LastModifiedBy>Nava.Kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:ffb0376b818c69493f9ad00e1ff3430f6706acb317cb8f8b3b0bbf40b51885e92b9d3d26236e819831a81e9c375e6b2e23560b1f807e07e6116889b4d50e801e:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-InitialiseJourney</Policy>
+        <Policy>AM-SetJourney</Policy>
+        <Policy>AM-SpikeArrestRate</Policy>
+        <Policy>AM-UUID</Policy>
+        <Policy>FC-IPAccessControl</Policy>
+        <Policy>JS-GenerateTraceId</Policy>
+        <Policy>JS-WhitelistHeaders</Policy>
+        <Policy>KVM-Security-Properties</Policy>
+        <Policy>KVM-forgerock-public</Policy>
+        <Policy>RF-RegularExpressionExpectionFault</Policy>
+        <Policy>SA-SpikeArrest</Policy>
+        <Policy>TP-RegularExpressionProtection</Policy>
+        <Policy>Verify-APIKey</Policy>
+    </Policies>
+    <Resources>
+        <Resource>jsc://js-generate-trace-id.js</Resource>
+        <Resource>jsc://js-whitelist-headers.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

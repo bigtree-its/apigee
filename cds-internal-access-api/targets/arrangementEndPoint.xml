@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<TargetEndpoint name="arrangementEndPoint">
+  <FaultRules>
+    <FaultRule name="Arrangement service access failed">
+      <Description>Arrangement service access failed</Description>
+      <Step>
+        <Name>EV-ExtractErrorFromServiceResponse</Name>
+      </Step>
+    </FaultRule>
+  </FaultRules>
+  <PreFlow name="PreFlow Checks">
+    <Request />
+    <Response />
+  </PreFlow>
+  <Flows>
+    <Flow name="Get arrangement history for get consent">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>AM-SetGetArrangementRequestExpectedClientId</Name>
+        </Step>
+      </Request>
+      <Response></Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/consents/{consentId}") and (request.verb = "GET")</Condition>
+    </Flow>
+  </Flows>
+  <HTTPTargetConnection>
+    <Properties>
+      <Property name="success.codes">2xx</Property>
+      <Property name="io.timeout.millis">5000</Property>
+    </Properties>
+    <LoadBalancer>
+      <Server name="cds-arrangement-microservice"/>
+    </LoadBalancer>
+    <Path>{path}</Path>
+  </HTTPTargetConnection>
+</TargetEndpoint>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout name="SC-GenerateInternalServiceToken-IssueToken" continueOnError="false">
+  <DisplayName>SC-GenerateInternalServiceToken-IssueToken</DisplayName>
+  <Request clearPayload="true" variable="internalServiceToken">
+    <Set>
+      <Payload contentType="application/json">{
+  "sub": "{oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.customerId}",
+  "iat": {CDS.updateAtEpoch},
+  "exp": {CDS.tokenExp},
+  "softwareId": "{oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.softwareProductId}",
+  "clientId": "{apigee.client_id}",
+  "scope": {accessTokenScopeArray},
+  "10x": {
+      "tenant": "{CDS.dataHolderName}",
+      "dataHolderTenantKey": "{CDS.dataHolderTenantKey}",
+      "dataHolderBrandId": "{CDS.dataHolderBrandId}",
+      "state": "{userinfoservice.state}",
+      "arrangementId": "{cdrArrangementId}",
+      "subscriptions": {subscriptionsFormatedArray}
+  }
+            }
+</Payload>
+      <Verb>POST</Verb>
+      <Path>/internal/token/sign</Path>
+    </Set>
+  </Request>
+  <Response>internalServiceTokenResponse</Response>
+  <Timeout>10000</Timeout>
+  <HTTPTargetConnection>
+    <Properties>
+      <Property name="success.codes">2xx</Property>
+      <Property name="io.timeout.millis">5000</Property>
+    </Properties>
+    <LoadBalancer>
+      <Server name="cds-token-microservice"/>
+    </LoadBalancer>
+    <Path>{CDS.serviceEnvPath}/token-service/v1</Path>
+  </HTTPTargetConnection>
+</ServiceCallout>

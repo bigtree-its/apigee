@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables name="EV-GetBrandIdFromPath" continueOnError="true">
+  <DisplayName>EV-GetBrandIdFromPath</DisplayName>
+  <Source>request</Source>
+  <VariablePrefix>CDS</VariablePrefix>
+  <Variable name="request.path">
+    <Pattern ignoreCase="true">/{brandId}/register</Pattern>
+    <Pattern ignoreCase="true">/{brandId}/register/*</Pattern>
+  </Variable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

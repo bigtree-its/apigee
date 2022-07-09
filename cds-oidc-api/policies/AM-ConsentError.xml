@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-ConsentError">
+  <DisplayName>AM-ConsentError</DisplayName>
+  <Set>
+    <Payload contentType="application/json">{
+ "errors": [
+    {
+      "code": "422",
+      "title": "Unprocessable Entity",
+      "detail": "Invalid CDR Arrangement Id or not active or not associated with client_id or customer"
+    }
+  ]
+}</Payload>
+    <Headers>
+      <Header name="x-fapi-interaction-id">{fapiInteractionId}</Header>
+    </Headers>
+    <StatusCode>422</StatusCode>
+    <ReasonPhrase>Unprocessable Entity</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="message"/>
+</AssignMessage>

@@ -1,0 +1,8 @@
+<AssignMessage continueOnError="false" enabled="true" name="AM-SetAuthorizationHeader">
+  <Set>
+    <Headers>
+      <Header name="Authorization">{private.apigeeAuth}</Header>
+    </Headers>
+  </Set>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

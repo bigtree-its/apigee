@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+  <Step>
+    <Name>FC-GetAdrApp</Name>
+    <Condition>requestedContext = "Auth"</Condition>
+  </Step>
+  <Step>
+    <Name>LC-RetrieveResponsibilityServiceAdrStatus</Name>
+  </Step>
+  <Step>
+    <Name>SC-GetResponsibilityServiceAdrStatus</Name>
+    <Condition>(lookupcache.LC-RetrieveResponsibilityServiceAdrStatus.cachehit = "false")</Condition>
+  </Step>
+  <Step>
+    <Name>RF-ADRNotFound</Name>
+    <Condition>lookupcache.LC-RetrieveResponsibilityServiceAdrStatus.cachehit = "false" and servicecallout.SC-GetResponsibilityServiceAdrStatus.failed = "true" and requestedContext = "Auth"</Condition>
+  </Step>
+  <Step>
+    <Name>RF-ADRNotFound-DCR</Name>
+    <Condition>lookupcache.LC-RetrieveResponsibilityServiceAdrStatus.cachehit = "false" and servicecallout.SC-GetResponsibilityServiceAdrStatus.failed = "true" and requestedContext = "DCR"</Condition>
+  </Step>
+  <Step>
+    <Name>AM-ExtractResponsibilityServiceAdrStatusContent</Name>
+    <Condition>(lookupcache.LC-RetrieveResponsibilityServiceAdrStatus.cachehit = "false")</Condition>
+  </Step>
+  <Step>
+    <Name>PC-StoreResponsibilityServiceAdrStatus</Name>
+    <Condition>(lookupcache.LC-RetrieveResponsibilityServiceAdrStatus.cachehit = "false")</Condition>
+  </Step>
+  <Step>
+    <Name>EV-GetADRStatus</Name>
+  </Step>
+  <Step>
+    <Name>RF-ADRBlocked</Name>
+    <Condition>getADRStatus.status = "false" and requestedContext = "Auth"</Condition>
+  </Step>
+  <Step>
+    <Name>RF-ADRBlocked-DCR</Name>
+    <Condition>getADRStatus.status = "false" and requestedContext = "DCR"</Condition>
+  </Step>
+</SharedFlow>

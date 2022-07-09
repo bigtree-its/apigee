@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetOtpLoginTargetRequest">
+    <DisplayName>AM-SetOtpLoginTargetRequest</DisplayName>
+    <Properties/>
+    <AssignVariable>
+        <Name>targetUrlPath</Name>
+        <Value>/v1/login/otp</Value>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>target.copy.pathsuffix</Name>
+        <Value>false</Value>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

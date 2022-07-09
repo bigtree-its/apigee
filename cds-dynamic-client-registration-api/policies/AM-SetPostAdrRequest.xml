@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetPostAdrRequest">
+  <DisplayName>AM-SetPostAdrRequest</DisplayName>
+  <Set>
+    <Verb>POST</Verb>
+    <Headers>
+      <Header name="x-reg-client-id">{theAppId}</Header>
+      <Header name="x-dataholder-brand-id">{CDS.brandId}</Header>
+    </Headers>
+  </Set>
+  <AssignVariable>
+    <Name>path</Name>
+    <Template>/{CDS.serviceEnvPath}/dcr-service/v1/register</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>target.copy.pathsuffix</Name>
+    <Value>false</Value>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

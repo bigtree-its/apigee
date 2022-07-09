@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-ExtractBrandId">
+    <DisplayName>EV-ExtractBrandId</DisplayName>
+    <Properties/>
+    <Source>request</Source>
+    <VariablePrefix>CDS</VariablePrefix>
+    <Variable name="request.path">
+        <Pattern ignoreCase="true">/{brandId}/cds-au/v1/*</Pattern>
+    </Variable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

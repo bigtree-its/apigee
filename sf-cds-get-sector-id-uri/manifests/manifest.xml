@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-RemoveProtocolFromSectorIdURI" version="SHA-512:392cec0b81b821b0d8f16a9ffc3fb67193a64276c83f2044888d6b9c19af10dd0194e181a1146bc3915f6610d8a3360aec7392168d786910ba39f81a3319f62a"/>
+        <VersionInfo resourceName="AM-SetMockSectorIdURI" version="SHA-512:b3673dcc3c59ef76407cf1b9e1f722bd39031dedfb2f144f7f47b9246ae0cb6925ea03c5cbe364a0b1e84ddb66c411e5a3075fcc69bdac5e079287ca30806f24"/>
+        <VersionInfo resourceName="AM-SetSectorIdURIVar" version="SHA-512:0abdbb71750ff094c6f72e566cf22ae2a87532484098117f5afb17a615893580cfba7db477f2fd223ef20aeec8ec21c548e83109bd0943b1ec25391544c194d3"/>
+        <VersionInfo resourceName="SC-RetrieveSectorIdURI" version="SHA-512:b88e2ca9a598e81123187a4a99f1ed00f76dd3d3ebb6ff927abd525dfe4ae3d77da0bd11c1193a67355c8ec9698e1b197a407887dfa6a225bb5627972def9e6a"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources/>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:4d7945052401c2bdc30e8522d3ef0789e6a8292554cf7b1362e986b05fe5a8d9fa7bbc00f7f4df21567a2f9a3acbb31199fb9ae70647d0e268f70856798be8d9"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

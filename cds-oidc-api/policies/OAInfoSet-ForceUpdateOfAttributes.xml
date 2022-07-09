@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SetOAuthV2Info async="false" continueOnError="false" enabled="true" name="OAInfoSet-ForceUpdateOfAttributes">
+  <DisplayName>OAInfoSet-ForceUpdateOfAttributes</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <AccessToken ref="oauthv2accesstoken.OA-RefreshOpaqueAccessToken.access_token"/>
+  <Attributes>
+    <Attribute name="userinfo" ref="oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.userinfo"/>
+    <Attribute name="updated_at" ref="oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.updated_at" type="number"/>
+    <Attribute name="auth_time" ref="oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.auth_time" type="number"/>
+    <Attribute name="acr" ref="oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.acr"/>
+    <Attribute name="nonce" ref="oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.nonce"/>
+    <Attribute name="consentId" ref="oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.consentId"/>
+    <Attribute name="customerId" ref="oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.customerId"/>
+    <Attribute name="customerPPId" ref="oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.customerPPId"/>
+    <Attribute name="cdrArrangementId" ref="oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.cdrArrangementId"/>
+    <Attribute name="dataRecipientId" ref="oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.dataRecipientId"/>
+    <Attribute name="dataRecipientBrandId" ref="oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.dataRecipientBrandId"/>
+    <Attribute name="softwareProductId" ref="oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.softwareProductId"/>
+    <Attribute name="certFingerprint" ref="certFingerprint"/>
+    <Attribute name="adrKidUsed" ref="oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.adrKidUsed"/>
+  </Attributes>
+</SetOAuthV2Info>

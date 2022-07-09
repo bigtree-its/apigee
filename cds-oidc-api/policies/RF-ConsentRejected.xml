@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-ConsentRejected">
+  <DisplayName>RF-ConsentRejected</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <FaultResponse>
+    <AssignVariable>
+      <Name>faultType</Name>
+      <Value>consent_rejected</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>faultTypeMessage</Name>
+      <Value>access_denied</Value>
+    </AssignVariable>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <ShortFaultReason>false</ShortFaultReason>
+</RaiseFault>

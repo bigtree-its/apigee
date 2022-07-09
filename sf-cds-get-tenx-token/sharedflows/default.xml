@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+  <Step>
+    <Name>LC-LookupCache</Name>
+    <Condition>(tenx_platform.tenxToken = null or tenx_platform.tenxToken = "")</Condition>
+  </Step>
+  <Step>
+    <Name>RF-InvalidAccessToken</Name>
+    <Condition>(tenx_platform.tenxToken = null or tenx_platform.tenxToken = "")</Condition>
+  </Step>
+  <Step>
+    <Name>DJ-DecodeTenxToken</Name>
+  </Step>
+  <Step>
+    <Name>RF-FailedToDecodeJWT</Name>
+    <Condition>(JWT.DJ-DecodeTenxToken.failed = true)</Condition>
+  </Step>
+  <Step>
+    <Name>AM-ColleagueIndicator</Name>
+  </Step>
+  <Step>
+    <Name>RF-Forbidden</Name>
+    <Condition>(tenx_token.colleague_indicator = null and verifyapikey.Verify-APIKey.isCRM == "true")</Condition>
+  </Step>
+</SharedFlow>

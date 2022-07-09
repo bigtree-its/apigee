@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PopulateCache async="false" continueOnError="false" enabled="true" name="PC-StoreOIDCConfig">
+  <DisplayName>PC-StoreOIDCConfig</DisplayName>
+  <CacheKey>
+    <KeyFragment>OIDCConfig</KeyFragment>
+    <KeyFragment ref="theBrandId"/>
+  </CacheKey>
+  <Scope>Global</Scope>
+  <ExpirySettings>
+    <TimeoutInSeconds>60</TimeoutInSeconds>
+  </ExpirySettings>
+  <Source>OIDCConfig</Source>
+</PopulateCache>

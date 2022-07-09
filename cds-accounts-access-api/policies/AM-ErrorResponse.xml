@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage name="AM-ErrorResponse" enabled="true" continueOnError="false" async="false">
+  <DisplayName>AM-ErrorResponse</DisplayName>
+  <Properties/>
+  <Set>
+    <Headers>
+      <Header name="Content-Type">application/json</Header>
+    </Headers>
+    <Payload contentType="application/json" variablePrefix="@" variableSuffix="#">
+            {  
+                "ref": "@messageid#",
+                "status": "@flow.myapi.error.status#",
+                "code": "@flow.myapi.error.code#",
+                "message": "@flow.myapi.error.message#"
+            }
+        </Payload>
+    <QueryParams/>
+    <FormParams/>
+    <StatusCode>{flow.myapi.error.status}</StatusCode>
+    <ReasonPhrase>{flow.myapi.error.reason}</ReasonPhrase>
+    <Path/>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo type="response" transport="http" createNew="false"/>
+</AssignMessage>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations mapIdentifier="cdsproperties" name="KVM-CdsProperties">
+  <DisplayName>KVM-CdsProperties</DisplayName>
+  <Get assignTo="cdstenx.accountsVersion">
+    <Key>
+      <Parameter ref="cdstenx.accountsVersionFromBasePath"/>
+    </Key>
+  </Get>
+  <Get assignTo="cdstenx.spikearrest.Ratelimit">
+    <Key>
+        <Parameter>ratelimit_cds-banking-accounts-api</Parameter>
+    </Key>
+  </Get>
+  <Get assignTo="cdstenx.spikearrest.enabled">
+    <Key>
+        <Parameter>ratelimit_enabled</Parameter>
+    </Key>
+  </Get>
+</KeyValueMapOperations>

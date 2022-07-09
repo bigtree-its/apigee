@@ -1,0 +1,11 @@
+<LookupCache async="false" continueOnError="false" enabled="true" name="LC-LookupCache">
+    <DisplayName>LC-LookupCache</DisplayName>
+    <Properties/>
+    <CacheKey>
+        <Prefix>access_token</Prefix>
+        <KeyFragment ref="apigee.access_token"/>
+    </CacheKey>
+    <CacheResource>tenx_token_cache</CacheResource>
+    <CacheLookupTimeoutInSeconds/>
+    <AssignTo>tenx_platform.tenxToken</AssignTo>
+</LookupCache>

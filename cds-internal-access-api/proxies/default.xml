@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <DefaultFaultRule name="all">
+        <AlwaysEnforce>true</AlwaysEnforce>
+        <Step>
+            <Name>AM-InvalidAccessToken</Name>
+            <Condition>oauthV2.OAuth-VerifyConsentToken.failed = true</Condition>
+        </Step>
+        <Step>
+            <Name>AM-InvalidApiKey</Name>
+            <Condition>oauthV2.Verify-APIKey.failed = true</Condition>
+        </Step>
+        <Step>
+            <Name>AM-Add-CORS-Headers</Name>
+            <Condition>(currentstep.flowstate = "PROXY_REQ_FLOW")</Condition>
+        </Step>
+        <Step>
+            <Name>FC-ProxyErrorHandler</Name>
+        </Step>
+    </DefaultFaultRule>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>FC-IPAccessControl</Name>
+            </Step>
+            <Step>
+                <Name>AM-Set-CORS-Headers</Name>
+                <Condition>(currentstep.flowstate = "PROXY_REQ_FLOW") or (current.flow.name = "CORS") or ((current.flow.name = "PreFlow"))</Condition>
+            </Step>
+            <Step>
+                <Name>EV-Headers</Name>
+            </Step>
+            <Step>
+                <Name>FC-ValidateBrandId</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="Get client only">
+            <Description>Returns the ADR info</Description>
+            <Request>
+                <Step>
+                    <Name>EV-ClientIdFromURL</Name>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidClientId</Name>
+                    <Condition>NOT (cds.clientId ~~ "^[a-zA-Z0-9]{32}$")</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetClientId</Name>
+                </Step>
+                <Step>
+                    <Name>LC-RetrieveApp</Name>
+                </Step>
+                <Step>
+                    <Name>AE-GetAppDetails</Name>
+                    <Condition>(lookupcache.LC-RetrieveApp.cachehit = "false") or (cds.appDetails = null)</Condition>
+                </Step>
+                <Step>
+                    <Name>XTJ-GetAppDetails</Name>
+                    <Condition>(lookupcache.LC-RetrieveApp.cachehit = "false") or (cds.appDetails = null)</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-NotFoundClientId</Name>
+                    <Condition>(xmltojson.failed = "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>PC-CacheApp</Name>
+                    <Condition>(lookupcache.LC-RetrieveApp.cachehit = "false") and (cds.appDetails != null)</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-RemoveResponseHeaders</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>JS-GetClientResponse</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/clients/{clientId}") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="Get consent and available history">
+            <Description>Returns the consent request and ADR info</Description>
+            <Request>
+                <Step>
+                    <Name>Verify-APIKey</Name>
+                </Step>
+                <Step>
+                    <Name>FC-VerifyAccessToken</Name>
+                </Step>
+                <Step>
+                    <Name>FC-GetTenxToken</Name>
+                </Step>
+                <Step>
+                    <Name>JS-ExtractPartyKey</Name>
+                </Step>
+                <Step>
+                    <Name>EV-ConsentIdFromURL</Name>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidConsentId</Name>
+                    <Condition>NOT (cds.consentId ~~ "^(?i)[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89AB][0-9a-f]{3}-[0-9a-f]{12}$")</Condition>
+                </Step>
+                <Step>
+                    <Name>LC-RetrieveCachedOIDCState</Name>
+                </Step>
+                <Step>
+                    <Name>RF-NotFoundConsentId</Name>
+                    <Condition>lookupcache.LC-RetrieveCachedOIDCState.cachehit = "false"</Condition>
+                </Step>
+                <Step>
+                    <Name>EV-ParseCachedState</Name>
+                </Step>
+                <Step>
+                    <Name>AM-SetClientId</Name>
+                </Step>
+                <Step>
+                    <Name>LC-RetrieveApp</Name>
+                </Step>
+                <Step>
+                    <Name>AE-GetAppDetails</Name>
+                    <Condition>(lookupcache.LC-RetrieveApp.cachehit = "false") or (cds.appDetails = null)</Condition>
+                </Step>
+                <Step>
+                    <Name>XTJ-GetAppDetails</Name>
+                    <Condition>(lookupcache.LC-RetrieveApp.cachehit = "false") or (cds.appDetails = null)</Condition>
+                </Step>
+                <Step>
+                    <Name>PC-CacheApp</Name>
+                    <Condition>(lookupcache.LC-RetrieveApp.cachehit = "false") and (cds.appDetails != null)</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-RemoveResponseHeaders</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>JS-GetConsentResponse</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/consents/{consentId}") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="Update consent with account selection">
+            <Description>Update consent with account selection</Description>
+            <Request>
+                <Step>
+                    <Name>Verify-APIKey</Name>
+                </Step>
+                <Step>
+                    <Name>FC-VerifyAccessToken</Name>
+                </Step>
+                <Step>
+                    <Name>FC-GetTenxToken</Name>
+                </Step>
+                <Step>
+                    <Name>JS-ExtractPartyKey</Name>
+                </Step>
+                <Step>
+                    <Name>EV-ConsentIdFromURL</Name>
+                </Step>
+                <Step>
+                    <Name>LC-RetrieveCachedOIDCState</Name>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidConsentId</Name>
+                    <Condition>lookupcache.LC-RetrieveCachedOIDCState.cachehit = "false"</Condition>
+                </Step>
+                <Step>
+                    <Name>EV-ParseCachedState</Name>
+                </Step>
+                <Step>
+                    <Name>EV-GetRequestAuthorisedInfo</Name>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidAuthorisedInfo</Name>
+                    <Condition>(cds.authorisedApproval != "true") and (cds.authorisedApproval != "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidAuthorisedInfo</Name>
+                    <Condition>(extractvariables.EV-GetRequestAuthorisedInfo.failed = "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetConsentCacheValueFromStateCached</Name>
+                </Step>
+                <Step>
+                    <Name>PC-CacheOIDCConsent</Name>
+                </Step>
+                <Step>
+                    <Name>AM-RemoveResponseHeaders</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AM-PutConsentResponse</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/consents/{consentId}") and (request.verb = "PUT")</Condition>
+        </Flow>
+        <Flow name="CORS">
+            <Description>ignore OPTIONS request</Description>
+            <Request/>
+            <Response/>
+            <Condition>(request.verb = "OPTIONS") and (proxy.pathsuffix MatchesPath "/**")</Condition>
+        </Flow>
+        <Flow name="Not Found">
+            <Description>Not Found</Description>
+            <Request>
+                <Step>
+                    <Name>RF-NotFound</Name>
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response>
+            <Step>
+                <Name>AM-Add-CORS-Headers</Name>
+                <Condition>(currentstep.flowstate = "RESP_SENT") or (current.flow.name = "PostFlow")</Condition>
+            </Step>
+        </Response>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/*/cds-au/v1/cdr</BasePath>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="preflight">
+        <Condition>request.verb == "OPTIONS"</Condition>
+    </RouteRule>
+    <RouteRule name="arrangementEndPointForAuthFlow">
+        <TargetEndpoint>arrangementEndPoint</TargetEndpoint>
+        <Condition>(proxy.pathsuffix MatchesPath "/consents/{consentId}") and (request.verb = "GET") and (OIDC.cdr_arrangement_id != "none")</Condition>
+    </RouteRule>
+    <RouteRule name="noroute"/>
+</ProxyEndpoint>

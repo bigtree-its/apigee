@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="EV-GetADRDetailsFromSSA" version="SHA-512:ea4dc3cc6f3090b2dc9e0e0c97704d84bac236b2dee3733366f388802d5e36cca620ea88a1bfb748b07873322f7a946d62b9eab1691ab2d683f0f0c20d75d709"/>
+        <VersionInfo resourceName="FC-CheckTokenNotReused" version="SHA-512:8cb3458752caf854fa80c7c914167d2953487322eb1a510b7ae7bf9cdb8b5b2c2abc5ad7885823f972927233a9324fd11865c1c913a1810217692b7378e969c7"/>
+        <VersionInfo resourceName="JS-SetSoftwareJwksServiceCallout" version="SHA-512:879b9ad804c61938eaa2ad0637d9c5c9ee5bbf3a71929f71c6e00f4b30b00bb01246b317d2f13a55a5aa5f4a63dca68b7316804159a09b86d1e3dac353fe6b3a"/>
+        <VersionInfo resourceName="JWT-VerifyCDRSSAToken" version="SHA-512:609cc5b6e559f057efff0972976a361a6481b7c5901abd80a387dddbf6800a562f2ecc9a610b66539cd3659a14bc7b183367a3e2067a6d03d014d39a0e4336d7"/>
+        <VersionInfo resourceName="RF-MissingEXPClaim" version="SHA-512:3c35627cb0a455f8ea2aa25ff88514bc1ab81bd7f3e3e758adc89c37a1fe0b765edc13fc273c6dca8cd707cd412fe1d2230141c57044932bdd8acdbf4b4a66e1"/>
+        <VersionInfo resourceName="RF-MissingJWTTokenSSA" version="SHA-512:1633e14ef4454746a3bc6b9ee08748ede4d6ae42bee047eb39d95ef0f8a2a9ab59e58b36e1191df03b3de7cbef93d453b75992c5b604744337dba4fd1013e2a1"/>
+        <VersionInfo resourceName="RF-TokenNotVerifiedSSA" version="SHA-512:0712a41e3861f9491e1c4e98bf87f4b21a6524a7803dcbf998359c678c79917133a8efd10f0906904f36a067b021022daa728e48080f941ff348a67b963acc4d"/>
+        <VersionInfo resourceName="SC-SoftwareJwks" version="SHA-512:d9461a8e557fb5602542a3938e9144071a6a478b1fad5685800c409739bb0b9ea9cd519623c4d3421348b805d6e9aca86b6b4f431cf9a76401bdb40d31bde44e"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources>
+        <VersionInfo resourceName="jsc://set-software-jwks-sc.js" version="SHA-512:dfa6fe1a5d523389dc088295001242029bb15a369ebcd9f0c2fb8b92a36af1682f9fcd98f711415d5edb3a8a81a11e6068979a6aca7e7eaae24591d22a8f1659"/>
+    </Resources>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:0c4c4b237f8b61546e8ae59c4a2c20568612243e77f454d497962bb807f0b7e869f9e54286513995fc7a3c0412283a43bc1cd840dd99e9ad50b13503c163a4de"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

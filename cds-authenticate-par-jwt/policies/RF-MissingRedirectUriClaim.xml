@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-MissingRedirectUriClaim">
+  <DisplayName>RF-MissingRedirectUriClaim</DisplayName>
+  <FaultResponse>
+    <Set>
+      <!-- oidc conformance requires "error": "invalid_request_object" -->
+      <Payload contentType="application/json">{
+              "error": "invalid_request_object",
+ "errors": [
+    {
+      "code": "400",
+      "title": "Bad Request",
+      "detail": "Missing claim: redirect_uri"
+    }
+  ]
+}</Payload>
+      <StatusCode>400</StatusCode>
+      <ReasonPhrase>Bad Request</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+</RaiseFault>

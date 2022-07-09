@@ -1,0 +1,26 @@
+<ServiceCallout name='SC-ApprovedOrganisationApps'>
+  <Request variable='approvedOrganisationAppsGetRequest'>
+    <Set>
+      <Verb>GET</Verb>
+      <Path>{sc_urlPath}</Path>
+      <Headers>
+        <Header name="Authorization">{private.apigeeAuth}</Header>
+      </Headers>
+      <QueryParams>
+        <QueryParam name="expand">true</QueryParam>
+        <QueryParam name="status">approved</QueryParam>
+      </QueryParams>
+    </Set>
+  </Request>
+  <Response>approvedOrganisationApps</Response>
+  <HTTPTargetConnection>
+    <SSLInfo>
+      <Enabled>true</Enabled>
+      <IgnoreValidationErrors>false</IgnoreValidationErrors>
+    </SSLInfo>
+    <Properties>
+      <Property name='success.codes'>2xx</Property>
+    </Properties>
+    <URL>https://dummy.this.will.get.set.dynamically</URL>
+  </HTTPTargetConnection>
+</ServiceCallout>

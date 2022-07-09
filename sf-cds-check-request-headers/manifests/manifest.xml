@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-Extract-Pagination-Params" version="SHA-512:3caf9f28e6e6c6eec414aa25b10fe166b120901fce64b9be87c610894f965238b21a257907c303e2a161a2b160c1f3e9ae4e806f75b1b290af21f59d75958fa1"/>
+        <VersionInfo resourceName="AM-ExtractContentTypeAndAcceptHeaders" version="SHA-512:206bc3abf1578ceefe5e38c4c801eabf4c595d6d9b5c8750f9aed778968fed88e65f21c061851980486c78f5686c350f3c4b4ab47996dfe6c82eb31ec97738af"/>
+        <VersionInfo resourceName="AM-SetEndpointVersionTo1" version="SHA-512:3f7e20e5d9aecc16143e88c898b17004a965a1f01c2d07523485a9fdb970a818483823ebc95de313ec62f6a808864826a9accf7c77de7c8d896268f4db937b70"/>
+        <VersionInfo resourceName="AM-SetEndpointVersionTo2" version="SHA-512:f20af1501b9e204dbf1344ee688faae704b12f7cef7a0a30f8cc912b93447c1b5852d48a1b30b28ef624455df57c22db3f0d7fd504419ddddd2ce5c457854258"/>
+        <VersionInfo resourceName="AM-SetEndpointVersionTo3" version="SHA-512:b26774bf7d37827277f0ab7e935b35becc1d6506056727393f78aa491177ae26e1f3694cf499588834adfd1692b3506708ba64f7aa7fb76429540580360b4f7f"/>
+        <VersionInfo resourceName="EV-Preserve-Request-Headers" version="SHA-512:9ab5f55918d39d4b5c505f334ac4638296ef4f604eefa616d5cd5a76eb6f9de03e8157b17d6e22d66d03e000b1edf4fc71ed609d3bafb4614d4419a8b6e490bf"/>
+        <VersionInfo resourceName="FC-DecideIfCustomerIsPresent" version="SHA-512:5042b008a822e00995129fff62158b4f2e4e71f809a89289e1bfb888bd2a19ee9de38b7c68a228d010f5e16208741462e3ac63a4349cf76d869e146b1ec25ce8"/>
+        <VersionInfo resourceName="JS-CheckVersionHeaders" version="SHA-512:51036b2256aa247d4765f50622c6438564728c280fc12ec361ddf57e4a653640db353ff97b10d4991b63bd3046f37df71889b40eb637db35ff7fa0237577a866"/>
+        <VersionInfo resourceName="RF-Invalid-Accept-Header" version="SHA-512:2ad52c94c2b94692246c5bb878099eaac0bfb40eb00c611b8db07b56732fee52302b1565b289440f0f4d1fbf02decdf552380d7bcaacbbbb761294cf59db6e07"/>
+        <VersionInfo resourceName="RF-Invalid-Content-Type-Header" version="SHA-512:37b23e66b0c7b802b18270bdc30d83f175930a2ad7ff9cd7d6dae7a5cac27b4bc8e15d0ccfce440f3335d9fc690062dd57ac9feca90cc1d8540af033fde2353a"/>
+        <VersionInfo resourceName="RF-Invalid-Version" version="SHA-512:b28d3d4718e6acc64ea46fa2dd0b5d921d85bbf7de54cd4d9820eec305b546dc985230f4c5e9173462f380f8911ce5ea9d1eaedc46ee56d4ddc2dfd74bdb506f"/>
+        <VersionInfo resourceName="RF-Missing-Authdate-Header" version="SHA-512:ab8adc7afe86de5670022631071f2ce39d26415780b930b6ad749ac8b5404990bce9886caf84c62e4727a7899642e94d5fd62b89e4516ff6f00826c609292b3d"/>
+        <VersionInfo resourceName="RF-Missing-Invalid-cdsClientHeaders-Header" version="SHA-512:51d915c92b56ef9081d549d77c51500326a34dc0e2c10a63a9da474bfec122c11073df751f696139d9899fe76e149e3798753076b57132f287b6317551dd8109"/>
+        <VersionInfo resourceName="RF-Return-CORS-Headers" version="SHA-512:dd10e44db0f84b6a5f3b5b0c4469320dd2565ca52e56146bb96f72bd3199a3ffd3991241bf1c2742a50e7a81eaa9699be9aff33445a17031365107c49f1a59f3"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources>
+        <VersionInfo resourceName="jsc://checkVersionHeaders.js" version="SHA-512:b7ab425866cc29354810d32b051fa07e8199b00da38ed02df413e0e2aeb4886c6447e70b1fb39abe5c319d6612d4886e560056497443effd761dbe78ef54a2eb"/>
+    </Resources>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:20a4df2fc56d8ed812075e0baf7fb05a9c88790a0232a7d3c1d78f01e739d5abd3583dbce8200ef7c6bb0b5c8f448aae5c0a1c5a378fbdc6f7835387f98c6893"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

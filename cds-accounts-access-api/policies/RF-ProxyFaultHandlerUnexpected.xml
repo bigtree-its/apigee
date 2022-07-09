@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault name="RF-ProxyFaultHandlerUnexpected">
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <FaultResponse>
+    <Set>
+      <Payload contentType="application/json">
+                {
+                "ref": "{messageid}",
+                "status": 500,
+                "code": "500.001.001",
+                "message": "Something went wrong while processing your request. Please try again later."
+                }
+            </Payload>
+      <StatusCode>500</StatusCode>
+      <ReasonPhrase>Internal server error</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+</RaiseFault>

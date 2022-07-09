@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault name="RF-MtlsErrorResponse">
+    <DisplayName>RF-MtlsErrorResponse</DisplayName>
+    <FaultResponse>
+        <Set>
+            <Headers>
+                <Header name="Content-Type">application/json</Header>
+                <Header name="x-fapi-interaction-id">{request.header.x-fapi-interaction-id}</Header>
+                <Header name="x-apigee-message-id">{messageid}</Header>
+                <Header name="x-epoch">{substring(system.timestamp,0,10)}</Header>
+            </Headers>
+            <Payload contentType="application/json; charset=utf-8">
+                {
+                    "error": "invalid_grant",
+                    "errors": [
+                      {
+                        "code": "{cdstenx.error.code}",
+                        "title": "{cdstenx.error.title}",
+                        "detail": "{cdstenx.error.detail}"
+                      }
+                    ]
+                 }
+            </Payload>
+            <StatusCode>{cdstenx.error.status}</StatusCode>
+            <ReasonPhrase>{cdstenx.error.reasonphrase}</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

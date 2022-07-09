@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="2" name="cds-get-jwks-from-dynamic-uri">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1646139555368</CreatedAt>
+    <CreatedBy>nava.kannusamy@10xbanking.com</CreatedBy>
+    <Description>2022-03-01_12-55-15 - Retrieves (and caches) a JWKS from the provided URI</Description>
+    <DisplayName>cds-get-jwks-from-dynamic-uri</DisplayName>
+    <LastModifiedAt>1646139555368</LastModifiedAt>
+    <LastModifiedBy>nava.kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:79eff19b6aadcef0671176bd378ab8b4f98a6ab9ee4a8de3321c5fbab02d3825ca20120a51ec512683548f8d2958d16ac7c9b12028b0a21a54a45aa6b44b2228:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-ExtractJWKSFromResponse</Policy>
+        <Policy>AM-RemoveProtocolFromJWKSURI</Policy>
+        <Policy>LC-RetrieveJWKSFromCache</Policy>
+        <Policy>PC-StoreJWKS</Policy>
+        <Policy>SC-RetrieveJWKSFromURI</Policy>
+    </Policies>
+    <Resources/>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

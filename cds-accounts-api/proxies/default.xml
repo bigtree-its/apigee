@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description>Endpoints are used to enforce the Australian Consumer Data Standards</Description>
+    <DefaultFaultRule name="all errors">
+        <Step>
+            <Name>FC-ProxyErrorHandler</Name>
+        </Step>
+    </DefaultFaultRule>
+    <PreFlow name="PreFlow Checks">
+        <Request>
+            <Step>
+                <Name>FC-VerifyAccessToken</Name>
+                <Condition>!(proxy.pathsuffix MatchesPath "/health")</Condition>
+            </Step>
+            <Step>
+                <Name>FC-GetTenxToken</Name>
+                <Condition>!(proxy.pathsuffix MatchesPath "/health")</Condition>
+            </Step>
+            <Step>
+                <Name>AM-UUID</Name>
+                <Condition>(request.header.x-fapi-interaction-id == null) or (request.header.x-fapi-interaction-id == "")</Condition>
+            </Step>
+            <Step>
+                <Name>KVM-CdsProperties</Name>
+            </Step>
+            <Step>
+                <Name>FC-GenerateADRToken</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="Get Balance">
+            <Description>Retrieve account balance for the given account ID</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/*/balance") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="Get Balances For Specific Accounts">
+            <Description>Get Balances For Specific Accounts</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/balances") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="Get Accounts">
+            <Description/>
+            <Request/>
+            <Condition>(proxy.pathsuffix MatchesPath "/") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="Get Bulk Balances">
+            <Description>Obtain balances for multiple, filtered accounts</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/balances") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="Get Account Detail">
+            <Description>Obtain detailed information on a single account</Description>
+            <Request/>
+            <Condition>(proxy.pathsuffix MatchesPath "/{accountId}") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="Not Found">
+            <Description>The requested resource URL is not an API endpoint defined by the Consumer Data Standards and it is not a URL recognised by the Data Holder or Data Recipient</Description>
+            <Request>
+                <Step>
+                    <Name>RF-NotFound</Name>
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+    </Flows>
+    <PostFlow>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/cds-au/v1/banking/accounts</BasePath>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+        <Condition>(request.verb = "GET") or (request.verb = "POST")</Condition>
+    </RouteRule>
+    <RouteRule name="NoRoute"/>
+</ProxyEndpoint>

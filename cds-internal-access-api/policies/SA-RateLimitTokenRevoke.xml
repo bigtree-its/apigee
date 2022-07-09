@@ -1,0 +1,6 @@
+<SpikeArrest async="false" continueOnError="false" enabled="true" name="SA-RateLimitTokenRevoke">
+  <DisplayName>SA-RateLimitTokenRevoke</DisplayName>
+  <Properties/>
+  <Rate>10ps</Rate>
+  <UseEffectiveCount>true</UseEffectiveCount>
+</SpikeArrest>

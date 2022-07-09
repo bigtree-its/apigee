@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-InvalidClientId">
+  <DisplayName>RF-InvalidClientId</DisplayName>
+  <Properties/>
+  <FaultResponse>
+    <Set>
+      <StatusCode>400</StatusCode>
+    </Set>
+    <AssignVariable>
+      <Name>flow.cds.error.message</Name>
+      <Value>ClientID passed in the request URL is not in correct format</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.cds.error.code</Name>
+      <Value>400.001.002</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.cds.error.status</Name>
+      <Value>400</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.cds.error.reason</Name>
+      <Value>Bad Request</Value>
+    </AssignVariable>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

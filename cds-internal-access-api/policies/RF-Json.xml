@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault name="RF-Json">
+  <FaultResponse>
+    <Set>
+      <Headers>
+        <Header name="Content-Type">application/json</Header>
+        <Header name="x-epoch">{substring(system.timestamp,0,10)}</Header>
+      </Headers>
+      <Payload contentType="application/json">{
+                "ref": "{messageid}",
+                "status": "{flow.cds.error.status}",
+                "code": "{flow.cds.error.code}",
+                "message": "{flow.cds.error.message}"
+        }</Payload>
+      <StatusCode>{flow.cds.error.status}</StatusCode>
+      <ReasonPhrase>{flow.cds.error.reason}</ReasonPhrase>
+    </Set>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-ExtractResponsibilityServiceAdrStatusContent" version="SHA-512:fc3fbf6a7f88f8ec01468ac7b1e7ef9314ee2269b7d5b27730f625f94ce3b9203e775ec6696ff57e3788f2eafe23c03a65ca61fb4df44088a1a1c6ad72e5cab1"/>
+        <VersionInfo resourceName="EV-GetADRStatus" version="SHA-512:7058905fa09b74d9ad3e996c76c0707dff9d64dfda395c9dece836519de5994245383e315ad3d47aa125ea46dc5d5da3544bf94db3b6c477e2b694727f0d1be9"/>
+        <VersionInfo resourceName="FC-GetAdrApp" version="SHA-512:9c4197402d82460919ca9bedf4aa261526298d2474c2a14c919bff0576e194403f31093ef86db751fce2f0be59d02450678aef0ddc9694eb691e5a73cd3722f8"/>
+        <VersionInfo resourceName="LC-RetrieveResponsibilityServiceAdrStatus" version="SHA-512:1a44580f008d185b132a533958892526f209a7cffafa7335e9cd29ab370802545a5c756d815691d8bd443524f60c537d935115d9623ac3a40ff8e5305ee43a32"/>
+        <VersionInfo resourceName="PC-StoreResponsibilityServiceAdrStatus" version="SHA-512:9ef40e56dfc406d4575be6fad2865a716fb0380f3c4c1b8035ceca6c45a26cd47caaeb52e3839bac800cb7f71e671e95ed44507a51fd7b4751a941a783e49c33"/>
+        <VersionInfo resourceName="RF-ADRBlocked" version="SHA-512:e7769962e4b3499d45731abef473b5b3232f7bfc52e841df70e6d9c260c7688796eda1dc932f9aa36374ad4a3fe4a9489db835df77fe890e7cb252745f1f58a7"/>
+        <VersionInfo resourceName="RF-ADRBlocked-DCR" version="SHA-512:9ed96382e3091dfa1228fafb8171744171c2fb2bba37cd204beda603762eeb56776b224fedb15022efeb7decd05e42bb6b0e0fba82ac1a632056df8133afbdc2"/>
+        <VersionInfo resourceName="RF-ADRNotFound" version="SHA-512:348309d4094b75e9065f0cd2f8da6209567390c90b14e8bfa6cac0a4f5ab0a55d8dc54decb6f1606047f004cbf8e4f26ec58a2ee438be16a92910fa35a5d4778"/>
+        <VersionInfo resourceName="RF-ADRNotFound-DCR" version="SHA-512:4e3463e4f1b193a05869a67ff2f3f52eedcbd791207be83ba2cbc30f77714189cfc9960f7d53921b6fb3d0b6b9a13b2931c8eb9e2dd7d3d8e1b2a91746f48b0d"/>
+        <VersionInfo resourceName="SC-GetResponsibilityServiceAdrStatus" version="SHA-512:f278833dd87ca81cbf997cba8bf1171a6ebeaba1740e675838544ab7b27b636733f1124abfc215ac814e683ef5d1a6c5b6706d7eb52d3e10ed42f8c0b82c2f31"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources/>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:df1b6e1013938579e4e7d9871d1d4c40000b40a5e2693b7e19a1c78bd2d9c8cae06892c58be3534624df7e9cf5617bb5552c7245139456455daf81ec5ae3063d"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

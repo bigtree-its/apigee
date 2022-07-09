@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-GetArrangementsResponse">
+  <DisplayName>AM-GetArrangementsResponse</DisplayName>
+  <Set>
+    <Payload contentType="application/json">
+        {
+  "recipients": [
+    {
+        "clientId": "58b9dd36-2acb-4db3-b4ef-4fa7de6d50b3",
+        "clientIdIssuedAt": 1612177514000,
+        "clientName": "Initech Accountancy",
+        "clientDescription": "Accontancy without the numbers, issued by a CDR register",
+        "clientUri": "https://steveoshima-test.apigee.net/mock-adr-webclient/banking",
+        "legalEntityId": "6afd1eac-7915-47b1-a312-1567e930a6fc",
+        "legalEntityName": "Initech Ltd",
+        "orgId": "542daaf3-62b1-43ae-8b13-8d39a3b32b9f",
+        "orgName": "Initech Accounts Ltd",
+        "logoUri": "https://steveoshima-test.apigee.net/mock-adr-webclient/img/adr-money.png",
+        "tosUri": "https://steveoshima-test.apigee.net/mock-adr-webclient/tos.html",
+        "policyUri": "https://steveoshima-test.apigee.net/mock-adr-webclient/policy.html",
+        "softwareId": "f2ded6a0-2f40-4076-87e6-78b8381cfd64"
+    },
+    {
+        "clientId": "7bc15cdd-a6fe-4a61-9c87-d9e4997dfaea",
+        "clientIdIssuedAt": 1619860214000,
+        "clientName": "Dunder-Mifflin Accountancy",
+        "clientDescription": "Accontancy on paper, issued by a CDR register",
+        "clientUri": "https://steveoshima-test.apigee.net/mock-adr-webclient/banking",
+        "legalEntityId": "379e037f-ecfb-4c88-a605-d3f09f8a9e4b",
+        "legalEntityName": "Dunder-Mifflin",
+        "orgId": "b45d47a1-4243-4aa3-b301-8530c95fa1d9",
+        "orgName": "Dunder-Mifflin Accounts",
+        "logoUri": "https://steveoshima-test.apigee.net/mock-adr-webclient/img/adr-money.png",
+        "tosUri": "https://steveoshima-test.apigee.net/mock-adr-webclient/tos.html",
+        "policyUri": "https://steveoshima-test.apigee.net/mock-adr-webclient/policy.html",
+        "softwareId": "230e5fd8-2624-4830-879b-80f481514646"
+    }
+  ],
+  "arrangements": [
+    {
+        "authorisationId": "58b9dd36-2acb-4db3-b4ef-4fa7de6d50b3",
+        "arrangementId": "512a4725-2e91-43f5-916d-42f7694154c4",
+        "clientId": "35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a",
+        "status": "ACTIVE",
+        "createdAt": "2021-06-05T13:53:02.153Z",
+        "expiresAt": "2021-09-03T13:43:02.387Z",
+        "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read",
+        "claims": {
+          "sharingDuration": 7776000,
+          "userinfo": {
+            "given_name": null,
+            "family_name": null
+          }
+        }
+    },
+    {
+      "authorisationId": "c6c0bb31-8d7e-4646-956c-af63af619bce",
+      "arrangementId": "b0ba8465-39ee-4e72-b9a0-c84987944872",
+      "clientId": "7bc15cdd-a6fe-4a61-9c87-d9e4997dfaea",
+      "status": "ACTIVE",
+      "createdAt": "2021-06-08T10:30:20.634Z",
+      "expiresAt": "2021-09-06T13:42:20.634Z",
+      "scope": "openid profile bank:accounts.basic:read bank:accounts.detail:read",
+      "claims": {
+        "sharingDuration": 7776000,
+        "userinfo": {
+              "given_name": null,
+              "family_name": null
+        }
+      }
+    }
+  ]
+}
+        </Payload>
+    <StatusCode>200</StatusCode>
+    <ReasonPhrase>OK</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

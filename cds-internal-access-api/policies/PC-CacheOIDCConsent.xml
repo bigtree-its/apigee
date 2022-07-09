@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PopulateCache async="false" continueOnError="false" enabled="true" name="PC-CacheOIDCConsent">
+  <DisplayName>PC-CacheOIDCConsent</DisplayName>
+  <Properties/>
+  <CacheKey>
+    <KeyFragment ref="OIDC.consentCacheKey"/>
+  </CacheKey>
+  <CacheResource>OIDCConsent</CacheResource>
+  <Scope>Global</Scope>
+  <ExpirySettings>
+    <TimeoutInSec>60</TimeoutInSec>
+  </ExpirySettings>
+  <Source>OIDC.consentCacheVal</Source>
+</PopulateCache>

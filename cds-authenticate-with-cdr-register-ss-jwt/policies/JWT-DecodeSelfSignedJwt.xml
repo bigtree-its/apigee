@@ -1,0 +1,4 @@
+<DecodeJWT name="JWT-DecodeSelfSignedJwt">
+  <DisplayName>JWT Decode Self-Signed Jwt</DisplayName>
+  <Source>theSelfSignedJWT</Source>
+</DecodeJWT>

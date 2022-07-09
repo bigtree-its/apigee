@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-InvalidApiKey">
+  <DisplayName>AM-InvalidApiKey</DisplayName>
+  <Properties/>
+  <AssignVariable>
+    <Name>flow.cds.error.message</Name>
+    <Value>Authentication is required to access this resource. API Key.</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>flow.cds.error.code</Name>
+    <Value>401.001.001</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>flow.cds.error.status</Name>
+    <Value>401</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>flow.cds.error.reason</Name>
+    <Value>Unauthorized</Value>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

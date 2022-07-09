@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-InvalidPAR">
+  <DisplayName>RF-InvalidPAR</DisplayName>
+  <FaultResponse>
+    <AssignVariable>
+      <Name>faultType</Name>
+      <Value>invalid_request_uri</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>faultTypeMessage</Name>
+      <Value>invalid_request_uri</Value>
+    </AssignVariable>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <ShortFaultReason>false</ShortFaultReason>
+</RaiseFault>

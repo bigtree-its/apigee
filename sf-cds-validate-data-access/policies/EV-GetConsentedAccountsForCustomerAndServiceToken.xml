@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="EV-GetConsentedAccountsForCustomerAndServiceToken">
+  <DisplayName>EV-GetConsentedAccountsForCustomerAndServiceToken</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <JSONPayload>
+    <Variable name="listOfConsentedAccounts">
+      <JSONPath>$.attachedAccounts[*]</JSONPath>
+    </Variable>
+    <Variable name="adrServiceToken">
+      <JSONPath>$.serviceToken</JSONPath>
+    </Variable>
+  </JSONPayload>
+  <Source clearPayload="false">arrangementResponse.content</Source>
+</ExtractVariables>

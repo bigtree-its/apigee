@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="EV-ExtractBrandId" version="SHA-512:36ed9a8ec7dae147eeb9f4fe8725f12b2679750434d8b4ffe798c904ada2f1107552710e88e530c0f19a8bd0c59b606414f1b0d9628a2b872ceb50d54ac854df"/>
+        <VersionInfo resourceName="JS-LoadConfigByBrandId" version="SHA-512:eb5bd99451ca3f5809e8390cf5f439634dcf19188e1998dc0ac3eafb1d06504543666c890de00b51d4799704ea2d8f12d5540a543092642e9acfa43d0a095b6c"/>
+        <VersionInfo resourceName="KVM-GetCDSConfigs" version="SHA-512:ac6f8cd056cac1e8cdfe7f875c841d48ae05cb4ce15725665234bd2141cdd2d5f5d65c8562017acbe48ba23a9a62257533a59b00b6c5b7b957c6c11cefdd346b"/>
+        <VersionInfo resourceName="RF-IncorrectDataHolderBrandId" version="SHA-512:ac4f85a816754c070a2679b270fb9745c129f1ef735197e900587582bc94974cd486ec42de832d41c57125a9a80bfc565fb4de5a6412fe429b5d79e9a364c457"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources>
+        <VersionInfo resourceName="jsc://loadConfigByBrandId.js" version="SHA-512:156e4774be5377eab38475204fe501e7f641196ebbd638af330a6b9072ae44a776220b70408fba724c710e58255ffa092b7f4480b4b94e2567ed2858191f17c1"/>
+    </Resources>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:128782e6e25169d775bb868de70907530d9769bb483c80938daab97f3b2b63c8c552a6d715b00a2b7fb7eb96ba2fb2ed5af2070494a95c174d7145eae148bc4d"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

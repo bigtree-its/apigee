@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="3" name="cds-target-error-handler">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1646144067189</CreatedAt>
+    <CreatedBy>Nava.Kannusamy@10xbanking.com</CreatedBy>
+    <Description>Development</Description>
+    <DisplayName>cds-target-error-handler</DisplayName>
+    <LastModifiedAt>1646144067189</LastModifiedAt>
+    <LastModifiedBy>Nava.Kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:b4a98e3a112b5fae7549c3789770e2271245d1f1e6993fc9fcfefea87cfb8873952e349ab00399f726f37ddf1e743f5b03976651eab613848fcc5fa6cc1714ca:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-SetHttpStatus500</Policy>
+        <Policy>EV.ExtractErrorTitle</Policy>
+        <Policy>JS-TargetErrorHandler</Policy>
+        <Policy>RF-RaiseFault</Policy>
+    </Policies>
+    <Resources>
+        <Resource>jsc://target-error-handler.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-ADRNotificationRequest">
+  <DisplayName>AM-ADRNotificationRequest</DisplayName>
+  <Properties/>
+  <Remove>
+    <Headers/>
+  </Remove>
+  <Add>
+    <Headers>
+      <Header name="Authorization">{adrNotificationToken}</Header>
+      <Header name="Content-Type">application/x-www-form-urlencoded</Header>
+    </Headers>
+    <FormParams>
+      <FormParam name="cdr_arrangement_id">{revokedArrangementId}</FormParam>
+    </FormParams>
+  </Add>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

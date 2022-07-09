@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<JavaCallout async="false" continueOnError="true" enabled="true" name="JC-X509CertificateParse">
+  <DisplayName>JC-X509CertificateParse</DisplayName>
+  <FaultRules/>
+  <Properties>
+    <Property name="certificate-info">tlsCertInfo</Property>
+    <Property name="certificate-pem">request.header.x-client-certificate</Property>
+    <Property name="certificate-type">tls</Property>
+  </Properties>
+  <ClassName>com.cds.api.X509CertificateParserCallout</ClassName>
+  <ResourceURL>java://cds-policy-java-X509CertificateParser.jar</ResourceURL>
+</JavaCallout>

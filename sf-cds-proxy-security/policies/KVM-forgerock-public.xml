@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations name="KVM-forgerock-public" mapIdentifier="cds.forgerock-public">
+    <Get assignTo="forgerockAccessControlEnabled">
+        <Key>
+            <Parameter>accessControlEnabled</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="forgerockEnv">
+        <Key>
+            <Parameter>envSuffix</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="forgerockVerificationEnabled">
+        <Key>
+            <Parameter>enableVerification</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

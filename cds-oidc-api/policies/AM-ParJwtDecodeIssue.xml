@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-ParJwtDecodeIssue">
+  <DisplayName>AM-ParJwtDecodeIssue</DisplayName>
+  <AssignVariable>
+    <Name>errorMsg</Name>
+    <Ref>jwt.JWT-DecodePAR.error</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>searchStrRegex</Name>
+    <Value>: policy\(JWT-DecodePAR\)</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>replaceStr</Name>
+    <Value>...</Value>
+  </AssignVariable>
+  <Set>
+    <Payload contentType="application/json">{
+      "error": "invalid_request_object",
+      "errors": [
+      {
+        "code": "400",
+        "title": "Bad Request",
+        "detail": '{replaceAll(errorMsg,searchStrRegex,replaceStr)}'
+      }
+    ]
+    }</Payload>
+    <StatusCode>400</StatusCode>
+    <ReasonPhrase>Bad Request</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo type="request" transport="http" createNew="false"></AssignTo>
+</AssignMessage>

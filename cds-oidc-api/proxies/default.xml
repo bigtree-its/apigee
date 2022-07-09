@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <DefaultFaultRule name="DefaultFaultRule">
+        <Step>
+            <Name>RF-IPAccessDenied</Name>
+            <Condition>cdstenx.error.type = "IPDeniedAccess"</Condition>
+        </Step>
+        <Step>
+            <Name>RF-NotFound</Name>
+            <Condition>cdstenx.error.type = "junk_request" || cdstenx.error.type = "resource_not_found"</Condition>
+        </Step>
+        <Step>
+            <Name>AM-Add-CORS-Headers</Name>
+        </Step>
+        <Step>
+            <Name>FC-CollectPerformanceSLO</Name>
+        </Step>
+        <AlwaysEnforce>true</AlwaysEnforce>
+    </DefaultFaultRule>
+    <Description/>
+    <FaultRules>
+        <FaultRule name="Unexpected service callout error">
+            <Condition>(servicecallout.SC-GetOIDCConfig.failed = "true")</Condition>
+            <Step>
+                <Name>AM-UnexpectedError</Name>
+            </Step>
+        </FaultRule>
+        <FaultRule name="Invalid Refresh Token in Introspection">
+            <Condition>(faultType = "invalid_refresh_token") and (proxy.pathsuffix MatchesPath "/token/introspection")</Condition>
+            <Step>
+                <Name>AM-BuildIntrospectionResponseInactiveToken</Name>
+            </Step>
+        </FaultRule>
+        <FaultRule name="Cannot issue access token">
+            <Condition>(fault.name = "invalid_request" or oauthV2.failed = "true")</Condition>
+            <Step>
+                <Name>AM-CannotIssueAccessToken</Name>
+            </Step>
+        </FaultRule>
+        <FaultRule name="JWT decode issues">
+            <Condition>(JWT.JWT-DecodePAR.failed = "true")</Condition>
+            <Step>
+                <Name>AM-ParJwtDecodeIssue</Name>
+            </Step>
+        </FaultRule>
+        <FaultRule name="Cannot issue auth code">
+            <Condition>(oauthV2.OA-IssueOpaqueAuthCode.failed = "true")</Condition>
+            <Step>
+                <Name>AM-CannotIssueAuthCode</Name>
+            </Step>
+        </FaultRule>
+        <FaultRule name="SC to Consent failed">
+            <Description>Issues when invoking consent management via a service callout</Description>
+            <Condition>(fault.name = "ExecutionFailed") and ( (servicecallout.SC-CreateUpdateCDRArrangement.failed = "true") or (servicecallout.SC-VerifyExistingCDRArrangmentId.failed = "true") or (servicecallout.SC-RevokeCDRArrangement.failed = "true"))</Condition>
+            <Step>
+                <Name>AM-ConsentError</Name>
+            </Step>
+        </FaultRule>
+        <FaultRule name="302 reject error">
+            <Condition>(faultType = "consent_rejected" or faultType = "invalid_consent" or faultType = "invalid_state")</Condition>
+            <Step>
+                <Name>AM-RedirectToClientVia302ForReject</Name>
+            </Step>
+        </FaultRule>
+        <FaultRule name="302 invalid request error">
+            <Condition>(faultType = "missing_request_uri" or faultType = "invalid_request_uri")</Condition>
+            <Step>
+                <Name>AM-RedirectToClientVia302ForBadRequest</Name>
+            </Step>
+        </FaultRule>
+        <FaultRule name="Invalid Scope">
+            <Condition>(fault.name = "InsufficientScope")</Condition>
+            <Step>
+                <Name>AM-InvalidScope</Name>
+            </Step>
+        </FaultRule>
+        <FaultRule name="Invalid Access Token">
+            <Condition>(fault.name Matches "*access_token*") or (fault.name = "apiresource_doesnot_exist") or (fault.name = "InvalidAccessToken") or (fault.name = "InvalidAPICallAsNoApiProductMatchFound")</Condition>
+            <Step>
+                <Name>EV-GetAccessTokenErrorDetail</Name>
+            </Step>
+            <Step>
+                <Name>AM-TokenNotVerified</Name>
+            </Step>
+        </FaultRule>
+    </FaultRules>
+    <Flows>
+        <Flow name="Get OIDC Configuration">
+            <Description/>
+            <Request/>
+            <Response>
+                <Step>
+                    <Name>JS-BuildWellKnownResponse</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/.well-known/openid-configuration") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="Pushed Auth Request">
+            <Description>Pushed Authorisation</Description>
+            <Request>
+                <Step>
+                    <Name>RF-InvalidRequestURI</Name>
+                    <Condition>(request.formparam.request_uri != "" and request.formparam.request_uri != null)</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidClientAssertionType</Name>
+                    <Condition>(request.formparam.client_assertion_type != "urn:ietf:params:oauth:client-assertion-type:jwt-bearer")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-MissingClientAssertion</Name>
+                    <Condition>(request.formparam.client_assertion = "" or request.formparam.client_assertion = null)</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-AuthenticateWithPrivateKeyJWTParAudClaimAccepted</Name>
+                    <Condition>(request.formparam.client_assertion_type = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer") and (request.formparam.client_assertion != "")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidClientAssertion</Name>
+                    <Condition>(CDS.clientAssertionJwtValid != "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-VerifyMTLSOnly</Name>
+                    <Condition>(CDS.holderOfKeyDisabled != "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-MissingParRequest</Name>
+                    <Condition>(request.formparam.request = "" or request.formparam.request = null)</Condition>
+                </Step>
+                <Step>
+                    <Name>JWT-DecodePAR</Name>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidResponseType</Name>
+                    <Condition>CDS.requirePAR = true and jwt.JWT-DecodePAR.decoded.claim.response_type != "code"</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidResponseMode</Name>
+                    <Condition>CDS.requirePAR = true and jwt.JWT-DecodePAR.decoded.claim.response_mode != "jwt"</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidCodeChallenge</Name>
+                    <Condition>CDS.requirePAR = true and (jwt.JWT-DecodePAR.decoded.claim.code_challenge = "" or jwt.JWT-DecodePAR.decoded.claim.code_challenge = null) </Condition>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidCodeChallengeMethod</Name>
+                    <Condition>CDS.requirePAR = true and jwt.JWT-DecodePAR.decoded.claim.code_challenge_method != "S256" </Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetAudienceClaim</Name>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidResponseType</Name>
+                    <Condition>CDS.requirePAR = false and (jwt.JWT-DecodePAR.decoded.claim.response_type != "code id_token" and jwt.JWT-DecodePAR.decoded.claim.response_type != "id_token code")</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-VerifyPAR</Name>
+                </Step>
+                <Step>
+                    <Name>SC-VerifyExistingCDRArrangmentId</Name>
+                    <Condition>(PARInfo.requestedCDRArrangementId != "none")</Condition>
+                </Step>
+                <Step>
+                    <Name>EV-GetStatusFromArrangementResponse</Name>
+                    <Condition>(PARInfo.requestedCDRArrangementId != "none")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidArrangement</Name>
+                    <Condition>(PARInfo.requestedCDRArrangementId != "none") and (theStatusOfTheArrangement != "ACTIVE" and theStatusOfTheArrangement != "AMENDED")</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetPARCacheValueAndKey</Name>
+                </Step>
+                <Step>
+                    <Name>PC-CachePAR</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AM-SetParResponse</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/par") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="Authorise">
+            <Description>Start authorisation redirect</Description>
+            <Request>
+                <Step>
+                    <Name>VAK-VerifyClientId</Name>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidClientId</Name>
+                    <Condition>oauthV2.VAK-VerifyClientId.failed = "true"</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidRequestURI</Name>
+                    <Condition>CDS.requirePAR = true and (request.queryparam.request_uri = null) or (request.queryparam.request_uri = "")</Condition>
+                </Step>
+                <Step>
+                    <Name>JWT-DecodeRequestJwt</Name>
+                    <Condition>(request.queryparam.request_uri = null) or (request.queryparam.request_uri = "")</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetAudienceClaim</Name>
+                    <Condition>(request.queryparam.request_uri = null) or (request.queryparam.request_uri = "")</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-VerifyRequestJwt</Name>
+                    <Condition>(request.queryparam.request_uri = null) or (request.queryparam.request_uri = "")</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetStateCacheValue</Name>
+                    <Condition>(request.queryparam.request_uri = null) or (request.queryparam.request_uri = "")</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-ValidateAdrStatus</Name>
+                    <Condition>(CDS.cdrRegCheckDisabled != "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>LC-RetrieveCachedPAR</Name>
+                    <Condition>(request.queryparam.request_uri != null) and (request.queryparam.request_uri != "")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidPAR</Name>
+                    <Condition>(request.queryparam.request_uri != null) and (request.queryparam.request_uri != "") and (lookupcache.LC-RetrieveCachedPAR.cachehit = "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>EV-ParseCachedPar</Name>
+                    <Condition>(request.queryparam.request_uri != null) and (request.queryparam.request_uri != "")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidPAR</Name>
+                    <Condition>(request.queryparam.request_uri != null) and (request.queryparam.request_uri != "") and (request.queryparam.client_id != PAR.client_id)</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetStateCacheValueFromCachedPAR</Name>
+                    <Condition>(request.queryparam.request_uri != null) and (request.queryparam.request_uri != "")</Condition>
+                </Step>
+                <Step>
+                    <Name>IC-RemoveCachedPAR</Name>
+                </Step>
+                <Step>
+                    <Name>PC-CacheOIDCState</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AM-RedirectToIdPAuthenticationEndpoint</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/authorise") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="Authorise - Callback">
+            <Description>Implements callback to receive authcode from IdP</Description>
+            <Request>
+                <Step>
+                    <Name>EV-ConsentIdFromURL</Name>
+                </Step>
+                <Step>
+                    <Name>LC-RetrieveCachedOIDCConsent</Name>
+                </Step>
+                <Step>
+                    <Name>LC-RetrieveCachedOIDCState</Name>
+                    <Condition>lookupcache.LC-RetrieveCachedOIDCConsent.cachehit = "false"</Condition>
+                </Step>
+                <Step>
+                    <Name>EV-ParseCachedState</Name>
+                    <Condition>lookupcache.LC-RetrieveCachedOIDCConsent.cachehit = "false"</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidConsent</Name>
+                    <Condition>lookupcache.LC-RetrieveCachedOIDCConsent.cachehit = "false"</Condition>
+                </Step>
+                <Step>
+                    <Name>EV-ParseCachedConsent</Name>
+                </Step>
+                <Step>
+                    <Name>RF-ConsentRejected</Name>
+                    <Condition>idp_authorisedApproval = "false"</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-GetPPId</Name>
+                </Step>
+                <Step>
+                    <Name>FC-GetAdrApp</Name>
+                </Step>
+                <Step>
+                    <Name>FC-GetClientJWKS</Name>
+                </Step>
+                <Step>
+                    <Name>JS-GetAdrJwksEncKid</Name>
+                </Step>
+                <Step>
+                    <Name>AM-AuthorisationCodeResponseType</Name>
+                </Step>
+                <Step>
+                    <Name>OA-IssueOpaqueAuthCode</Name>
+                </Step>
+                <Step>
+                    <Name>AM-SetIssuer</Name>
+                </Step>
+                <Step>
+                    <Name>JS-SetAcr</Name>
+                </Step>
+                <Step>
+                    <Name>KVM-GetJWTSigningKeys</Name>
+                </Step>
+                <Step>
+                    <Name>JC-SetIdTokenParams</Name>
+                    <Condition>OIDC.response_type = "code id_token"</Condition>
+                </Step>
+                <Step>
+                    <Name>JWT-GenerateIdTokenForAuthCodeStep</Name>
+                    <Condition>(CDS.idTokenServiceCalloutDisabled = "true") and OIDC.response_type = "code id_token"</Condition>
+                </Step>
+                <Step>
+                    <Name>SC-GenerateIdTokenForAuthCodeStep</Name>
+                    <Condition>(CDS.idTokenServiceCalloutDisabled = null or CDS.idTokenServiceCalloutDisabled = "false") and OIDC.response_type = "code id_token"</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetIdTokenVar</Name>
+                    <Condition>OIDC.response_type = "code id_token"</Condition>
+                </Step>
+                <Step>
+                    <Name>JC-EncryptIdToken</Name>
+                    <Condition>OIDC.response_type = "code id_token"</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetIdTokenWithoutEncryption</Name>
+                    <Condition>(CDS.tokenEncryptionDisabled = "true") and OIDC.response_type = "code id_token"</Condition>
+                </Step>
+                <Step>
+                    <Name>JS-CreateJARMPayload</Name>
+                    <Condition>OIDC.response_type = "code" and OIDC.response_mode = "jwt"</Condition>
+                </Step>
+                <Step>
+                    <Name>SC-GenerateSignedJarmJWT</Name>
+                    <Condition>OIDC.response_type = "code" and OIDC.response_mode = "jwt"</Condition>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AM-302RedirectWithJarmJWT</Name>
+                    <Condition>OIDC.response_type = "code" and OIDC.response_mode = "jwt"</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-RedirectToClientVia302</Name>
+                    <Condition>OIDC.response_type = "code id_token" and OIDC.response_mode != "jwt"</Condition>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/authorise-cb/{consentId}")</Condition>
+        </Flow>
+        <Flow name="Acquire Token - Auth Code">
+            <Description>Acquire Token Authorization Code Grant Type</Description>
+            <Request>
+                <Step>
+                    <Name>RF-InvalidClientAssertionType</Name>
+                    <Condition>(request.formparam.client_assertion_type != "urn:ietf:params:oauth:client-assertion-type:jwt-bearer")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-MissingClientAssertion</Name>
+                    <Condition>(request.formparam.client_assertion = "" or request.formparam.client_assertion = null)</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-AuthenticateWithPrivateKeyJWT</Name>
+                    <Condition>(request.formparam.client_assertion_type = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer") and (request.formparam.client_assertion != "")</Condition>
+                </Step>
+                <Step>
+                    <Condition>(CDS.clientAssertionJwtValid != "true")</Condition>
+                    <Name>RF-InvalidClientAssertion</Name>
+                </Step>
+                <Step>
+                    <Name>FC-GetHoKFingerprint</Name>
+                    <Condition>(CDS.holderOfKeyDisabled != "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>EV-StoreTokenRequestDetails</Name>
+                </Step>
+                <Step>
+                    <Name>OAInfo-RetrieveOIDCAuthCode</Name>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidRedirectURI</Name>
+                    <Condition>request.formparam.redirect_uri != oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.redirect_uri</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-ValidateAdrStatus</Name>
+                    <Condition>(CDS.cdrRegCheckDisabled != "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetCustomDimensionsForAcquireToken</Name>
+                </Step>
+                <Step>
+                    <Name>JS-GetOIDCTokenExpiryTime</Name>
+                </Step>
+                <Step>
+                    <Name>AM-GenerateCDRArrangementId</Name>
+                </Step>
+                <Step>
+                    <Name>OA-IssueOpaqueAccessToken</Name>
+                </Step>
+                <Step>
+                    <Name>AM-SetIssuer</Name>
+                </Step>
+                <Step>
+                    <Name>JS-SetAcr</Name>
+                </Step>
+                <Step>
+                    <Name>JS-GetInfoFromOAuth2Policy</Name>
+                </Step>
+                <Step>
+                    <Name>KVM-GetJWTSigningKeys</Name>
+                </Step>
+                <Step>
+                    <Name>JC-SetIdTokenParams</Name>
+                </Step>
+                <Step>
+                    <Name>JWT-GenerateIdTokenForTokenIssueOrRefreshStep</Name>
+                    <Condition>(CDS.idTokenServiceCalloutDisabled = "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>SC-GenerateIdTokenForTokenIssueOrRefreshStep</Name>
+                    <Condition>(CDS.idTokenServiceCalloutDisabled = null or CDS.idTokenServiceCalloutDisabled = "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-GetAdrApp</Name>
+                </Step>
+                <Step>
+                    <Name>FC-GetClientJWKS</Name>
+                </Step>
+                <Step>
+                    <Name>JS-GetAdrJwksEncKid</Name>
+                </Step>
+                <Step>
+                    <Name>AM-SetIdTokenVar</Name>
+                </Step>
+                <Step>
+                    <Name>JC-EncryptIdToken</Name>
+                </Step>
+                <Step>
+                    <Name>AM-SetIdTokenWithoutEncryption</Name>
+                    <Condition>(CDS.tokenEncryptionDisabled = "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetCustomerId</Name>
+                </Step>
+                <Step>
+                    <Name>SC-GetUserInfoForState</Name>
+                </Step>
+                <Step>
+                    <Name>RF-UserInfoNotFound</Name>
+                    <Condition>servicecallout.SC-GetUserInfoForState.failed = "true"</Condition>
+                </Step>
+                <Step>
+                    <Name>EV-ExtractUserInfoFromService</Name>
+                </Step>
+                <Step>
+                    <Name>JS-SetSubscriptionsFormat</Name>
+                    <Condition>(CDS.InternalTokenServiceCalloutDisabled = null or CDS.InternalTokenServiceCalloutDisabled = "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>SC-GenerateInternalServiceToken-IssueToken</Name>
+                    <Condition>(CDS.InternalTokenServiceCalloutDisabled = null or CDS.InternalTokenServiceCalloutDisabled = "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>IC-ArrangementResponse</Name>
+                </Step>
+                <Step>
+                    <Name>AM-SetCreateUpdateConsentReq-IssueToken</Name>
+                </Step>
+                <Step>
+                    <Name>SC-VerifyExistingCDRArrangmentId</Name>
+                    <Condition>(oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.requestedCDRArrangementId != "none")</Condition>
+                </Step>
+                <Step>
+                    <Name>EV-GetTokensFromArrangementResponse</Name>
+                    <Condition>(oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.requestedCDRArrangementId != "none")</Condition>
+                </Step>
+                <Step>
+                    <Name>OA-RevokeAccessToken</Name>
+                    <Condition>(oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.requestedCDRArrangementId != "none")</Condition>
+                </Step>
+                <Step>
+                    <Name>OA-RevokeRefreshToken</Name>
+                    <Condition>(oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.requestedCDRArrangementId != "none")</Condition>
+                </Step>
+                <!-- <Step><Name>AM-SetNoRefreshTokenNoNeedToStore</Name><Condition>(oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.requestedSharingDuration = "") or (oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.requestedSharingDuration = 0)</Condition></Step> -->
+                <Step>
+                    <Name>SC-CreateUpdateCDRArrangement</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AM-SetIssueOrRefreshTokenResponse</Name>
+                    <Condition>oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.requestedSharingDuration &gt; 0</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetIssueTokenResponseWithNoRefreshToken</Name>
+                    <Condition>(oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.requestedSharingDuration = "") or (oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.requestedSharingDuration = 0)</Condition>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/token") and (request.verb = "POST") and (request.formparam.grant_type = "authorization_code")</Condition>
+        </Flow>
+        <Flow name="Refresh Token">
+            <Description>Refresh Token</Description>
+            <Request>
+                <Step>
+                    <Name>RF-InvalidClientAssertionType</Name>
+                    <Condition>(request.formparam.client_assertion_type != "urn:ietf:params:oauth:client-assertion-type:jwt-bearer")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-MissingClientAssertion</Name>
+                    <Condition>(request.formparam.client_assertion = "" or request.formparam.client_assertion = null)</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-AuthenticateWithPrivateKeyJWT</Name>
+                    <Condition>(request.formparam.client_assertion_type = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer") and (request.formparam.client_assertion != "")</Condition>
+                </Step>
+                <Step>
+                    <Condition>(CDS.clientAssertionJwtValid != "true")</Condition>
+                    <Name>RF-InvalidClientAssertion</Name>
+                </Step>
+                <Step>
+                    <Name>FC-ValidateAdrStatus</Name>
+                    <Condition>(CDS.cdrRegCheckDisabled != "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>EV-ExtractRefreshTokenFromRefreshTokenFormParam</Name>
+                </Step>
+                <Step>
+                    <Name>OAInfo-RetrieveRefreshTokenDetails</Name>
+                </Step>
+                <Step>
+                    <Name>FC-VerifyHoK-RefreshToken</Name>
+                    <Condition>(CDS.holderOfKeyDisabled = "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-GetCDRArrangementIdFromRefreshToken</Name>
+                </Step>
+                <Step>
+                    <Condition>oauthV2.OAInfo-RetrieveRefreshTokenDetails.failed = true</Condition>
+                    <Name>RF-InvalidRefreshToken</Name>
+                </Step>
+                <Step>
+                    <Name>FC-TrafficThresholdsWhenRefreshTokenIsPresent</Name>
+                </Step>
+                <Step>
+                    <Name>EV-StoreTokenRequestDetails</Name>
+                </Step>
+                <Step>
+                    <Name>JS-GetOIDCTokenExpiryTime</Name>
+                </Step>
+                <Step>
+                    <Name>OA-RefreshOpaqueAccessToken</Name>
+                </Step>
+                <Step>
+                    <Name>OAInfoSet-ForceUpdateOfAttributes</Name>
+                </Step>
+                <Step>
+                    <Name>AM-SetIssuer</Name>
+                </Step>
+                <Step>
+                    <Name>JS-SetAcr</Name>
+                </Step>
+                <Step>
+                    <Name>JS-GetInfoFromOAuth2Policy</Name>
+                </Step>
+                <Step>
+                    <Name>KVM-GetJWTSigningKeys</Name>
+                </Step>
+                <Step>
+                    <Name>JC-SetIdTokenParams</Name>
+                </Step>
+                <Step>
+                    <Name>JWT-GenerateIdTokenForTokenIssueOrRefreshStep</Name>
+                    <Condition>(CDS.idTokenServiceCalloutDisabled = "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>SC-GenerateIdTokenForTokenIssueOrRefreshStep</Name>
+                    <Condition>(CDS.idTokenServiceCalloutDisabled = null or CDS.idTokenServiceCalloutDisabled = "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-GetAdrApp</Name>
+                </Step>
+                <Step>
+                    <Name>FC-GetClientJWKS</Name>
+                </Step>
+                <Step>
+                    <Name>JS-GetAdrJwksEncKid</Name>
+                </Step>
+                <Step>
+                    <Name>AM-SetIdTokenVar</Name>
+                </Step>
+                <Step>
+                    <Name>JC-EncryptIdToken</Name>
+                </Step>
+                <Step>
+                    <Name>AM-SetIdTokenWithoutEncryption</Name>
+                    <Condition>(CDS.tokenEncryptionDisabled = "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetCustomerId</Name>
+                </Step>
+                <Step>
+                    <Name>SC-GetUserInfoForState</Name>
+                </Step>
+                <Step>
+                    <Name>RF-UserInfoNotFound</Name>
+                    <Condition>servicecallout.SC-GetUserInfoForState.failed = "true"</Condition>
+                </Step>
+                <Step>
+                    <Name>EV-ExtractUserInfoFromService</Name>
+                </Step>
+                <Step>
+                    <Name>JS-SetSubscriptionsFormat</Name>
+                    <Condition>(CDS.InternalTokenServiceCalloutDisabled = null or CDS.InternalTokenServiceCalloutDisabled = "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>SC-GenerateInternalServiceToken-RefreshToken</Name>
+                    <Condition>(CDS.InternalTokenServiceCalloutDisabled = null or CDS.InternalTokenServiceCalloutDisabled = "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>IC-ArrangementResponse</Name>
+                </Step>
+                <Step>
+                    <Name>AM-SetCreateUpdateConsentReq-RefreshToken</Name>
+                </Step>
+                <Step>
+                    <Name>SC-CreateUpdateCDRArrangement</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AM-SetCustomDimensionsForRefreshToken</Name>
+                </Step>
+                <Step>
+                    <Name>AM-SetIssueOrRefreshTokenResponse</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/token") and (request.verb = "POST") and (request.formparam.grant_type = "refresh_token")</Condition>
+        </Flow>
+        <Flow name="Acquire Token - Client Cred">
+            <Description>Acquire Token Client Credentials Grant Type</Description>
+            <Request>
+                <Step>
+                    <Name>RF-InvalidClientAssertionType</Name>
+                    <Condition>(request.formparam.client_assertion_type != "urn:ietf:params:oauth:client-assertion-type:jwt-bearer")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-MissingClientAssertion</Name>
+                    <Condition>(request.formparam.client_assertion = "" or request.formparam.client_assertion = null)</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-AuthenticateWithPrivateKeyJWT</Name>
+                    <Condition>(request.formparam.client_assertion_type = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer") and (request.formparam.client_assertion != "")</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-GetHoKFingerprint</Name>
+                    <Condition>(CDS.holderOfKeyDisabled = "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidScope</Name>
+                    <Condition>(request.formparam.scope != "cdr:registration") and (request.formparam.scope != "admin:metadata:update") and (request.formparam.scope != "admin:metrics.basic:read")</Condition>
+                </Step>
+                <Step>
+                    <Name>OA-IssueAccessTokenClientCreds</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AM-SetAccessTokenResponse-ClientCred</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/token") and (request.verb = "POST") and (request.formparam.grant_type = "client_credentials")</Condition>
+        </Flow>
+        <Flow name="Revoke Token">
+            <Description>Get Token Info</Description>
+            <Request>
+                <Step>
+                    <Name>FC-AuthenticateWithPrivateKeyJWT</Name>
+                    <Condition>(request.formparam.client_assertion_type = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer") and (request.formparam.client_assertion != "")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidClientAssertion</Name>
+                    <Condition>(CDS.clientAssertionJwtValid != "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>EV-ExtractRefreshTokenFromTokenFormParam</Name>
+                </Step>
+                <Step>
+                    <Name>OAInfo-RetrieveRefreshTokenDetails</Name>
+                </Step>
+                <Step>
+                    <Name>FC-VerifyHoK-RefreshToken</Name>
+                    <Condition>(oauthV2.OAInfo-RetrieveRefreshTokenDetails.failed = false) and (CDS.holderOfKeyDisabled = "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetRefreshTokenToRevokeVar</Name>
+                    <Condition>oauthV2.OAInfo-RetrieveRefreshTokenDetails.failed = false</Condition>
+                </Step>
+                <Step>
+                    <Name>OA-RevokeRefreshToken</Name>
+                    <Condition>oauthV2.OAInfo-RetrieveRefreshTokenDetails.failed = false</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetCustomDimensionsForExpireTokenWhenRefreshTokenProvided</Name>
+                    <Condition>oauthV2.OAInfo-RetrieveRefreshTokenDetails.failed = false</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetRefreshTokenAsAccessToken</Name>
+                    <Condition>oauthV2.OAInfo-RetrieveRefreshTokenDetails.failed = true</Condition>
+                </Step>
+                <Step>
+                    <Name>OAInfo-RetrieveAccessTokenDetails</Name>
+                    <Condition>oauthV2.OAInfo-RetrieveRefreshTokenDetails.failed = true</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetCustomDimensionsForExpireTokenWhenAccessTokenProvided</Name>
+                    <Condition>oauthV2.OAInfo-RetrieveRefreshTokenDetails.failed = true</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-VerifyHoK-AccessToken</Name>
+                    <Condition>(oauthV2.OAInfo-RetrieveRefreshTokenDetails.failed = true) and (CDS.holderOfKeyDisabled = "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetAccessTokenToRevokeVar</Name>
+                    <Condition>oauthV2.OAInfo-RetrieveRefreshTokenDetails.failed = true</Condition>
+                </Step>
+                <Step>
+                    <Name>OA-RevokeAccessToken</Name>
+                    <Condition>oauthV2.OAInfo-RetrieveRefreshTokenDetails.failed = true</Condition>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AM-SetRevokeTokenResponse</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/token/revoke") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="Token Introspection">
+            <Description>Get Token Info</Description>
+            <Request>
+                <Step>
+                    <Name>RF-InvalidClientAssertionType</Name>
+                    <Condition>(request.formparam.client_assertion_type != "urn:ietf:params:oauth:client-assertion-type:jwt-bearer")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-MissingClientAssertion</Name>
+                    <Condition>(request.formparam.client_assertion = "" or request.formparam.client_assertion = null)</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-AuthenticateWithPrivateKeyJWT</Name>
+                    <Condition>(request.formparam.client_assertion_type = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer") and (request.formparam.client_assertion != "")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidClientAssertion</Name>
+                    <Condition>(CDS.clientAssertionJwtValid != "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-UnsupportedTokenType</Name>
+                    <Condition>(request.formparam.token_type_hint !="" and request.formparam.token_type_hint != null) and (request.formparam.token_type_hint !="refresh_token")</Condition>
+                </Step>
+                <Step>
+                    <Name>EV-ExtractRefreshTokenFromTokenFormParam</Name>
+                </Step>
+                <Step>
+                    <Name>OAInfo-RetrieveRefreshTokenDetails</Name>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidRefreshToken</Name>
+                    <Condition>oauthV2.OAInfo-RetrieveRefreshTokenDetails.failed = true</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-VerifyHoK-RefreshToken</Name>
+                    <Condition>(CDS.holderOfKeyDisabled = "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-GetCDRArrangementIdFromRefreshToken</Name>
+                </Step>
+                <Step>
+                    <Name>JS-GetOIDCRefreshTokenExpireAt</Name>
+                </Step>
+                <Step>
+                    <Name>FC-TrafficThresholdsWhenRefreshTokenIsPresent</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AM-GenerateIntrospectionResponse</Name>
+                    <Condition>(CDS.refreshTokenStatus = "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-GenerateIntrospectionResponseNotActive</Name>
+                    <Condition>(CDS.refreshTokenStatus = "false")</Condition>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/token/introspect") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="Userinfo">
+            <Description>Get Userinfo</Description>
+            <Request>
+                <Step>
+                    <Name>OA-VerifyTokenForUserInfo</Name>
+                </Step>
+                <Step>
+                    <Name>FC-VerifyHoK-AccessToken</Name>
+                    <Condition>(CDS.holderOfKeyDisabled = "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-InvalidAccessToken</Name>
+                    <Condition>(oauthV2.OAInfo-RetrieveAccessTokenDetails.failed = "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetCustomerId</Name>
+                </Step>
+                <Step>
+                    <Name>SC-VerifyExistingCDRArrangmentId</Name>
+                </Step>
+                <Step>
+                    <Name>EV-GetConsentedServiceToken</Name>
+                </Step>
+                <Step>
+                    <Name>SC-GetUserInfo</Name>
+                </Step>
+                <Step>
+                    <Name>RF-UserInfoNotFound</Name>
+                    <Condition>servicecallout.SC-GetUserInfo.failed = "true"</Condition>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>EV-ExtractUserInfoFromService</Name>
+                </Step>
+                <Step>
+                    <Name>JS-SetUserInfoResponse</Name>
+                </Step>
+                <Step>
+                    <Name>AM-SetUserInfoResponse</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/userinfo") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="Get OIDC Public Certs">
+            <Description>Get OIDC Public Certs</Description>
+            <Request>
+                <Step>
+                    <Name>LC-RetrieveBrandIdJWKSFromCache</Name>
+                    <Condition>(CDS.idTokenServiceCalloutDisabled = null or CDS.idTokenServiceCalloutDisabled = "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>SC-FetchPublicKeysForIdTokenService</Name>
+                    <!-- <Condition>(CDS.idTokenServiceCalloutDisabled = null or CDS.idTokenServiceCalloutDisabled = "false") and (lookupcache.LC-RetrieveBrandIdJWKSFromCache.cachehit = "false")</Condition> -->
+                </Step>
+                <Step>
+                    <Name>PC-StoreBrandIdJWKS</Name>
+                    <Condition>(CDS.idTokenServiceCalloutDisabled = null or CDS.idTokenServiceCalloutDisabled = "false") and (lookupcache.LC-RetrieveBrandIdJWKSFromCache.cachehit = "false")</Condition>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AM-SetJWKSResponseFromTokenService</Name>
+                    <Condition>(CDS.idTokenServiceCalloutDisabled = null or CDS.idTokenServiceCalloutDisabled = "false")</Condition>
+                </Step>
+                <Step>
+                    <Name>AM-SetJWKSResponse</Name>
+                    <Condition>(CDS.idTokenServiceCalloutDisabled = "true")</Condition>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/jwks") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="Revoke Arrangement">
+            <Description>CDR Arrangement Revocation</Description>
+            <Request>
+                <Step>
+                    <Name>RF-InvalidClientAssertionType</Name>
+                    <Condition>(request.formparam.client_assertion_type != "urn:ietf:params:oauth:client-assertion-type:jwt-bearer")</Condition>
+                </Step>
+                <Step>
+                    <Name>RF-MissingClientAssertion</Name>
+                    <Condition>(request.formparam.client_assertion = "" or request.formparam.client_assertion = null)</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-AuthenticateWithPrivateKeyJWT</Name>
+                    <Condition>(request.formparam.client_assertion_type = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer") and (request.formparam.client_assertion != "")</Condition>
+                </Step>
+                <Step>
+                    <Name>FC-VerifyMTLSOnly</Name>
+                    <Condition>(CDS.holderOfKeyDisabled != "true")</Condition>
+                </Step>
+                <Step>
+                    <Name>SC-RevokeCDRArrangement</Name>
+                </Step>
+                <Step>
+                    <Name>EV-GetTokensFromArrangementResponse</Name>
+                </Step>
+                <Step>
+                    <Name>OA-RevokeAccessToken</Name>
+                </Step>
+                <Step>
+                    <Name>OA-RevokeRefreshToken</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AM-SetResponse204NoContent</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/arrangements/revoke") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="Not Found">
+            <Description>Not Found</Description>
+            <Request>
+                <Step>
+                    <Name>RF-NotFound</Name>
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response>
+            <Step>
+                <Name>FC-CollectPerformanceSLO</Name>
+            </Step>
+        </Response>
+    </PostFlow>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>FC-IPAccessControl</Name>
+            </Step>
+            <Step>
+                <Name>EV-GetBrandIdFromPath</Name>
+            </Step>
+            <Step>
+                <Name>RF-JunkRequest</Name>
+                <Condition>CDS.brandId = "" or CDS.brandId = null</Condition>
+            </Step>
+            <Step>
+                <Name>AM-SetDefaultValuesForPerfSLO</Name>
+            </Step>
+            <Step>
+                <Name>FC-DecideIfCustomerIsPresent</Name>
+            </Step>
+            <!-- Do not count internal proxy chain calls for traffic thresholds -->
+            <Step>
+                <Name>FC-GeneralTrafficThresholdsForAuthEndpoints</Name>
+                <Condition>virtualhost.ip != "127.0.0.1"</Condition>
+            </Step>
+            <Step>
+                <Name>AM-SetDefaultValuesForTokenCustomDimensions</Name>
+            </Step>
+            <Step>
+                <Name>FC-ValidateBrandId</Name>
+            </Step>
+        </Request>
+        <Response>
+            <Step>
+                <Name>AM-Add-CORS-Headers</Name>
+            </Step>
+        </Response>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <BasePath>/*/</BasePath>
+        <Properties/>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noroute-par">
+        <Condition>(proxy.pathsuffix MatchesPath "/par") and (request.verb = "POST")</Condition>
+    </RouteRule>
+    <RouteRule name="noroute-token">
+        <Condition>(proxy.pathsuffix MatchesPath "/token") and (request.verb = "POST")</Condition>
+    </RouteRule>
+    <RouteRule name="noroute-jwks">
+        <Condition>(proxy.pathsuffix MatchesPath "/jwks") and (request.verb = "GET")</Condition>
+    </RouteRule>
+    <RouteRule name="noroute-cb">
+        <Condition>(proxy.pathsuffix MatchesPath "/authorise-cb")</Condition>
+    </RouteRule>
+    <RouteRule name="noroute-authorise">
+        <Condition>(proxy.pathsuffix MatchesPath "/authorise")</Condition>
+    </RouteRule>
+    <RouteRule name="noroute-userinfo">
+        <!-- <TargetEndpoint>userinfo</TargetEndpoint> -->
+        <Condition>(proxy.pathsuffix MatchesPath "/userinfo")</Condition>
+    </RouteRule>
+    <RouteRule name="noroute-arrangement-revoke">
+        <Condition>(proxy.pathsuffix MatchesPath "/arrangements/revoke")</Condition>
+    </RouteRule>
+    <RouteRule name="noroute"/>
+</ProxyEndpoint>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout name="SC-GenerateIdTokenForAuthCodeStep" continueOnError="false">
+    <DisplayName>SC-GenerateIdTokenForAuthCodeStep</DisplayName>
+    <Request clearPayload="true" variable="idTokenRequest">
+        <Set>
+            <Payload contentType="application/json">{
+  "acr": "{acrUsed}",
+  "c_hash": "{CDS.tokencode_hash}",
+  "sub": "{customerPPId}",
+  "aud": "{OIDC.client_id}",
+  "s_hash": "{CDS.s_hash}",
+  "updated_at": {CDS.updateAtEpoch},
+  "auth_time": {CDS.authTimeEpoch},
+  "iss": "{issuer}",
+  "nbf": {CDS.updateAtEpoch},
+  "exp": {CDS.codeExp},
+  "nonce": "{OIDC.nonce}",
+  "refresh_token_expires_at": 0,
+  "sharing_expires_at": 0,
+  "iat": {CDS.updateAtEpoch},
+  "jti": "{createUuid()}"
+}</Payload>
+            <Verb>POST</Verb>
+            <Path>/external/{CDS.brandId}/token/sign</Path>
+        </Set>
+    </Request>
+    <Response>idTokenResponse</Response>
+    <Timeout>10000</Timeout>
+    <HTTPTargetConnection>
+        <Properties>
+            <Property name="success.codes">2xx</Property>
+            <Property name="io.timeout.millis">5000</Property>
+        </Properties>
+        <LoadBalancer>
+            <Server name="cds-token-microservice"/>
+        </LoadBalancer>
+        <Path>{CDS.serviceEnvPath}/token-service/v1</Path>
+    </HTTPTargetConnection>
+</ServiceCallout>

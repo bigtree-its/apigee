@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+  <DefaultFaultRule name="all">
+    <AlwaysEnforce>true</AlwaysEnforce>
+    <!-- if no error messages assigned, create the default one -->
+    <Step>
+      <Name>AM-ErrorResponse</Name>
+      <Condition>flow.myapi.error.code != null</Condition>
+    </Step>
+    <Step>
+      <Name>RF-ProxyFaultHandlerUnexpected</Name>
+      <Condition>error.status.code = null</Condition>
+    </Step>
+    <!-- Possible Errors -->
+    <!-- 400 Bad Request - consentId/ArrangementId passed in the request URL is not in correct format -->
+    <!-- 401 Not Authorised - Done once we use 10x token logging shared flow -->
+    <!-- 403 Forbidden - consentId/Arrangement requested does not belong to the client initiating the request. 
+             Would mean DB call found consentId/Arrangement but not matching clientId -->
+    <!-- 404 Not Found - consentId/Arrangement not found. 
+             Would mean DB call didnt find consentId/Arrangement -->
+    <!-- 431 Request header fields too large - check Authorization or Party-Key size -->
+  </DefaultFaultRule>
+  <PreFlow name="PreFlow">
+    <Request>
+      <!-- Expecting existing shared-flow from 10x, the party key should be found in tenxtoken so should override the party-key header -->
+      <Step>
+        <Name>EV-GetHeaders</Name>
+      </Step>
+      <!-- 
+            <Step><Name>FC-VerifyAccessToken</Name></Step><Step><Name>FC-GetTenxToken</Name></Step>
+            -->
+    </Request>
+    <Response/>
+  </PreFlow>
+  <Flows>
+    <Flow name="Get client (access doesnt require login)">
+      <Description>Returns the ADR info</Description>
+      <Request>
+        <Step>
+          <Name>EV-ClientIdFromURL</Name>
+        </Step>
+        <Step>
+          <Name>RF-InvalidClientId</Name>
+          <Condition>NOT (cds.clientId ~~ "^[a-zA-Z0-9]{32}$")</Condition>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-GetClientResponse</Name>
+          <Condition>(request.header.x-test = "" or request.header.x-test = null)</Condition>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/clients/{clientId}" and request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="Get consent">
+      <Description>Returns the consent request and ADR info</Description>
+      <Request>
+        <Step>
+          <Name>EV-ConsentIdFromURL</Name>
+        </Step>
+        <Step>
+          <Name>RF-InvalidConsentId</Name>
+          <Condition>NOT (cds.consentId ~~ "^(?i)[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89AB][0-9a-f]{3}-[0-9a-f]{12}$")</Condition>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-GetConsentResponse</Name>
+          <Condition>(request.header.x-test = "" or request.header.x-test = null)</Condition>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/consents/{consentId}" and request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="Update consent with account selection">
+      <Description>Update consent with account selection and partykey</Description>
+      <Request>
+        <Step>
+          <Name>EV-ConsentIdFromURL</Name>
+        </Step>
+        <Step>
+          <Name>RF-InvalidConsentId</Name>
+          <Condition>NOT (cds.consentId ~~ "^(?i)[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89AB][0-9a-f]{3}-[0-9a-f]{12}$")</Condition>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-PutConsentResponse</Name>
+          <Condition>(request.header.x-test = "" or request.header.x-test = null)</Condition>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/consents/{consentId}" and request.verb = "PUT")</Condition>
+    </Flow>
+    <Flow name="Get arrangements">
+      <Description>Retrieve a single arrangement</Description>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>AM-GetArrangementsResponse</Name>
+          <Condition>(request.header.x-test = "" or request.header.x-test = null)</Condition>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/arrangements" and request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="Get arrangement">
+      <Description>Delete an arrangements</Description>
+      <Request>
+        <Step>
+          <Name>EV-ArrangementIdFromURL</Name>
+        </Step>
+        <Step>
+          <Name>RF-InvalidArrangementId</Name>
+          <Condition>NOT (cds.ArrangementId ~~ "^(?i)[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89AB][0-9a-f]{3}-[0-9a-f]{12}$")</Condition>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-GetArrangementResponse</Name>
+          <Condition>(request.header.x-test = "" or request.header.x-test = null)</Condition>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/arrangements/{arrangementId}" and request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="Delete arrangement">
+      <Description>Delete an arrangement</Description>
+      <Request>
+        <Step>
+          <Name>EV-ArrangementIdFromURL</Name>
+        </Step>
+        <Step>
+          <Name>RF-InvalidArrangementId</Name>
+          <Condition>NOT (cds.ArrangementId ~~ "^(?i)[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89AB][0-9a-f]{3}-[0-9a-f]{12}$")</Condition>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-DeleteArrangementResponse</Name>
+          <Condition>(request.header.x-test = "" or request.header.x-test = null)</Condition>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/arrangements/{arrangementId}" and request.verb = "DELETE")</Condition>
+    </Flow>
+    <!-- 10x env only -->
+    <!-- <Flow name="Health"><Description>Health check Endpoint</Description><Request/><Response><Step><Name>FC-GetHealthCheckValues</Name></Step></Response><Condition>(proxy.pathsuffix MatchesPath "/health") and (request.verb = "GET")</Condition></Flow> -->
+    <Flow name="Not Found">
+      <Description>Not Found</Description>
+      <Request>
+        <Step>
+          <Name>RF-NotFound</Name>
+        </Step>
+      </Request>
+      <Response/>
+    </Flow>
+  </Flows>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response/>
+  </PostFlow>
+  <RouteRule name="cds-internal-client">
+    <Condition>(request.header.x-test != "" and request.header.x-test != null and request.header.x-test != "true") and (proxy.pathsuffix MatchesPath "/clients/{clientId}" and request.verb = "GET")</Condition>
+    <TargetEndpoint>cds-internal-consents</TargetEndpoint>
+  </RouteRule>
+  <RouteRule name="cds-internal-consent">
+    <Condition>(request.header.x-test != "" and request.header.x-test != null and request.header.x-test != "true") and (proxy.pathsuffix MatchesPath "/consents/{consentId}" and request.verb = "GET") or (proxy.pathsuffix MatchesPath "/consents/{consentId}" and request.verb = "PUT")</Condition>
+    <TargetEndpoint>cds-internal-consents</TargetEndpoint>
+  </RouteRule>
+  <RouteRule name="cds-internal-arrangements">
+    <Condition>(request.header.x-test != "" and request.header.x-test != null and request.header.x-test != "true") and (proxy.pathsuffix MatchesPath "/arrangements" and request.verb = "GET") or (proxy.pathsuffix MatchesPath "/arrangements/{arrangementId}" and request.verb = "GET") or (proxy.pathsuffix MatchesPath "/arrangements/{arrangementId}" and request.verb = "DELETE")</Condition>
+    <TargetEndpoint>cds-internal-consents</TargetEndpoint>
+  </RouteRule>
+  <RouteRule name="noroute"/>
+  <HTTPProxyConnection>
+    <BasePath>cds-au/v1</BasePath>
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+</ProxyEndpoint>

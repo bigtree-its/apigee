@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetIssueTokenResponseWithNoRefreshToken">
+  <DisplayName>AM-SetIssueTokenResponseWithNoRefreshToken</DisplayName>
+  <!-- Remove the temporarily reinstated authorization header (required for OAuthV2 policy)-->
+  <Remove>
+    <Headers>
+      <Header name="Authorization"/>
+      <Header name="x-client-certificate"/>
+    </Headers>
+  </Remove>
+  <Set>
+    <Headers>
+      <Header name="cache-control">no-store</Header>
+      <Header name="pragma">no-cache</Header>
+    </Headers>
+    <Payload contentType="application/json">{
+  "access_token": "{theAccessToken}",
+  "expires_in": {accessTokenExpiresIn},
+  "id_token": "{jwe_output}",
+  "token_type": "Bearer",
+  "scope": "{accessTokenScope}",
+  "sharing_expires_at": {refreshTokenExpiresAt},
+  "cdr_arrangement_id": "{cdrArrangementId}"
+}</Payload>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

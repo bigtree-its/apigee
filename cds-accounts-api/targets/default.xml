@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="default">
+    <FaultRules>
+        <FaultRule name="Target Response Error">
+            <Condition>response.status.code != 200 or response.status.code != 201</Condition>
+            <Step>
+                <Name>FC-TargetErrorHandler</Name>
+            </Step>
+        </FaultRule>
+    </FaultRules>
+    <PreFlow name="PreFlow Checks">
+        <Request>
+            <Step>
+                <Name>JS-SetXOriginalUri</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <Flows/>
+    <HTTPTargetConnection>
+        <LoadBalancer>
+            <Server name="cds-banking-accounts">
+                <IsEnabled>true</IsEnabled>
+            </Server>
+        </LoadBalancer>
+        <Properties>
+            <Property name="success.codes">1xx,2xx,3xx</Property>
+            <Property name="io.timeout.millis">20000</Property>
+        </Properties>
+        <Path>/v1/banking/accounts</Path>
+    </HTTPTargetConnection>
+</TargetEndpoint>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <!-- default fault rule. this will always run on errors-->
+    <DefaultFaultRule name="all">
+        <!-- if no error messages assigned, create the default one -->
+        <Step>
+            <Name>FC-ProxyErrorHandler</Name>
+        </Step>
+    </DefaultFaultRule>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <Name>FC-ProxySecurity</Name>
+            </Step>
+            <Step>
+                <Name>FC-ValidateBrandId</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="health">
+            <Request/>
+            <Response>
+                <Step>
+                    <Name>FC-GetHealthCheckValues</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/health") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="GenerateOTP">
+            <Description>Initial call to send one time password to users registered mobile number.</Description>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/initiate") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="Login">
+            <Description>Authorise a user via an OTP and allow them to login to the 10x platform</Description>
+            <Request>
+                <Step>
+                    <Name>KVM-GetOauthScope</Name>
+                </Step>
+                <Step>
+                    <Name>EV-ConsentId</Name>
+                    <Condition>request.content != null</Condition>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/login") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="Not Found">
+            <Description>The requested resource URL is not an API endpoint</Description>
+            <Request>
+                <Step>
+                    <Name>RF-ResourceNotFound</Name>
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+    </Flows>
+    <PostFlow>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/*/cds-au/v1/otp</BasePath>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noroute">
+        <Condition>(proxy.pathsuffix MatchesPath "/health")</Condition>
+    </RouteRule>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+        <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/initiate" or proxy.pathsuffix MatchesPath "/login")</Condition>
+    </RouteRule>
+</ProxyEndpoint>

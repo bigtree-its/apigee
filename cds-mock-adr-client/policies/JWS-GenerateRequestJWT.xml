@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GenerateJWS async="false" continueOnError="false" enabled="true" name="JWS-GenerateRequestJWT">
+  <DisplayName>JWS-GenerateRequestJWT</DisplayName>
+  <Algorithm>PS256</Algorithm>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <PrivateKey>
+    <Value ref="private.mockADRPrivateKey"/>
+    <Id ref="mockADRPrivateKeyKid">CDSTestApp</Id>
+  </PrivateKey>
+  <Payload ref="requestJwtPayload"/>
+  <OutputVariable>theJWT</OutputVariable>
+</GenerateJWS>

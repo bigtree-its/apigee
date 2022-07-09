@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="JC-X509CertificateParse" version="SHA-512:a81db23153434c99aee2b683673b4f62e4a99f4184541247a07771487f0d5c888c8e54cfcf0ad9f4a236d72fb276e5006ee452d1dc89326b99cdee1e9db82f54"/>
+        <VersionInfo resourceName="JS-SetFingerprintForToken" version="SHA-512:591a15d8c700d9caf7df5385571aea3e36e15f38ec6bf04399d0b6d729edf1a4aa18768ab24a83987a7216a05797a13eeee30fe30f3d55cee3b64c8c055f6fb2"/>
+        <VersionInfo resourceName="RF-BadCert" version="SHA-512:2b18d5bde38f31572897b4963382666a05e03b77a6420d26b336259c71be6a78657da027c97cf45f2c0eeecf75185079a01c0bc6d9ee8eb4b63b903a01af7aee"/>
+        <VersionInfo resourceName="RF-CertificateFingerprintDoesNotMatch" version="SHA-512:72102fe8f59583e82f5ba62d603b3c65f56ac665587bb4ea16b9de51121f7fbfd52bc23601346f964f25001ea3d5919176472885d9f6d71f02384f42a74e724b"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources>
+        <VersionInfo resourceName="java://cds-policy-java-X509CertificateParser.jar" version="SHA-512:375b3ff7701aba2998384d13cf9a54c47c259270d605f4079beaaa74e940a46be38adef24b3fe49b7ee4394c6480dfac9a91c19ee5c60cca118f9d112ceb7cf1"/>
+        <VersionInfo resourceName="jsc://js-set-fingerprint-for-token.js" version="SHA-512:b789f7850f5cfbf4d9539e5a4baf7d005bfebd07167dfaedb5d1f07bc8fa18b49772050fe72ca4c5eb359200da0810f213936592eeb5dda14c7b09f7823c4b92"/>
+    </Resources>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:0cabf9d55ee5c9daa86e58a65186eb1ad18878550fc13a419f8c246b647693931a889482e7f56cda30d4a2aa559184d327b8b2a3bcaae164ef563c07363b8357"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

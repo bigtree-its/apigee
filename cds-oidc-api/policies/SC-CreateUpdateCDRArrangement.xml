@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout name="SC-CreateUpdateCDRArrangement" continueOnError="false">
+  <DisplayName>SC-CreateUpdateCDRArrangement</DisplayName>
+  <Request clearPayload="true" variable="adrConsentsRequest">
+    <Set>
+      <Payload contentType="application/json">{consentRequest}</Payload>
+      <Verb>PUT</Verb>
+      <Path>/internal/arrangements/{cdrArrangementId}</Path>
+    </Set>
+  </Request>
+  <Response>arrangementResponse</Response>
+  <Timeout>10000</Timeout>
+  <HTTPTargetConnection>
+    <Properties>
+      <Property name="success.codes">2xx</Property>
+      <Property name="io.timeout.millis">5000</Property>
+    </Properties>
+    <LoadBalancer>
+      <Server name="cds-arrangement-microservice"/>
+    </LoadBalancer>
+    <Path>{CDS.serviceEnvPath}/arrangement-service/v1</Path>
+  </HTTPTargetConnection>
+</ServiceCallout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+    <Step>
+        <Name>AM-InitialiseJourney</Name>
+    </Step>
+    <Step>
+        <Name>AM-SetJourney</Name>
+        <Condition>(apiproxy.name = "cds-otp-login-api") || (apiproxy.name = "cds-subscriptions-api") ||  ((proxy.pathsuffix MatchesPath "/consents/*") and (request.verb = "GET" or request.verb = "PUT"))</Condition>
+    </Step>
+    <Step>
+        <Name>JS-GenerateTraceId</Name>
+    </Step>
+    <Step>
+        <Name>AM-UUID</Name>
+        <Condition>(request.header.x-fapi-interaction-id == null) or (request.header.x-fapi-interaction-id == "")</Condition>
+    </Step>
+    <Step>
+        <Name>AM-SpikeArrestRate</Name>
+        <Condition>isConsentJourney = true</Condition>
+    </Step>
+    <Step>
+        <Name>KVM-Security-Properties</Name>
+    </Step>
+    <Step>
+        <Name>KVM-forgerock-public</Name>
+        <Condition>isConsentJourney = true</Condition>
+    </Step>
+    <Step>
+        <Name>FC-IPAccessControl</Name>
+    </Step>
+    <Step>
+        <Name>TP-RegularExpressionProtection</Name>
+    </Step>
+    <Step>
+        <Name>RF-RegularExpressionExpectionFault</Name>
+        <Condition>(regularexpressionprotection.TP-RegularExpressionProtection.failed = "true")</Condition>
+    </Step>
+    <Step>
+        <Name>Verify-APIKey</Name>
+        <Condition>(request.verb != "OPTIONS") and (apiproxy.name !~ "*swagger-ui") and (isConsentJourney = true)</Condition>
+    </Step>
+    <Step>
+        <Name>SA-SpikeArrest</Name>
+        <Condition>spike_arrest_enabled == "true" AND isConsentJourney = true</Condition>
+    </Step>
+    <Step>
+        <Name>JS-WhitelistHeaders</Name>
+        <Condition>whitelist-headers != null</Condition>
+    </Step>
+</SharedFlow>

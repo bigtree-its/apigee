@@ -1,0 +1,12 @@
+<JavaCallout name="JC-EncryptIdToken">
+  <Properties>
+    <Property name='key-encryption'>{idTokenEncryptionAlg}</Property>
+    <Property name='content-encryption'>A256GCM</Property>
+    <Property name='debug'>true</Property>
+    <Property name='payload'>{theNewIdToken}</Property>
+    <Property name='jwks-uri'>{clientJWKSUri}</Property>
+    <Property name='key-id'>{clientJwksUriEncKid}</Property>
+  </Properties>
+  <ClassName>com.google.apigee.callouts.GenerateJwe</ClassName>
+  <ResourceURL>java://apigee-callout-encrypted-jwt-20210428.jar</ResourceURL>
+</JavaCallout>

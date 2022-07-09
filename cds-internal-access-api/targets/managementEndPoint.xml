@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<TargetEndpoint name="managementEndPoint">
+  <FaultRules>
+    <FaultRule name="Token Revoke failed">
+      <Description>Token revoke not working in eval account</Description>
+      <Condition>(proxy.pathsuffix MatchesPath "/oauth/tokens" and response.status.code = 400)</Condition>
+      <Step>
+        <Name>AM-SetRevokeTokenResponse</Name>
+      </Step>
+    </FaultRule>
+  </FaultRules>
+  <PreFlow name="PreFlow Checks">
+    <Request>
+      <Step>
+        <Name>KVM-GetApigeeAPICredentials</Name>
+      </Step>
+    </Request>
+    <Response />
+  </PreFlow>
+  <Flows>
+    <Flow name="Revoke Tokens of apigee AppId ( app query param) and/or consentid(enduser query param)">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>BA-SetBasicAuthHeader</Name>
+        </Step>
+        <Step>
+          <Name>JS-TargetOrgApps</Name>
+        </Step>
+        <Step>
+          <Name>SC-ApprovedOrganisationApps</Name>
+        </Step>
+        <Step>
+          <Name>AM-SetAuthorizationHeader</Name>
+        </Step>
+        <Step>
+          <Name>JS-FindApp</Name>
+        </Step>
+        <!-- <Step><Name>JS-SetTargetRevokeOAuthTokens</Name><Condition>cascadeBool = "false"</Condition></Step> -->
+        <Step>
+          <Name>AE-GetAppDetails</Name>
+          <Condition>cascadeBool = "true"</Condition>
+        </Step>
+        <Step>
+          <Name>AE-GetDeveloper</Name>
+          <Condition>cascadeBool = "true"</Condition>
+        </Step>
+        <Step>
+          <Name>XTJ-DeveloperDetails</Name>
+          <Condition>cascadeBool = "true"</Condition>
+        </Step>
+        <Step>
+          <Name>JS-SetTargetDeleteApp</Name>
+          <Condition>cascadeBool = "true"</Condition>
+        </Step>
+      </Request>
+      <Response/>
+      <Condition>(proxy.pathsuffix MatchesPath "/oauth/tokens") and (request.verb = "DELETE")</Condition>
+    </Flow>
+  </Flows>
+  <HTTPTargetConnection>
+    <Properties>
+      <Property name="success.codes">2xx</Property>
+      <Property name="io.timeout.millis">5000</Property>
+    </Properties>
+    <URL>https://dummy.this.will.get.set.dynamically</URL>
+  </HTTPTargetConnection>
+</TargetEndpoint>

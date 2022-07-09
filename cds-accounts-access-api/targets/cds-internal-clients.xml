@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="cds-internal-clients">
+  <Description/>
+  <FaultRules/>
+  <Flows/>
+  <HTTPTargetConnection>
+    <Properties>
+      <Property name="success.codes">1xx,2xx,3xx</Property>
+      <Property name="io.timeout.millis">5000</Property>
+    </Properties>
+    <LoadBalancer>
+      <Server name="cds-internal"/>
+    </LoadBalancer>
+    <Path>/cds-au/v1/internal</Path>
+  </HTTPTargetConnection>
+</TargetEndpoint>

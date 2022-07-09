@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-SetMockJWKSInfo" version="SHA-512:a252502bf50bad5b7a1fff6a80afc902053d7c7761fb180cfd5fa031c3c506504c1dcbe8877951358dea852f0f221daa6093d5ff60bd0dcfc0331fa56896c167"/>
+        <VersionInfo resourceName="AM-SetResponse" version="SHA-512:fe80daaeff1b16fb41d125099604a626efaba353bd035e61e2616c90b682d02bf71d0a1c19146a1d63b5ebd34c4db230b6007ec8f991902e0c2c03fa914f14b5"/>
+        <VersionInfo resourceName="AM-SetValuesBasedOnOptionalQueryParamsOrDefaults" version="SHA-512:6ee01d026449a722b6c22ba09faa2bdeb047dfbfa66d9c2c8421748c8f6aefd7baf5d0089bf8edc668f8179c983dcad54c1bee8ec32e9c91ece8b73c7b7029f3"/>
+        <VersionInfo resourceName="AM-SetValuesBasedOnOptionalQueryParamsOrDefaults-PrivKeyJWT" version="SHA-512:b88e1e5ac43220b70216268d330ac329e9ad17feaa4895d166a7de4d41fd36ad8e179c1dac67e94c217dbf346484bff8a28d786fee068ad884723a01bf54639d"/>
+        <VersionInfo resourceName="EV-SWIdFromURIParam" version="SHA-512:0007273124bd2bb2fd00e1f8b5302fe94f7e11ed301e44591ae2700d92b84368b260c776db1dd7ec1c5c5bc958a62bb7a134d38861b8043410b083d251ed077d"/>
+        <VersionInfo resourceName="JS-SetRedirectURIs" version="SHA-512:ab09b2840a2a4cb83625be1d4841ab109ac9824153d5e0d4ddc4244748851fa1884b5d81a9020077902d329b9d85ef2b8ad909f83f0c6a5406d732d6fc4df4fe"/>
+        <VersionInfo resourceName="JWT-GenerateMockSSAForSWId" version="SHA-512:0cf1d53f7758fd6137809897ce9ab4886c0150eab9084074808e23ac6b496548674a09d6a2343d84a3e48c5cfc8b6a58063357efaa5a9a36b7b2a42820c4612c"/>
+        <VersionInfo resourceName="JWT-GeneratePrivateKeyJWTForAuth" version="SHA-512:61abe509686403a7b1d820140bda7227025f39ba2e82b90fa76aaeae2936e7b6982423f0818eb9e9217050b15c30e8ea67e1cefb200537ec439a95c1793de95b"/>
+        <VersionInfo resourceName="KVM-GetMockCDRRegisterKeys" version="SHA-512:743e0ee8f187ea007ccdb21959b79f168487f51df2cf01b98a131006e35aa45bd035b466d52f495d90c8734f9ffd7d00bf8908938025d02ea9373191759949f5"/>
+        <VersionInfo resourceName="RF-NotFound" version="SHA-512:6be34d5719607b554fe0c5146e5a63b70163a936152824aad49ff579dfb9f7f30579c8647b5d3b0e842dd8fa86b824bf28620f7affacbb3af34047dca307e655"/>
+        <VersionInfo resourceName="RF-UnsupportedMethod" version="SHA-512:095b91959be10f2923c7b77669dd015565d3fd7994c6e3e84e745859efd2d50e4b05ec2d08877c1be33350f4662682ccd5ae7721cccda87f97be8bcc24c123ef"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:0a86ef65d0a63f741cd3daeb8eb8c800fde6298da12dc290878d108ced7bbd06430f664848c87d6d8324fd2f7b3ab4cf3fbb3a187fa0864b959451dce34a5564"/>
+    </ProxyEndpoints>
+    <Resources>
+        <VersionInfo resourceName="jsc://setRedirectURIs.js" version="SHA-512:717ab64e43b3354021970cdbed4091a2d56e4fa0ea6c820effaabb38f00add001b57b1d07a002b3d3faa290cd5dc9f754fc0fb7d620dd37164f3ded8d06a37da"/>
+    </Resources>
+    <SharedFlows/>
+    <TargetEndpoints/>
+</Manifest>

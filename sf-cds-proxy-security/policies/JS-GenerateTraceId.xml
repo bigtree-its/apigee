@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" name="JS-GenerateTraceId">
+    <DisplayName>JS-GenerateTraceId</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://js-generate-trace-id.js</ResourceURL>
+</Javascript>

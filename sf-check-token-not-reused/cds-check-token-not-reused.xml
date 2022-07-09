@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="2" name="cds-check-token-not-reused">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1646139535305</CreatedAt>
+    <CreatedBy>nava.kannusamy@10xbanking.com</CreatedBy>
+    <Description>2022-03-01_12-55-15 - Validates that a JWT token has not been previously seen by caching its JTI claim for a specified amount of time</Description>
+    <DisplayName>cds-check-token-not-reused</DisplayName>
+    <LastModifiedAt>1646139535305</LastModifiedAt>
+    <LastModifiedBy>nava.kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:790ea5270d625144b0f6a671d5cadb1d7ef09fff5255c56e5ccbd416cbeb48edfb8c59d4f35a47de3bb707c6ec21afe5c68b5231b3536161b2e5e6dc20c77c82:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-SetErrorTypeForCdrRegSelfSignedToken</Policy>
+        <Policy>AM-SetErrorTypeForDynClientRegToken</Policy>
+        <Policy>AM-SetErrorTypeForPARToken</Policy>
+        <Policy>AM-SetErrorTypeForSSAToken</Policy>
+        <Policy>EV-GetJTIAndExp</Policy>
+        <Policy>LC-JTIHasBeenSeen</Policy>
+        <Policy>PC-RememberJTI</Policy>
+        <Policy>RF-MissingJTIClaim</Policy>
+        <Policy>RF-MissingJTIClaimBearer</Policy>
+        <Policy>RF-TokenReusedBearer</Policy>
+        <Policy>RF-TokenReusedDCR</Policy>
+        <Policy>RF-TokenReusedOther</Policy>
+    </Policies>
+    <Resources/>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

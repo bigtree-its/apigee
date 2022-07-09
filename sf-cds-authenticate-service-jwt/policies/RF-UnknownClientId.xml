@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-UnknownClientId">
+  <DisplayName>RF-UnknownClientId</DisplayName>
+  <Properties/>
+  <FaultResponse>
+    <Set>
+      <StatusCode>401</StatusCode>
+    </Set>
+    <AssignVariable>
+      <Name>flow.cds.error.message</Name>
+      <Value>Invalid client Id</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.cds.error.code</Name>
+      <Value>401.001.012</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.cds.error.status</Name>
+      <Value>401</Value>
+    </AssignVariable>
+    <AssignVariable>
+      <Name>flow.cds.error.reason</Name>
+      <Value>Unauthorized</Value>
+    </AssignVariable>
+  </FaultResponse>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

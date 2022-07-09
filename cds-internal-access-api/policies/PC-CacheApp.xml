@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PopulateCache async="false" continueOnError="false" enabled="true" name="PC-CacheApp">
+  <DisplayName>PC-CacheApp</DisplayName>
+  <Properties/>
+  <CacheKey>
+    <KeyFragment ref="theClientId"/>
+  </CacheKey>
+  <CacheResource>CDSCacheApp</CacheResource>
+  <Scope>Global</Scope>
+  <ExpirySettings>
+    <TimeoutInSec ref="1800"/>
+  </ExpirySettings>
+  <Source>cds.appDetails</Source>
+</PopulateCache>

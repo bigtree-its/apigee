@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-GetClientResponse">
+  <DisplayName>AM-GetClientResponse</DisplayName>
+  <Set>
+    <Payload contentType="application/json">
+        {
+            "recipient": {
+                "clientId": "35a5a70b-5b8d-41f4-9cbd-96cfbc15c58a",
+                "clientIdIssuedAt": 1622538314000,
+                "clientName": "Initech Accountancy",
+                "clientDescription": "Accontancy without the numbers, issued by a CDR register",
+                "clientUri": "https://steveoshima-test.apigee.net/mock-adr-webclient/banking",
+                "legalEntityId": "6afd1eac-7915-47b1-a312-1567e930a6fc",
+                "legalEntityName": "Initech Ltd",
+                "orgId": "542daaf3-62b1-43ae-8b13-8d39a3b32b9f",
+                "orgName": "Initech Accounts Ltd",
+                "logoUri": "https://steveoshima-test.apigee.net/mock-adr-webclient/img/adr-money.png",
+                "tosUri": "https://steveoshima-test.apigee.net/mock-adr-webclient/tos.html",
+                "policyUri": "https://steveoshima-test.apigee.net/mock-adr-webclient/policy.html",
+                "softwareId": "f2ded6a0-2f40-4076-87e6-78b8381cfd64"
+            }
+        }
+        </Payload>
+    <StatusCode>200</StatusCode>
+    <ReasonPhrase>OK</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

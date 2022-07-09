@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-RedirectToIdPAuthenticationEndpoint">
+    <DisplayName>AM-RedirectToIdPAuthenticationEndpoint</DisplayName>
+    <Set>
+        <Headers>
+            <Header name="Location">https://{CDS.redirectAuthenticationEndpoint}/{OIDC.AuthorisationInfoKey}?auth_callback_uri=https://{CDS.apiHostnameOpen}/authorise-cb/{OIDC.AuthorisationInfoKey}&amp;client_id={apigee.client_id}</Header>
+        </Headers>
+        <StatusCode>302</StatusCode>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

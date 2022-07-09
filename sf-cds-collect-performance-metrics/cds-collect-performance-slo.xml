@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="2" name="cds-collect-performance-slo">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1646139540684</CreatedAt>
+    <CreatedBy>nava.kannusamy@10xbanking.com</CreatedBy>
+    <Description>2022-03-01_12-55-15 - Stores custom analytics metric that indicates whether a request meets its performance objective (based on tiers specified by CDS)</Description>
+    <DisplayName>cds-collect-performance-slo</DisplayName>
+    <LastModifiedAt>1646139540684</LastModifiedAt>
+    <LastModifiedBy>nava.kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:782fb2bf60d72f2b40ba5a81fe7ceac9f7993349fb3b9364151546d11929d6a21e3cdf7051de9acb31ec98565b1fdcb13d2481c638f0606803ae6750a5c239cf:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-InternalServerDcrErrorForUnknown</Policy>
+        <Policy>AM-InternalServerErrorForUnknown</Policy>
+        <Policy>AM-ResetCustomerPPIDIfNA</Policy>
+        <Policy>AM-ResetTokenOpIfNA</Policy>
+        <Policy>AM-SetMessageSLO</Policy>
+        <Policy>EV-CoverUnknownErrorsWithNoInterception</Policy>
+        <Policy>JS-CheckIfRequestMeetsPerformanceSLO</Policy>
+        <Policy>JS-SetPerformanceTier</Policy>
+        <Policy>SC-AddPerformanceTierDimension</Policy>
+    </Policies>
+    <Resources>
+        <Resource>jsc://checkIfRequestMeetsPerformanceSLO.js</Resource>
+        <Resource>jsc://setPerformanceTier.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

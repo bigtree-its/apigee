@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="1" name="cds-get-sector-id-uri">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1646139566000</CreatedAt>
+    <CreatedBy>nava.kannusamy@10xbanking.com</CreatedBy>
+    <Description>2022-03-01_12-55-15 - fetches the sector identifier uri</Description>
+    <DisplayName>cds-get-sector-id-uri</DisplayName>
+    <LastModifiedAt>1646139566000</LastModifiedAt>
+    <LastModifiedBy>nava.kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:f5148efa1c8eb901b33f7d5bbd86a04f1405b737f920a4a506cd6ced073165a5ffc52266b0b773dde74da729f7e47d86b60871b5c35dd3cb4181c099494ea38a:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-RemoveProtocolFromSectorIdURI</Policy>
+        <Policy>AM-SetMockSectorIdURI</Policy>
+        <Policy>AM-SetSectorIdURIVar</Policy>
+        <Policy>SC-RetrieveSectorIdURI</Policy>
+    </Policies>
+    <Resources/>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

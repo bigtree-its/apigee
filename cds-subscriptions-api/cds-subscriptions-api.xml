@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="cds-subscriptions-api">
+    <Basepaths>/cds-au/v1/subscriptions</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1632725776908</CreatedAt>
+    <CreatedBy>Nava.kannusamy@10xbanking.com</CreatedBy>
+    <Description>#BuildIdentifierHere#</Description>
+    <DisplayName>cds-subscriptions-api</DisplayName>
+    <LastModifiedAt>1632725776908</LastModifiedAt>
+    <LastModifiedBy>Nava.kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:cccc87e2448b28da0422c65193dc08019b2925ab8d3daf6f670d192ee180a8400ea4fc054991a5d6301c0f25dd2eb9f10f03b2d33d20cfc829ae13ef559349e3:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-RemoveAccessToken</Policy>
+        <Policy>AM-TargetRequest</Policy>
+        <Policy>FC-GetHealthCheckValues</Policy>
+        <Policy>FC-GetTenxToken</Policy>
+        <Policy>FC-ProxyErrorHandler</Policy>
+        <Policy>FC-ValidateForgeRockPolicies</Policy>
+        <Policy>FC-VerifyAccessToken</Policy>
+        <Policy>JS-BuildResponse</Policy>
+        <Policy>JS-ExtractPartyKey</Policy>
+        <Policy>RF-ResourceNotFound</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://js-build-response.js</Resource>
+        <Resource>jsc://js-extract-party-key.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

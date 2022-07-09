@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="JS-CheckIPAllowList" version="SHA-512:af4cf65e3d9898ae6b1804e3f2d27e5374ed13bfca8c58fc34f57c1e7803dd25e7473587cabf84ab44092b848e56341a35abf90f02f3d37227fbd1dd7979b30a"/>
+        <VersionInfo resourceName="KVM-Security-Properties" version="SHA-512:64c3ee565030fd9375a484f26271d28343d194e4d03a25c71524d90549e65ea4afa0abad5cd4bf5512329181217cef286788bb7345ecf5e013b1f600ac246047"/>
+        <VersionInfo resourceName="RF-InvalidIP" version="SHA-512:e008332afc700c9a372ee1e3edcd17e102fdda8633144f7218573c1196f5562c95d46f6c28dbf9600ae0592cfc275ca9bfbf658dccbac6cab26317486d1fac2d"/>
+    </Policies>
+    <ProxyEndpoints/>
+    <Resources>
+        <VersionInfo resourceName="jsc://js-check-ip-allow-list.js" version="SHA-512:2a73cd7d057727d1c425d47433e037839ba24be46e6e35e7ba445948873e90c813df79806d881787c4bef6971f32cc80213cb7e86d4b6242da5eba7d67caad0c"/>
+    </Resources>
+    <SharedFlows>
+        <VersionInfo resourceName="default" version="SHA-512:cd82cca44032fb5101ce5b61d035431a1746f37814065be978fef9c24675e6e0fb151182181422a28d8b35a2bfff86506d195711f89d7c4962a6c99b627e6b36"/>
+    </SharedFlows>
+    <TargetEndpoints/>
+</Manifest>

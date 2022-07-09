@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SpikeArrestRate">
+    <DisplayName>AM-SpikeArrestRate</DisplayName>
+    <AssignVariable>
+        <Name>spike_arrest_rate_by_proxy</Name>
+        <Template>spike_arrest_rate.{apiproxy.name}</Template>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

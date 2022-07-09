@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-GenerateIntrospectionResponse">
+  <DisplayName>AM-GenerateIntrospectionResponse</DisplayName>
+  <Properties/>
+  <Set>
+    <Payload contentType="application/json">{
+ "active": {CDS.refreshTokenStatus},
+ "exp": {CDS.refreshTokenExpiresAt},
+ "cdr_arrangement_id": "{oauthv2refreshtoken.OAInfo-RetrieveRefreshTokenDetails.accesstoken.cdrArrangementId}",
+ "scope": "{oauthv2accesstoken.OAInfo-RetrieveRefreshTokenDetails.scope}"
+        }
+      </Payload>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

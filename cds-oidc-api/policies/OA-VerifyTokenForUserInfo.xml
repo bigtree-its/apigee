@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="OA-VerifyTokenForUserInfo">
+  <DisplayName>OA-VerifyTokenForUserInfo</DisplayName>
+  <ExternalAuthorization>false</ExternalAuthorization>
+  <Operation>VerifyAccessToken</Operation>
+  <ReuseRefreshToken>false</ReuseRefreshToken>
+  <Scope>profile</Scope>
+  <SupportedGrantTypes/>
+  <Tokens/>
+</OAuthV2>

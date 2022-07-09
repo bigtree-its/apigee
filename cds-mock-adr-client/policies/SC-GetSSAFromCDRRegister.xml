@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="SC-GetSSAFromCDRRegister">
+  <DisplayName>SC-GetSSAFromCDRRegister</DisplayName>
+  <Properties/>
+  <Request clearPayload="false" variable="SSARequest"></Request>
+  <Response>SSAResponse</Response>
+  <LocalTargetConnection>
+    <Path>/mock-cdr-register/{industry}/data-recipients/brands/defaultbrandid/software-products/{softwareId}/ssa?legal_entity_id={legalId}&amp;legal_entity_name={legalName}&amp;org_id={orgId}&amp;org_name={orgName}&amp;client_name={clientName}&amp;client_desc={clientDescription}&amp;scope={scope}</Path>
+  </LocalTargetConnection>
+</ServiceCallout>

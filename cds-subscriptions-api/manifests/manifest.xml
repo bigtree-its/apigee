@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-RemoveAccessToken" version="SHA-512:6e3af5a0e853cec5ce0bdde3a7b0ea6b3b4379387c1a911233c7268b66f0bda5fae60207d5a78d83251fb8e7f59b8f0a536778196b88ede3bd76f6b1a775d07a"/>
+        <VersionInfo resourceName="AM-TargetRequest" version="SHA-512:9dbe01cdcc156cbb6b53284d76aa4246b84dba090abe1c45d88d685404917dc0432e3ad8f5919427237ab4c6a46dc66bb3656727cc67988a0f4e28250f0cf5b3"/>
+        <VersionInfo resourceName="FC-GetHealthCheckValues" version="SHA-512:eeda849b1cb08f883bd018380f2fdf886c1aeeddd988f9df99491d8128ffdef1c3e70ff6e01ceb499c183620902cd5b18126f6170aadeafcedc7970ce69b0857"/>
+        <VersionInfo resourceName="FC-GetTenxToken" version="SHA-512:c589ccd60cb8e95767bcd5b904c1d11bb510f612667403a385260885a65faad167a0f60a8f27b203978d7638e74010bfaf17425e882e90404b1fad2485fc3d0a"/>
+        <VersionInfo resourceName="FC-ProxyErrorHandler" version="SHA-512:38bfb469b5d26c972e8892511d7ff4d2e7867b462d0b39bd61e78c906c4290083453c4a61170135e0e50d0e3e2d32fc894486bdd8291b2befdb525d357d672c6"/>
+        <VersionInfo resourceName="FC-ValidateForgeRockPolicies" version="SHA-512:825ccc3b2a97233a4466d742883d5eed00e0a74258d050ec778d39c728e0d4ef1daa5545e04d5aad20e02970c96dac78ec38ccdba02374d6ed546ba398d0acf4"/>
+        <VersionInfo resourceName="FC-VerifyAccessToken" version="SHA-512:9f96988a819c335803f0d5daf07cce319820ff58a1fe6fba334573745aacd96c2b1365e517011c00a74401afa12a41dd64b20a7f1678a07f32fb32ba1772f3b1"/>
+        <VersionInfo resourceName="JS-BuildResponse" version="SHA-512:62a1af98671e9543c65bb3ef6099cb079bdb48f3a34e0e5878ce4bbb6eed2553ca1b3816abdd457c00016377d5acb01fdbb49c9793da96c05a8d3723dfd271b2"/>
+        <VersionInfo resourceName="JS-ExtractPartyKey" version="SHA-512:e938124179c882e77057491f42e537e508e9bcea1b74d827879353b3131f1dd2a2327964a3ceaa0f0528a3d19a4d0fb67bf730bc5815c70914e78f970954bcee"/>
+        <VersionInfo resourceName="RF-ResourceNotFound" version="SHA-512:1dd294caf0194fd209e52e96063059244d2936c805cafefd919703c333952e6755e31c1c10f941f56c1e6cb73a7933aa026823f35df640a0cbeaa87c9f7b8500"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:ff6d2c0235cb46ea0a613deb96131e3a0e97c89d3db5fa9f8670c934ef70da7bcb73cd64765312bdb5712be468e97ab55f95327cf1eddeb3d8b27f124197815f"/>
+    </ProxyEndpoints>
+    <Resources>
+        <VersionInfo resourceName="jsc://js-build-response.js" version="SHA-512:c3d8fb138306b57dbabb675e08570b192e188a39ca47caeba1ab1ec8e3bf07637ae8214ab4b071ec083284c89558e0bff94e7806613adf12a2735c7944c59133"/>
+        <VersionInfo resourceName="jsc://js-extract-party-key.js" version="SHA-512:25f30ec75b98708f14229679baf96ca8cce046e77bb35989d057f552d7d0170bc2d783e0e78a4189faa2f0705055cc7a9101ca2908819554642ba731449ebbd4"/>
+    </Resources>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:05c078c554317b62a625003f196001c7e5e0b4f8007e47ef79093f2a1d50d7fc7d0cc72e122260f127a4b6aac7542f71e445ca429e36b6e09cc8b931ae7d5cd2"/>
+    </TargetEndpoints>
+</Manifest>

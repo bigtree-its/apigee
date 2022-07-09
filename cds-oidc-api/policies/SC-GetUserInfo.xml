@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout name="SC-GetUserInfo" continueOnError="true">
+  <DisplayName>SC-GetUserInfo</DisplayName>
+  <Request clearPayload="true" variable="userInfoRequest">
+    <Set>
+      <Verb>GET</Verb>
+      <Headers>
+        <Header name="Authorization">{adrServiceToken}</Header>
+      </Headers>
+    </Set>
+  </Request>
+  <Response>userInfoResponse</Response>
+  <HTTPTargetConnection>
+    <Properties>
+      <Property name="success.codes">2xx</Property>
+      <Property name="io.timeout.millis">5000</Property>
+    </Properties>
+    <LoadBalancer>
+      <Server name="cds-userinfo-microservice"/>
+    </LoadBalancer>
+    <Path>/userinfo/{theCustomerId}</Path>
+  </HTTPTargetConnection>
+</ServiceCallout>

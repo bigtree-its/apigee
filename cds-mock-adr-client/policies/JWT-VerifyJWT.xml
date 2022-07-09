@@ -1,0 +1,8 @@
+<VerifyJWT name="JWT-VerifyJWT">
+  <Algorithm>PS256</Algorithm>
+  <Source>request.formparam.jwt</Source>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <PublicKey>
+    <JWKS ref="request.formparam.jwks"/>
+  </PublicKey>
+</VerifyJWT>

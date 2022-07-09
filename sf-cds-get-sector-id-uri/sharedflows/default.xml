@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+  <Step>
+    <Name>AM-SetSectorIdURIVar</Name>
+  </Step>
+  <Step>
+    <Name>AM-SetMockSectorIdURI</Name>
+    <Condition>(CDS.sectorIdUriMocked = "true")</Condition>
+  </Step>
+  <Step>
+    <Name>AM-RemoveProtocolFromSectorIdURI</Name>
+  </Step>
+  <Step>
+    <Name>SC-RetrieveSectorIdURI</Name>
+  </Step>
+</SharedFlow>

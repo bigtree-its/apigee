@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="2" name="cds-authenticate-par-jwt">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1630823148369</CreatedAt>
+    <CreatedBy>nava.kannusamy@10xbanking.com</CreatedBy>
+    <Description>2022-03-01_12-55-15 - Authenticates a client par jwt.</Description>
+    <DisplayName>cds-authenticate-par-jwt</DisplayName>
+    <LastModifiedAt>1646161148478</LastModifiedAt>
+    <LastModifiedBy>nava.kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:c3fdbe12d5f1e74f24f1b72b73f41fad10a5f15d24a963c0223e4cfdfb81c694bcdee7ffe4d13f1dc3a44a2dca4b42dd5ad8d5ff14e34d640f99726ca935ee40:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AE-GetAppDetails</Policy>
+        <Policy>AM-GetDefaultAcr</Policy>
+        <Policy>AM-SetClientAssertionValid</Policy>
+        <Policy>AM-SetClientIdFromJwt</Policy>
+        <Policy>AM-SetCurrentTimeAsEpochSeconds</Policy>
+        <Policy>AM-SetDefaultCDRArrangementId</Policy>
+        <Policy>AM-SetDefaultSharingDuration</Policy>
+        <Policy>AM-SetMaxSharingDurationTo1Year</Policy>
+        <Policy>EV-ExtractAppRegInfo</Policy>
+        <Policy>EV-ExtractClientJWKSURIFromRegoInfo</Policy>
+        <Policy>EV-GetAdditionalClaimsInJwt</Policy>
+        <Policy>FC-CheckTokenNotReused</Policy>
+        <Policy>FC-GetClientJWKS</Policy>
+        <Policy>FC-ValidateAudience</Policy>
+        <Policy>JS-ValidateRedirectURI</Policy>
+        <Policy>JWT-DecodePrivateKeyJwt</Policy>
+        <Policy>JWT-VerifyParJWT</Policy>
+        <Policy>RF-InvalidJWT</Policy>
+        <Policy>RF-InvalidRedirectURI</Policy>
+        <Policy>RF-InvalidSharingDuration</Policy>
+        <Policy>RF-MissingEXPClaim</Policy>
+        <Policy>RF-MissingNonceClaim</Policy>
+        <Policy>RF-MissingRedirectUriClaim</Policy>
+        <Policy>RF-MissingScopeClaim</Policy>
+        <Policy>RF-NotRequiredRequestUriClaim</Policy>
+        <Policy>RF-UnknownClientId</Policy>
+    </Policies>
+    <Resources>
+        <Resource>jsc://validateRedirectUri.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

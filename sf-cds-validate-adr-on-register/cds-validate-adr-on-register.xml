@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="2" name="cds-validate-adr-on-register">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1646139571745</CreatedAt>
+    <CreatedBy>nava.kannusamy@10xbanking.com</CreatedBy>
+    <Description>2022-03-01_12-55-15 - targets the responisbility service which has a cache to the cdr register</Description>
+    <DisplayName>cds-validate-adr-on-register</DisplayName>
+    <LastModifiedAt>1646139571745</LastModifiedAt>
+    <LastModifiedBy>nava.kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:10386c0f0e84799c3bb5bfd44a04dd21eda0224958d33984b8f83bce55a4953aa9eeb0f2d7c823d0c710ff652ca058e40d1859bec02574daf38092cdeae085e5:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-ExtractResponsibilityServiceAdrStatusContent</Policy>
+        <Policy>EV-GetADRStatus</Policy>
+        <Policy>FC-GetAdrApp</Policy>
+        <Policy>LC-RetrieveResponsibilityServiceAdrStatus</Policy>
+        <Policy>PC-StoreResponsibilityServiceAdrStatus</Policy>
+        <Policy>RF-ADRBlocked-DCR</Policy>
+        <Policy>RF-ADRBlocked</Policy>
+        <Policy>RF-ADRNotFound-DCR</Policy>
+        <Policy>RF-ADRNotFound</Policy>
+        <Policy>SC-GetResponsibilityServiceAdrStatus</Policy>
+    </Policies>
+    <Resources/>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

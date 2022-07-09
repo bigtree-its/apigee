@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GenerateJWT async="false" continueOnError="false" enabled="true" name="JWT-GenerateIdTokenForTokenIssueOrRefreshStep">
+  <DisplayName>JWT-GenerateIdTokenForTokenIssueOrRefreshStep</DisplayName>
+  <Algorithm>PS256</Algorithm>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <PrivateKey>
+    <Value ref="private.JWTSignKeys_privateKey"/>
+    <Id>CDSRefImpl</Id>
+  </PrivateKey>
+  <Subject ref="customerPPId"/>
+  <Issuer ref="issuer"/>
+  <Audience ref="apigee.client_id"/>
+  <ExpiresIn ref="CDS.authTokenExpiresMilliSecs"/>
+  <AdditionalClaims>
+    <!-- <Claim name="name" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.name"/><Claim name="given_name" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.given_name"/><Claim name="family_name" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.family_name"/> -->
+    <Claim name="updated_at" ref="CDS.updateAtEpoch" type="number"/>
+    <Claim name="auth_time" ref="CDS.authTimeEpoch" type="number"/>
+    <Claim name="acr" ref="acrUsed"/>
+    <Claim name="nonce" ref="oauthv2authcode.OAInfo-RetrieveOIDCAuthCode.nonce"/>
+    <Claim name="at_hash" ref="CDS.tokencode_hash"/>
+    <Claim name="refresh_token_expires_at" ref="refreshTokenExpiresAt" type="number"/>
+    <Claim name="sharing_expires_at" ref="refreshTokenExpiresAt" type="number"/>
+  </AdditionalClaims>
+  <OutputVariable>theNewIdToken</OutputVariable>
+</GenerateJWT>

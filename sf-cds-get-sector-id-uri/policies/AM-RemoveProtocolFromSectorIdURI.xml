@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-RemoveProtocolFromSectorIdURI">
+  <DisplayName>AM-RemoveProtocolFromSectorIdURI</DisplayName>
+  <AssignVariable>
+    <Name>searchStrRegex1</Name>
+    <Value>https:\/\/</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>searchStrRegex2</Name>
+    <Value>https:\/\/[^\/]+\/</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>searchStrRegex3</Name>
+    <Value>\/(.)*</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>sectorIdUriURINoProtocol</Name>
+    <Template>{replaceFirst(sectorIdURIVar,searchStrRegex1, '')}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>sectorIdUriEndpoint</Name>
+    <Template>{replaceFirst(sectorIdURIVar,searchStrRegex2, '')}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>sectorIdUriHostname</Name>
+    <Template>{replaceFirst(sectorIdUriURINoProtocol,searchStrRegex3, '')}</Template>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

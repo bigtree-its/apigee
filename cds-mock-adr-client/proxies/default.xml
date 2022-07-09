@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+  <PreFlow name="PreFlow">
+    <Request>
+      <Step>
+        <Name>KVM-GetMockADRKeys</Name>
+      </Step>
+    </Request>
+    <Response/>
+  </PreFlow>
+  <Flows>
+    <Flow name="Get JWKS for default mock ADR">
+      <Description>Return hardcoded JWKS info. Verified Regsister/Request/Par JWTs</Description>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>AM-SetMockJWKSInfo</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/jwks") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="Get JWKS for client 1 mock ADR">
+      <Description>Return hardcoded JWKS info for FAPI client 1. Verified Regsister/Request/Par JWTs</Description>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>AM-SetMockJWKSInfoFapiClient1</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/jwks/6f7a1b8e-8799-48a8-9011-e3920391f713") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="Get JWKS for client 2 mock ADR">
+      <Description>Return hardcoded JWKS info for FAPI client 2. Verified Regsister/Request/Par JWTs</Description>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>AM-SetMockJWKSInfoFapiClient2</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/jwks/25ee528f-35ac-4a66-a67c-6166602c9322") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="Get Private Key JWT">
+      <Description>Return a private key JWT. Necessary for obtaining access token for Dynamic Client management operations</Description>
+      <Request>
+        <Step>
+          <Name>AM-SetValuesBasedOnOptionalQueryParamsOrDefaults-PrivKeyJWT</Name>
+        </Step>
+        <Step>
+          <Name>JWT-GeneratePrivateKeyJWT</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-SetResponse</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/privatekeyjwt") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="Get Dyn Client Reg Request token">
+      <Description>Generate a request token to be used in Register/Update dynamic client </Description>
+      <Request>
+        <Step>
+          <Name>AM-SetValuesBasedOnOptionalQueryParamsOrDefaults-DCRRequest</Name>
+        </Step>
+        <Step>
+          <Name>AM-SetSSARequest</Name>
+        </Step>
+        <Step>
+          <Name>AM-AddSectorIdToSSARequest</Name>
+          <Condition>(request.queryparam.sector_identifier_uri != null) and (request.queryparam.sector_identifier_uri != "")</Condition>
+        </Step>
+        <Step>
+          <Name>SC-GetSSAFromCDRRegister</Name>
+        </Step>
+        <Step>
+          <Name>JS-SetRedirectURIs</Name>
+        </Step>
+        <Step>
+          <Name>JWT-GenerateDynamicClientRegistrationRequest</Name>
+          <Condition>(request.queryparam.sector_identifier_uri = null) or (request.queryparam.sector_identifier_uri = "")</Condition>
+        </Step>
+        <Step>
+          <Name>JWT-GenerateDynamicClientRegistrationRequestWithSectorIdUri</Name>
+          <Condition>(request.queryparam.sector_identifier_uri != null) and (request.queryparam.sector_identifier_uri != "")</Condition>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-SetResponse</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/dcrrequest") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="Get Authorisation Request JWT">
+      <Description>Generate a request JWT token to be used in Pushed Authorisations Request </Description>
+      <Request>
+        <Step>
+          <Name>AM-SetValuesBasedOnOptionalQueryParamsOrDefaults-PAR</Name>
+        </Step>
+        <Step>
+          <Name>JS-AddOptionalClaimsIfPresent</Name>
+        </Step>
+        <!-- <Step><Name>JWT-GenerateRequestJWT</Name></Step> -->
+        <Step>
+          <Name>AM-GenerateUUID</Name>
+        </Step>
+        <Step>
+          <Name>JS-RequestJWTPayload</Name>
+        </Step>
+        <Step>
+          <Name>JWS-GenerateRequestJWT</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-SetResponse</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/parrequest") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="Validate Data Holder id_token">
+      <Description>Validate Data Holder id_token, pass jwt and jwks </Description>
+      <Request>
+        <Step>
+          <Name>JWT-VerifyJWT</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-SetValidateResponse</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/verifyjwt") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="ADR Revoke Arrangement">
+      <Description>CDR Arrangement Revocation for ADR</Description>
+      <Request>
+        <!-- <Step><Name>RF-InvalidClientAssertionType</Name><Condition>(request.formparam.client_assertion_type != "urn:ietf:params:oauth:client-assertion-type:jwt-bearer")</Condition></Step><Step><Name>RF-MissingClientAssertion</Name><Condition>(request.formparam.client_assertion = "" or request.formparam.client_assertion = null)</Condition></Step><Step><Name>FC-AuthenticateWithPrivateKeyJWT</Name><Condition>(request.formparam.client_assertion_type = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer") and (request.formparam.client_assertion != "")</Condition></Step> -->
+      </Request>
+      <Response>
+        <Step>
+          <Name>JS-SetArrangementRevokeResponse</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/arrangements/revoke") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="ADR Sector ID URI">
+      <Description>ADR Sector ID URI</Description>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>AM-SetSectorIdUriResponse</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/sector-id-uri") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="unsupportedMethod">
+      <Description>Method Not Allowed</Description>
+      <Request>
+        <Step>
+          <FaultRules/>
+          <Name>RF-UnsupportedMethod</Name>
+        </Step>
+      </Request>
+      <Response/>
+      <Condition>(proxy.pathsuffix = "/jwks")  and (not ((request.verb = "GET")))</Condition>
+    </Flow>
+    <Flow name="notFound">
+      <Description>Not Found</Description>
+      <Request>
+        <Step>
+          <FaultRules/>
+          <Name>RF-NotFound</Name>
+        </Step>
+      </Request>
+      <Response/>
+    </Flow>
+  </Flows>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response/>
+  </PostFlow>
+  <HTTPProxyConnection>
+    <BasePath>/mock-adr-client</BasePath>
+    <VirtualHost>secure</VirtualHost>
+  </HTTPProxyConnection>
+  <RouteRule name="noroute"/>
+</ProxyEndpoint>

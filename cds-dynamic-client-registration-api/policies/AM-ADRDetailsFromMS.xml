@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-ADRDetailsFromMS">
+  <DisplayName>AM-ADRDetailsFromMS</DisplayName>
+  <Properties/>
+  <AssignVariable>
+    <Name>ADRDetailsFromMS.content</Name>
+    <Ref>response.content</Ref>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout name="SC-RevokeCDRArrangement" continueOnError="false">
+  <DisplayName>SC-RevokeCDRArrangement</DisplayName>
+  <Request clearPayload="true" variable="adrConsentsRequest">
+    <Set>
+      <QueryParams>
+        <QueryParam name="expectedClientId">{theClientId}</QueryParam>
+      </QueryParams>
+      <Verb>DELETE</Verb>
+      <Path>/internal/arrangements/{request.formparam.cdr_arrangement_id}</Path>
+    </Set>
+  </Request>
+  <Response>arrangementResponse</Response>
+  <Timeout>10000</Timeout>
+  <HTTPTargetConnection>
+    <Properties>
+      <Property name="success.codes">2xx</Property>
+      <Property name="io.timeout.millis">5000</Property>
+    </Properties>
+    <LoadBalancer>
+      <Server name="cds-arrangement-microservice"/>
+    </LoadBalancer>
+    <Path>{CDS.serviceEnvPath}/arrangement-service/v1</Path>
+  </HTTPTargetConnection>
+</ServiceCallout>

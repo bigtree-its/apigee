@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+  <Step>
+    <Name>JWT-DecodeSelfSignedJwt</Name>
+    <Condition>(theClientId = null) or (theClientId = "")</Condition>
+  </Step>
+  <Step>
+    <Name>AM-SetClientIdFromJwt</Name>
+    <Condition>(theClientId = null) or (theClientId = "")</Condition>
+  </Step>
+  <Step>
+    <Name>RF-UnknownClientId</Name>
+    <Condition>(theClientId = null) or (theClientId = "") or (theClientId != "cdr-service")</Condition>
+  </Step>
+  <Step>
+    <Name>FC-GetClientJWKS</Name>
+  </Step>
+  <Step>
+    <Name>JWT-VerifySelfSignedJwt</Name>
+  </Step>
+  <Step>
+    <Name>RF-InvalidJWT</Name>
+    <Condition>JWT.failed = true</Condition>
+  </Step>
+  <Step>
+    <Name>RF-MissingEXPClaim</Name>
+    <Condition>(jwt.JWT-VerifySelfSignedJwt.decoded.claim.exp == "") or (jwt.JWT-VerifySelfSignedJwt.decoded.claim.exp == null)</Condition>
+  </Step>
+  <Step>
+    <Name>FC-CheckTokenNotReused</Name>
+  </Step>
+  <Step>
+    <Name>AM-SetClientAssertionValid</Name>
+  </Step>
+</SharedFlow>

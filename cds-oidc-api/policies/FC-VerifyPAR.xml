@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FlowCallout async="false" continueOnError="false" enabled="true" name="FC-VerifyPAR">
+  <DisplayName>FC-VerifyPAR</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <SharedFlowBundle>cds-authenticate-par-jwt</SharedFlowBundle>
+  <Parameters ignoreUnresolvedVariables="true">
+    <Parameter name="theClientId" ref="jwt.JWT-DecodePAR.decoded.claim.client_id"/>
+    <Parameter name="theAudience" ref="theAudienceClaim"/>
+    <Parameter name="theRedirectUri" ref="jwt.JWT-DecodePAR.decoded.claim.redirect_uri"/>
+    <Parameter name="thePrivateKeyJWT" ref="request.formparam.request"/>
+    <Parameter name="getAdditionalClaims">true</Parameter>
+  </Parameters>
+</FlowCallout>

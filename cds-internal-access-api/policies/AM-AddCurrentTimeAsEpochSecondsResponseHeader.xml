@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-AddCurrentTimeAsEpochSecondsResponseHeader">
+  <DisplayName>AM-AddCurrentTimeAsEpochSecondsResponseHeader</DisplayName>
+  <Properties/>
+  <Add>
+    <Headers>
+      <Header name="x-epoch">{substring(system.timestamp,0,10)}</Header>
+    </Headers>
+  </Add>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

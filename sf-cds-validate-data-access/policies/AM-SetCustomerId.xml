@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-SetCustomerId">
+  <DisplayName>AM-SetCustomerId</DisplayName>
+  <FaultRules/>
+  <Properties/>
+  <AssignVariable>
+    <Name>customerId</Name>
+    <Ref>accesstoken.customerId</Ref>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>cdrArrangementId</Name>
+    <Ref>accesstoken.cdrArrangementId</Ref>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo type="request" transport="http" createNew="false"></AssignTo>
+</AssignMessage>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GenerateJWT async="false" continueOnError="false" enabled="true" name="JWT-GenerateIdTokenForAuthCodeStep">
+    <DisplayName>JWT-GenerateIdTokenForAuthCodeStep</DisplayName>
+    <Algorithm>PS256</Algorithm>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <PrivateKey>
+        <Value ref="private.JWTSignKeys_privateKey"/>
+        <Id ref="CDS.JWTSignKeys_privateKey.kid"/>
+    </PrivateKey>
+    <Subject ref="customerPPId"/>
+    <Issuer ref="issuer"/>
+    <Audience ref="OIDC.client_id"/>
+    <ExpiresIn ref="CDS.authTokenExpiresMilliSecs"/>
+    <AdditionalClaims>
+        <Claim name="name" ref="CDS.name"/>
+        <Claim name="given_name" ref="CDS.given_name"/>
+        <Claim name="family_name" ref="CDS.family_name"/>
+        <Claim name="updated_at" ref="CDS.updateAtEpoch" type="number"/>
+        <Claim name="auth_time" ref="CDS.authTimeEpoch" type="number"/>
+        <Claim name="acr" ref="acrUsed"/>
+        <!-- ideally get from IdP -->
+        <Claim name="nonce" ref="OIDC.nonce"/>
+        <Claim name="c_hash" ref="CDS.tokencode_hash"/>
+        <Claim name="s_hash" ref="CDS.s_hash"/>
+        <!-- refresh_token_expires_at: 
+        indicates the date-time at which the most recently provided refresh token will expire. 
+        Its value MUST be a number containing a NumericDate value 
+        
+        If no refresh token has been provided then a zero value should be returned
+        -->
+        <Claim name="refresh_token_expires_at" type="number">0</Claim>
+        <!-- sharing_expires_at: 
+        indicates the date-time at which the current sharing arrangement will expire. 
+        Its value MUST be a number containing a NumericDate value 
+        
+        If consent is not complete or a sharing_duration was not requested in the authorisation request object then a zero value should be returned
+        -->
+        <Claim name="sharing_expires_at" type="number">0</Claim>
+    </AdditionalClaims>
+    <OutputVariable>theNewIdToken</OutputVariable>
+</GenerateJWT>

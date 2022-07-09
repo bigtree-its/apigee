@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="KVM-GetCDSConfigs" mapIdentifier="CDS-Config">
+    <DisplayName>KVM-GetCDSConfigs</DisplayName>
+    <Properties/>
+    <ExclusiveCache>false</ExclusiveCache>
+    <ExpiryTimeInSecs>300</ExpiryTimeInSecs>
+    <Get assignTo="CDS.clientCredTokenExpiresMilliSecs">
+        <Key>
+            <Parameter>ClientCredTokenExpiresMilliSecs</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="CDS.authTokenExpiresMilliSecs">
+        <Key>
+            <Parameter>AuthTokenExpiresMilliSecs</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="CDS.endpointsByBrand">
+        <Key>
+            <Parameter>EndpointsByBrand</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="CDS.tokenEncryptionDisabled">
+        <Key>
+            <Parameter>IdTokenEncryptionDisabled</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="CDS.holderOfKeyDisabled">
+        <Key>
+            <Parameter>HolderOfKeyDisabled</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="CDS.serviceEnvPath">
+        <Key>
+            <Parameter>ServiceEnvPath</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="CDS.internalServiceJwksUri">
+        <Key>
+            <Parameter>InternalServiceJwksUri</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="CDS.cdrRegCheckDisabled">
+        <Key>
+            <Parameter>CDRRegCheckDisabled</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="CDS.idTokenServiceCalloutDisabled">
+        <Key>
+            <Parameter>IdTokenServiceCalloutDisabled</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="CDS.InternalTokenServiceCalloutDisabled">
+        <Key>
+            <Parameter>InternalTokenServiceCalloutDisabled</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

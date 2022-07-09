@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PopulateCache async="false" continueOnError="false" enabled="true" name="PC-TenxToken">
+    <DisplayName>PC-TenxToken</DisplayName>
+    <Properties/>
+    <CacheKey>
+        <Prefix>access_token</Prefix>
+        <KeyFragment ref="apigee.access_token"/>
+    </CacheKey>
+    <CacheResource>tenx_token_cache</CacheResource>
+    <ExpirySettings>
+        <TimeoutInSec ref="tenxTokenExpiryTime">3600</TimeoutInSec>
+    </ExpirySettings>
+    <Source>cds_otp_login.tenxToken</Source>
+</PopulateCache>

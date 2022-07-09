@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle revision="2" name="cds-validate-data-access">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1646139583200</CreatedAt>
+    <CreatedBy>nava.kannusamy@10xbanking.com</CreatedBy>
+    <Description>2022-03-01_12-55-15 - Validates arrangement and other security checks</Description>
+    <DisplayName>cds-validate-data-access</DisplayName>
+    <LastModifiedAt>1646139583200</LastModifiedAt>
+    <LastModifiedBy>nava.kannusamy@10xbanking.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:f0716ff3827ee2aedf9378b59bbb8e31ffdc7499c298fcc34168544fa5c1da8b1f2a61c9039149950b01af5d816c9e5476e7602a54a9151045cc3f1ccfb5c919:eu-west-1</ManifestVersion>
+    <Policies>
+        <Policy>AM-SetCustomerId</Policy>
+        <Policy>EV-GetConsentedAccountsForCustomerAndServiceToken</Policy>
+        <Policy>EV-GetStatusFromArrangementResponse</Policy>
+        <Policy>FC-TrafficThresholds</Policy>
+        <Policy>FC-ValidateAdrStatus</Policy>
+        <Policy>FC-VerifyHoK</Policy>
+        <Policy>KVM-GetCDSConfigs</Policy>
+        <Policy>LC-RetrieveVerifyExistingCDRArrangementId</Policy>
+        <Policy>OA-VerifyTokenForGetAccountDetails</Policy>
+        <Policy>OA-VerifyTokenForGetAccountsBasic</Policy>
+        <Policy>OA-VerifyTokenForGetCustomer</Policy>
+        <Policy>OA-VerifyTokenForGetCustomerDetail</Policy>
+        <Policy>OA-VerifyTokenForGetDirectDebits</Policy>
+        <Policy>OA-VerifyTokenForGetPayeeAndPayeeDetail</Policy>
+        <Policy>OA-VerifyTokenForGetTransactions</Policy>
+        <Policy>PC-StoreVerifyExistingCDRArrangementId</Policy>
+        <Policy>RF-InvalidArrangement</Policy>
+        <Policy>SC-VerifyExistingCDRArrangmentId</Policy>
+    </Policies>
+    <Resources/>
+    <Spec></Spec>
+    <subType>SharedFlow</subType>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>

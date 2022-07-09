@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AM-UUID" version="SHA-512:022fef28a347054931c5dde9d92972691b585095a31ebcc6fe8bea26ec236c0607bc6e2eff0ab7ac0a2c8cdd4ff53e587805551a6601809a9b6b5c45b6b2cc6e"/>
+        <VersionInfo resourceName="FC-GenerateADRToken" version="SHA-512:10b87dab0ce86716f88cfe6b5e0fba5aa18c57cca9dc0cd0531916002a62f65ded051591aa3bdbbc6e9c9d70aa4f944b6326115fd13f0c1e6832f51b7e669a79"/>
+        <VersionInfo resourceName="FC-GetTenxToken" version="SHA-512:807312b32314d3584e42491122d2a4d7ac6cc16735d0ef79c3ee4eee2d45b95dffe3b202d3c65236c259e5233b29ef461e4030299eba4367fc8e278847d51a17"/>
+        <VersionInfo resourceName="FC-ProxyErrorHandler" version="SHA-512:d25a286e36ee4df5244d717169d51ad301983a117958b41612f04d6e4a2f21f68b65bbde3d571eda62be772b3193179b7f41b49e00b78f31b653daa93c10c510"/>
+        <VersionInfo resourceName="FC-TargetErrorHandler" version="SHA-512:69f5ebcb994a0a5f0e5a3a09f2449cef83d67b46c26210687541c6e650f59df80a9d9f9b94374b9a35efdb9d91d7d7fb9648e5a0962a045ba7582ee833daa75e"/>
+        <VersionInfo resourceName="FC-VerifyAccessToken" version="SHA-512:6e844b60163ed9cfc32ea28f22c50e20490ce8ed8811816af0b6c7186b85a3f6472804d4a2366b836df1b5a010678da951255f5f5b0f3f69e134d692ae7d94e1"/>
+        <VersionInfo resourceName="JS-SetXOriginalUri" version="SHA-512:4f173b88668642201f641a66cd48fa6092061b197dec590f48080a416d2946bce5200ca6ea712ac7cec5bc8eb56cb0f47599bbbb3e8f38144b5e58cd60a072c9"/>
+        <VersionInfo resourceName="KVM-CdsProperties" version="SHA-512:89bd0e234a9468027851f9e352f4c03b9c181216c33b1b8cc6c2c994e6eb3e3db65ae6580c70da662d9ae29ea4474fd126fb3ec346e90d9c75275e3283ed86ea"/>
+        <VersionInfo resourceName="RF-NotFound" version="SHA-512:2cb5faa4b6a4dfd9b0f4a8c04b9259aff7d321524282dd7568cfe8e7d16a76adfbd85a8b25b563c72a7ac0a657d5517743b420fef39463163d28c69798a83d04"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:190c959a0821b1ca55dce8e3b9fcc068ffa23135fc26125075364116773b8b0861507feb6b84ade6d422d28ece71a85183a9eb1b6c6e8711125db477973a7b27"/>
+    </ProxyEndpoints>
+    <Resources>
+        <VersionInfo resourceName="jsc://js-set-x-original-uri.js" version="SHA-512:15539244da0c790f39bf0c65e849b09e3be443dc50ffafc0bf33fc9e700f4c99cceb1394312dcb7bb13262ad8bd0b0432b70a9b7e6c304187fa103e2a5918d96"/>
+    </Resources>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:8e0f7c58a84505bb87201f0556816ccfcf4f540166048614297c352a126bdcf2b0c68fa8050af92e7aa8e1cf7e9ec11096ab43f7ba52f19deafc0ff99ade3a38"/>
+    </TargetEndpoints>
+</Manifest>

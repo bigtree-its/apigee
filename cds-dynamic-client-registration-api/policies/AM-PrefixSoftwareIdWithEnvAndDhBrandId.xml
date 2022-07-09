@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AM-PrefixSoftwareIdWithEnvAndDhBrandId">
+  <DisplayName>AM-PrefixSoftwareIdWithEnvAndDhBrandId</DisplayName>
+  <AssignVariable>
+    <Name>softwareIdWithEnvPrefixInApigee</Name>
+    <Template>{environment.name}-{ADRDetailsFromSSA.software_id}-{CDS.brandId}</Template>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

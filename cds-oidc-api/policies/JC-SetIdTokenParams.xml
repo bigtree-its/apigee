@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<JavaCallout name="JC-SetIdTokenParams">
+  <ClassName>com.cds.api.SetIdTokenParams</ClassName>
+  <ResourceURL>java://cds-policy-java-SetIdTokenParams.jar</ResourceURL>
+</JavaCallout>
